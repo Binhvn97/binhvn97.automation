@@ -112,8 +112,9 @@ Get Random Text
   END
   [Return]    ${text}
 
-Required message "${name}" displayed under "${text}" field
-  ${element}=               Get Element Form Item By Name     ${name}                       /ancestor::android.widget.EditText/android.view.View[@content-desc="${text}"]
+Required message "${text}" displayed under "${name}" field
+  ${element}=               Get Element Form Item By Name     ${name}                       /ancestor::android.widget.EditText
+  ${element}=               Set Variable                      ${element}/android.view.View[contains(@content-desc,'${text}')]
   Wait Until Element Is Visible                               ${element}
   
 Get Select Option Element Form Item By Name
