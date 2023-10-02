@@ -9,7 +9,7 @@ ${HEADLESS}         ${False}
 ${BROWSER_TIMEOUT}  60 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
 
-${URL_DEFAULT}      http://dev1.geneat.vn:7802/vn                           #http://localhost:4200/vn
+${URL_DEFAULT}      http://dev1.geneat.vn:7802/vn
 ${STATE}            Evaluate    json.loads('''{}''')  json
 
 *** Keywords ***
@@ -601,12 +601,14 @@ Click on "${ordinal}" selection to change the number of account show in list and
       ${ordinal_before}=        Evaluate                        ${current_number} + 2
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
+      Wait Until Element Spin
       Get Text                  //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]        equal                       ${name}
     ELSE IF                     ${current_number} > ${select_number}
       ${ordinal_before}=        Evaluate                        ${select_number} + 2
       ${name}=                  Get Text                        //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
+      Wait Until Element Spin
       Move to the "next" page
       ${nameS}=                 Get the first account name
       Should Be Equal           ${nameS}                         ${name}
@@ -614,11 +616,13 @@ Click on "${ordinal}" selection to change the number of account show in list and
     ELSE IF                     ${current_number} = ${select_number}
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]        
+      Wait Until Element Spin
     END    
   ELSE IF                       ${amountPage} < 2 
     IF                          ${current_number} <= ${select_number}
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
+      Wait Until Element Spin
     ELSE IF                     ${current_number} > ${select_number}
       ${account_number}=        Count the number account in list
       IF       ${account_number} > ${select_number}
@@ -626,6 +630,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
         ${name}=                Get Text                         //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
         Click                   xpath=//*[contains(@class, 'ant-select-selection-item')]
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
+        Wait Until Element Spin
         Move to the "next" page
         ${nameS}=               Get the first account name
         Should Be Equal         ${nameS}                         ${name}
@@ -633,10 +638,10 @@ Click on "${ordinal}" selection to change the number of account show in list and
       ELSE IF    ${account_number} <= ${select_number}
         Click                   xpath=//*[contains(@class, 'ant-select-selection-item')]
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]   
+        Wait Until Element Spin
       END    
     END
   END
-  Wait Until Element Spin
 
 ### --- Get the account name --- ###
 Get the last account name

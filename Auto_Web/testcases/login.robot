@@ -4,7 +4,10 @@ Test Setup              Setup
 Test Teardown           Tear Down
 
 *** Test Cases ***
-DN-01 Verify that Đăng nhập successfully with valid Email and Mật khẩu
+### Link to Testcases: https://docs.google.com/spreadsheets/d/1DbP64bT7QpASuE3NeiIVDdeHpdrKQon3HqF9rsUzbFU/edit#gid=1999164743 ###
+
+### Verify the User Interface of the Login Page ###
+LG_02 Verify that Đăng nhập successfully with valid Email and Mật khẩu
   [Tags]                @smoketest               @regression
   Then Login to admin
 

@@ -32,7 +32,7 @@ CA_02 Verify the function changing the number of accounts show in each list
     When Click on "fifth" selection to change the number of account show in list and check
     When Click on "third" selection to change the number of account show in list and check
     When Click on "second" selection to change the number of account show in list and check
-    
+
 CA_03 Verify the function of navigating the list of account page
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Customer Account" page
