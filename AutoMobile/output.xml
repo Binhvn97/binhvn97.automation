@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20231002 14:08:41.269" rpa="false" schemaversion="4">
+<suite id="s1" name="Login Binh" source="d:\Intern test\TEST_BINH\AutoMobile\test\testcases\login_binh.robot">
+<test id="s1-t1" name="LG_000 Test" line="80">
+<kw name="Setup" library="common" type="SETUP">
+<kw name="Open Application" library="AppiumLibrary">
+<arg>http://localhost:4723</arg>
+<arg>platformName=Android</arg>
+<arg>deviceName=emulator-5554</arg>
+<arg>appPackage=com.uberental.uberental</arg>
+<arg>appActivity=com.uberental.uberental.MainActivity</arg>
+<arg>automationName=UIAutomator2</arg>
+<doc>Opens a new application to given Appium server.
+Capabilities of appium server, Android and iOS,
+Please check https://github.com/appium/appium/blob/master/docs/en/writing-running-appium/server-args.md
+| *Option*            | *Man.* | *Description*     |
+| remote_url          | Yes    | Appium server url |
+| alias               | no     | alias             |
+| strict_ssl          | No     | allows you to send commands to an invalid certificate host like a self-signed one. |</doc>
+<status status="PASS" starttime="20231002 14:08:44.660" endtime="20231002 14:08:53.439"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:44.658" endtime="20231002 14:08:53.440"/>
+</kw>
+<kw name="Delete the test account under admin's authority">
+<kw name="Open &quot;Uberental&quot; app">
+<kw name="Click &quot;Bỏ qua&quot; button" library="common" sourcename="Click &quot;${name}&quot; button">
+<if>
+<branch type="IF" condition="&quot;${name}&quot; == &quot;Quay lại&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.widget.Button[@content-desc="${name}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:53.449" endtime="20231002 14:08:53.450"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:53.448" endtime="20231002 14:08:53.451"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.widget.Button[@content-desc="${name}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:53.455" level="INFO">${element} = //android.widget.Button[@content-desc="Bỏ qua"]</msg>
+<status status="PASS" starttime="20231002 14:08:53.453" endtime="20231002 14:08:53.458"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:53.451" endtime="20231002 14:08:53.459"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:53.448" endtime="20231002 14:08:53.460"/>
+</if>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20231002 14:08:54.187" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Bỏ qua"]</msg>
+<status status="PASS" starttime="20231002 14:08:53.461" endtime="20231002 14:08:54.187"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:54.190" level="INFO">Clicking element '//android.widget.Button[@content-desc="Bỏ qua"]'.</msg>
+<msg timestamp="20231002 14:08:55.203" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Bỏ qua"]</msg>
+<status status="PASS" starttime="20231002 14:08:54.188" endtime="20231002 14:08:55.203"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:53.446" endtime="20231002 14:08:55.204"/>
+</kw>
+<kw name="Click &quot;Bắt đầu&quot; button" library="common" sourcename="Click &quot;${name}&quot; button">
+<if>
+<branch type="IF" condition="&quot;${name}&quot; == &quot;Quay lại&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.widget.Button[@content-desc="${name}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:55.205" endtime="20231002 14:08:55.206"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:55.205" endtime="20231002 14:08:55.206"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.widget.Button[@content-desc="${name}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:55.207" level="INFO">${element} = //android.widget.Button[@content-desc="Bắt đầu"]</msg>
+<status status="PASS" starttime="20231002 14:08:55.206" endtime="20231002 14:08:55.207"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:55.206" endtime="20231002 14:08:55.207"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:55.205" endtime="20231002 14:08:55.207"/>
+</if>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20231002 14:08:55.296" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Bắt đầu"]</msg>
+<status status="PASS" starttime="20231002 14:08:55.208" endtime="20231002 14:08:55.297"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:55.300" level="INFO">Clicking element '//android.widget.Button[@content-desc="Bắt đầu"]'.</msg>
+<msg timestamp="20231002 14:08:56.237" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Bắt đầu"]</msg>
+<status status="PASS" starttime="20231002 14:08:55.297" endtime="20231002 14:08:56.238"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:55.204" endtime="20231002 14:08:56.238"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:53.444" endtime="20231002 14:08:56.238"/>
+</kw>
+<kw name="Enter &quot;email&quot; in &quot;Địa chỉ Email&quot; with &quot;admin@gmail.com&quot;" library="common" sourcename="Enter &quot;${type}&quot; in &quot;${name}&quot; with &quot;${text}&quot;">
+<kw name="Get Random Text" library="common">
+<var>${text}</var>
+<arg>${type}</arg>
+<arg>${text}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${symbol}</var>
+<arg>_RANDOM_</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:56.241" level="INFO">${symbol} = _RANDOM_</msg>
+<status status="PASS" starttime="20231002 14:08:56.240" endtime="20231002 14:08:56.241"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${new_text}</var>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:56.242" level="INFO">${new_text} = </msg>
+<status status="PASS" starttime="20231002 14:08:56.241" endtime="20231002 14:08:56.242"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${containsS}</var>
+<arg>${text}</arg>
+<arg>_@(.+)@_</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20231002 14:08:56.245" level="INFO">${containsS} = []</msg>
+<status status="PASS" starttime="20231002 14:08:56.242" endtime="20231002 14:08:56.245"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cntS}</var>
+<arg>${containsS}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:56.247" level="INFO">Length is 0</msg>
+<msg timestamp="20231002 14:08:56.247" level="INFO">${cntS} = 0</msg>
+<status status="PASS" starttime="20231002 14:08:56.246" endtime="20231002 14:08:56.247"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${contains}</var>
+<arg>${text}</arg>
+<arg>${symbol}</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20231002 14:08:56.249" level="INFO">${contains} = []</msg>
+<status status="PASS" starttime="20231002 14:08:56.248" endtime="20231002 14:08:56.249"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cnt}</var>
+<arg>${contains}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:56.250" level="INFO">Length is 0</msg>
+<msg timestamp="20231002 14:08:56.250" level="INFO">${cnt} = 0</msg>
+<status status="PASS" starttime="20231002 14:08:56.249" endtime="20231002 14:08:56.250"/>
+</kw>
+<if>
+<branch type="IF" condition="${cntS} &gt; 0">
+<kw name="Set Variable" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${STATE["${containsS[0]}"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.251" endtime="20231002 14:08:56.251"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${symbol}</var>
+<arg>_@${containsS[0]}@_</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.252" endtime="20231002 14:08:56.253"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.250" endtime="20231002 14:08:56.253"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'test name'">
+<kw name="Sentence" library="FakerLibrary">
+<var>${random}</var>
+<arg>nb_words=3</arg>
+<doc>Generate a sentence.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.254" endtime="20231002 14:08:56.254"/>
+</kw>
+<kw name="Split String" library="String">
+<var>${words}</var>
+<arg>${TEST NAME}</arg>
+<arg>${SPACE}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.254" endtime="20231002 14:08:56.254"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${words[0]} ${random}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.254" endtime="20231002 14:08:56.254"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.253" endtime="20231002 14:08:56.254"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'number'">
+<kw name="Random Int" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a random integer between two integers ``min`` and ``max`` inclusive
+while observing the provided ``step`` value.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.255" endtime="20231002 14:08:56.256"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${new_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.256" endtime="20231002 14:08:56.257"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.255" endtime="20231002 14:08:56.257"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'percentage'">
+<kw name="Random Int" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>max=100</arg>
+<doc>Generate a random integer between two integers ``min`` and ``max`` inclusive
+while observing the provided ``step`` value.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.260" endtime="20231002 14:08:56.261"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${new_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.263" endtime="20231002 14:08:56.263"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.258" endtime="20231002 14:08:56.264"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'paragraph'">
+<kw name="Paragraph" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a paragraph.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.265" endtime="20231002 14:08:56.265"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.264" endtime="20231002 14:08:56.266"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'email'">
+<kw name="Email" library="FakerLibrary">
+<var>${new_text}</var>
+<status status="NOT RUN" starttime="20231002 14:08:56.267" endtime="20231002 14:08:56.267"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.266" endtime="20231002 14:08:56.267"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'password'">
+<kw name="Password" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>10</arg>
+<arg>True</arg>
+<arg>True</arg>
+<arg>True</arg>
+<arg>True</arg>
+<doc>Generate a random password of the specified ``length``.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.269" endtime="20231002 14:08:56.269"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.268" endtime="20231002 14:08:56.270"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'phone'">
+<kw name="Random Int" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>min=200000000</arg>
+<arg>max=999999999</arg>
+<doc>Generate a random integer between two integers ``min`` and ``max`` inclusive
+while observing the provided ``step`` value.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.271" endtime="20231002 14:08:56.271"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${new_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.271" endtime="20231002 14:08:56.272"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${new_text}</var>
+<arg>SEPARATOR=</arg>
+<arg>0</arg>
+<arg>${new_text}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.272" endtime="20231002 14:08:56.272"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.270" endtime="20231002 14:08:56.272"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'color'">
+<kw name="Safe Hex Color" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a web-safe color formatted as a hex triplet.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.273" endtime="20231002 14:08:56.273"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.273" endtime="20231002 14:08:56.274"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'date'">
+<kw name="Date" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>pattern=%d-%m-%Y</arg>
+<doc>Get a date string between January 1, 1970 and now.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.275" endtime="20231002 14:08:56.276"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.274" endtime="20231002 14:08:56.277"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'word'">
+<kw name="Sentence" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>nb_words=2</arg>
+<doc>Generate a sentence.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.278" endtime="20231002 14:08:56.279"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.278" endtime="20231002 14:08:56.279"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0">
+<kw name="Sentence" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a sentence.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:56.280" endtime="20231002 14:08:56.280"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:56.279" endtime="20231002 14:08:56.281"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:56.250" endtime="20231002 14:08:56.281"/>
+</if>
+<kw name="Get Length" library="BuiltIn">
+<var>${cnt}</var>
+<arg>${text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:56.282" level="INFO">Length is 15</msg>
+<msg timestamp="20231002 14:08:56.282" level="INFO">${cnt} = 15</msg>
+<status status="PASS" starttime="20231002 14:08:56.282" endtime="20231002 14:08:56.283"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} &gt; 0">
+<kw name="Replace String" library="String">
+<var>${text}</var>
+<arg>${text}</arg>
+<arg>${symbol}</arg>
+<arg>${new_text}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20231002 14:08:56.284" level="INFO">${text} = admin@gmail.com</msg>
+<status status="PASS" starttime="20231002 14:08:56.284" endtime="20231002 14:08:56.285"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:56.283" endtime="20231002 14:08:56.285"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:56.283" endtime="20231002 14:08:56.286"/>
+</if>
+<msg timestamp="20231002 14:08:56.286" level="INFO">${text} = admin@gmail.com</msg>
+<status status="PASS" starttime="20231002 14:08:56.240" endtime="20231002 14:08:56.286"/>
+</kw>
+<kw name="Get Element Form Item By Name" library="common">
+<var>${element}</var>
+<arg>${name}</arg>
+<arg>/ancestor::android.widget.EditText</arg>
+<msg timestamp="20231002 14:08:56.287" level="INFO">${element} = //android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:56.286" endtime="20231002 14:08:56.287"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:56.290" level="INFO">Clicking element '//android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText'.</msg>
+<msg timestamp="20231002 14:08:56.537" level="INFO">xpath criteria: //android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:56.288" endtime="20231002 14:08:56.537"/>
+</kw>
+<kw name="Clear Text" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Clears the text field identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:56.546" level="INFO">Clear text field '//android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText'</msg>
+<msg timestamp="20231002 14:08:57.296" level="INFO">xpath criteria: //android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:56.538" endtime="20231002 14:08:57.297"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${element}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:57.299" level="INFO">Typing text 'admin@gmail.com' into text field '//android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText'</msg>
+<msg timestamp="20231002 14:08:57.416" level="INFO">xpath criteria: //android.widget.EditText/android.view.View[@content-desc="Địa chỉ Email"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:57.297" endtime="20231002 14:08:57.417"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cnt}</var>
+<arg>${text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:57.418" level="INFO">Length is 15</msg>
+<msg timestamp="20231002 14:08:57.418" level="INFO">${cnt} = 15</msg>
+<status status="PASS" starttime="20231002 14:08:57.417" endtime="20231002 14:08:57.418"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} &gt; 0">
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${STATE["${name}"]}</arg>
+<arg>${text}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20231002 14:08:57.421" level="INFO">${STATE["Địa chỉ Email"]} = admin@gmail.com</msg>
+<status status="PASS" starttime="20231002 14:08:57.419" endtime="20231002 14:08:57.422"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:57.419" endtime="20231002 14:08:57.423"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:57.419" endtime="20231002 14:08:57.423"/>
+</if>
+<status status="PASS" starttime="20231002 14:08:56.239" endtime="20231002 14:08:57.423"/>
+</kw>
+<kw name="Enter &quot;password&quot; in &quot;Mật khẩu&quot; with &quot;123123&quot;" library="common" sourcename="Enter &quot;${type}&quot; in &quot;${name}&quot; with &quot;${text}&quot;">
+<kw name="Get Random Text" library="common">
+<var>${text}</var>
+<arg>${type}</arg>
+<arg>${text}</arg>
+<kw name="Set Variable" library="BuiltIn">
+<var>${symbol}</var>
+<arg>_RANDOM_</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:57.430" level="INFO">${symbol} = _RANDOM_</msg>
+<status status="PASS" starttime="20231002 14:08:57.429" endtime="20231002 14:08:57.430"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${new_text}</var>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:57.432" level="INFO">${new_text} = </msg>
+<status status="PASS" starttime="20231002 14:08:57.431" endtime="20231002 14:08:57.432"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${containsS}</var>
+<arg>${text}</arg>
+<arg>_@(.+)@_</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20231002 14:08:57.435" level="INFO">${containsS} = []</msg>
+<status status="PASS" starttime="20231002 14:08:57.433" endtime="20231002 14:08:57.435"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cntS}</var>
+<arg>${containsS}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:57.438" level="INFO">Length is 0</msg>
+<msg timestamp="20231002 14:08:57.438" level="INFO">${cntS} = 0</msg>
+<status status="PASS" starttime="20231002 14:08:57.436" endtime="20231002 14:08:57.439"/>
+</kw>
+<kw name="Get Regexp Matches" library="String">
+<var>${contains}</var>
+<arg>${text}</arg>
+<arg>${symbol}</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20231002 14:08:57.440" level="INFO">${contains} = []</msg>
+<status status="PASS" starttime="20231002 14:08:57.439" endtime="20231002 14:08:57.440"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cnt}</var>
+<arg>${contains}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:57.444" level="INFO">Length is 0</msg>
+<msg timestamp="20231002 14:08:57.445" level="INFO">${cnt} = 0</msg>
+<status status="PASS" starttime="20231002 14:08:57.441" endtime="20231002 14:08:57.446"/>
+</kw>
+<if>
+<branch type="IF" condition="${cntS} &gt; 0">
+<kw name="Set Variable" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${STATE["${containsS[0]}"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.448" endtime="20231002 14:08:57.449"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${symbol}</var>
+<arg>_@${containsS[0]}@_</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.450" endtime="20231002 14:08:57.450"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.447" endtime="20231002 14:08:57.451"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'test name'">
+<kw name="Sentence" library="FakerLibrary">
+<var>${random}</var>
+<arg>nb_words=3</arg>
+<doc>Generate a sentence.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.452" endtime="20231002 14:08:57.452"/>
+</kw>
+<kw name="Split String" library="String">
+<var>${words}</var>
+<arg>${TEST NAME}</arg>
+<arg>${SPACE}</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.453" endtime="20231002 14:08:57.454"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${words[0]} ${random}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.454" endtime="20231002 14:08:57.455"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.451" endtime="20231002 14:08:57.455"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'number'">
+<kw name="Random Int" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a random integer between two integers ``min`` and ``max`` inclusive
+while observing the provided ``step`` value.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.456" endtime="20231002 14:08:57.457"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${new_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.457" endtime="20231002 14:08:57.457"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.455" endtime="20231002 14:08:57.458"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'percentage'">
+<kw name="Random Int" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>max=100</arg>
+<doc>Generate a random integer between two integers ``min`` and ``max`` inclusive
+while observing the provided ``step`` value.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.458" endtime="20231002 14:08:57.459"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${new_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.461" endtime="20231002 14:08:57.462"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.458" endtime="20231002 14:08:57.463"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'paragraph'">
+<kw name="Paragraph" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a paragraph.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.465" endtime="20231002 14:08:57.465"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.464" endtime="20231002 14:08:57.465"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'email'">
+<kw name="Email" library="FakerLibrary">
+<var>${new_text}</var>
+<status status="NOT RUN" starttime="20231002 14:08:57.466" endtime="20231002 14:08:57.466"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.465" endtime="20231002 14:08:57.467"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'password'">
+<kw name="Password" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>10</arg>
+<arg>True</arg>
+<arg>True</arg>
+<arg>True</arg>
+<arg>True</arg>
+<doc>Generate a random password of the specified ``length``.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.469" endtime="20231002 14:08:57.471"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.468" endtime="20231002 14:08:57.471"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'phone'">
+<kw name="Random Int" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>min=200000000</arg>
+<arg>max=999999999</arg>
+<doc>Generate a random integer between two integers ``min`` and ``max`` inclusive
+while observing the provided ``step`` value.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.473" endtime="20231002 14:08:57.474"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${new_text}</var>
+<arg>${new_text}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.477" endtime="20231002 14:08:57.486"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${new_text}</var>
+<arg>SEPARATOR=</arg>
+<arg>0</arg>
+<arg>${new_text}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.487" endtime="20231002 14:08:57.487"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.472" endtime="20231002 14:08:57.488"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'color'">
+<kw name="Safe Hex Color" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a web-safe color formatted as a hex triplet.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.489" endtime="20231002 14:08:57.490"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.488" endtime="20231002 14:08:57.490"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'date'">
+<kw name="Date" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>pattern=%d-%m-%Y</arg>
+<doc>Get a date string between January 1, 1970 and now.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.496" endtime="20231002 14:08:57.497"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.491" endtime="20231002 14:08:57.498"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0 and '${type}' == 'word'">
+<kw name="Sentence" library="FakerLibrary">
+<var>${new_text}</var>
+<arg>nb_words=2</arg>
+<doc>Generate a sentence.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.503" endtime="20231002 14:08:57.503"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.500" endtime="20231002 14:08:57.505"/>
+</branch>
+<branch type="ELSE IF" condition="${cnt} &gt; 0">
+<kw name="Sentence" library="FakerLibrary">
+<var>${new_text}</var>
+<doc>Generate a sentence.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:57.508" endtime="20231002 14:08:57.508"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:57.507" endtime="20231002 14:08:57.520"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:57.447" endtime="20231002 14:08:57.521"/>
+</if>
+<kw name="Get Length" library="BuiltIn">
+<var>${cnt}</var>
+<arg>${text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:57.525" level="INFO">Length is 6</msg>
+<msg timestamp="20231002 14:08:57.525" level="INFO">${cnt} = 6</msg>
+<status status="PASS" starttime="20231002 14:08:57.523" endtime="20231002 14:08:57.525"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} &gt; 0">
+<kw name="Replace String" library="String">
+<var>${text}</var>
+<arg>${text}</arg>
+<arg>${symbol}</arg>
+<arg>${new_text}</arg>
+<doc>Replaces ``search_for`` in the given ``string`` with ``replace_with``.</doc>
+<msg timestamp="20231002 14:08:57.532" level="INFO">${text} = 123123</msg>
+<status status="PASS" starttime="20231002 14:08:57.530" endtime="20231002 14:08:57.532"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:57.529" endtime="20231002 14:08:57.533"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:57.529" endtime="20231002 14:08:57.535"/>
+</if>
+<msg timestamp="20231002 14:08:57.535" level="INFO">${text} = 123123</msg>
+<status status="PASS" starttime="20231002 14:08:57.425" endtime="20231002 14:08:57.536"/>
+</kw>
+<kw name="Get Element Form Item By Name" library="common">
+<var>${element}</var>
+<arg>${name}</arg>
+<arg>/ancestor::android.widget.EditText</arg>
+<msg timestamp="20231002 14:08:57.539" level="INFO">${element} = //android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:57.537" endtime="20231002 14:08:57.539"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:57.547" level="INFO">Clicking element '//android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText'.</msg>
+<msg timestamp="20231002 14:08:58.166" level="INFO">xpath criteria: //android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:57.540" endtime="20231002 14:08:58.167"/>
+</kw>
+<kw name="Clear Text" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Clears the text field identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:58.171" level="INFO">Clear text field '//android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText'</msg>
+<msg timestamp="20231002 14:08:58.921" level="INFO">xpath criteria: //android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:58.168" endtime="20231002 14:08:58.922"/>
+</kw>
+<kw name="Input Text" library="AppiumLibrary">
+<arg>${element}</arg>
+<arg>${text}</arg>
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:58.925" level="INFO">Typing text '123123' into text field '//android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText'</msg>
+<msg timestamp="20231002 14:08:59.062" level="INFO">xpath criteria: //android.widget.EditText/android.view.View[@content-desc="Mật khẩu"]/ancestor::android.widget.EditText</msg>
+<status status="PASS" starttime="20231002 14:08:58.922" endtime="20231002 14:08:59.062"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cnt}</var>
+<arg>${text}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:08:59.064" level="INFO">Length is 6</msg>
+<msg timestamp="20231002 14:08:59.064" level="INFO">${cnt} = 6</msg>
+<status status="PASS" starttime="20231002 14:08:59.063" endtime="20231002 14:08:59.064"/>
+</kw>
+<if>
+<branch type="IF" condition="${cnt} &gt; 0">
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${STATE["${name}"]}</arg>
+<arg>${text}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20231002 14:08:59.068" level="INFO">${STATE["Mật khẩu"]} = 123123</msg>
+<status status="PASS" starttime="20231002 14:08:59.066" endtime="20231002 14:08:59.069"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:59.065" endtime="20231002 14:08:59.070"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:59.065" endtime="20231002 14:08:59.070"/>
+</if>
+<status status="PASS" starttime="20231002 14:08:57.424" endtime="20231002 14:08:59.071"/>
+</kw>
+<kw name="Click &quot;Đăng nhập&quot; button" library="common" sourcename="Click &quot;${name}&quot; button">
+<if>
+<branch type="IF" condition="&quot;${name}&quot; == &quot;Quay lại&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.widget.Button[@content-desc="${name}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:08:59.072" endtime="20231002 14:08:59.073"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:08:59.072" endtime="20231002 14:08:59.073"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.widget.Button[@content-desc="${name}"]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:08:59.075" level="INFO">${element} = //android.widget.Button[@content-desc="Đăng nhập"]</msg>
+<status status="PASS" starttime="20231002 14:08:59.074" endtime="20231002 14:08:59.076"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:59.073" endtime="20231002 14:08:59.077"/>
+</branch>
+<status status="PASS" starttime="20231002 14:08:59.072" endtime="20231002 14:08:59.078"/>
+</if>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20231002 14:08:59.789" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Đăng nhập"]</msg>
+<status status="PASS" starttime="20231002 14:08:59.079" endtime="20231002 14:08:59.790"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:59.794" level="INFO">Clicking element '//android.widget.Button[@content-desc="Đăng nhập"]'.</msg>
+<msg timestamp="20231002 14:08:59.900" level="INFO">xpath criteria: //android.widget.Button[@content-desc="Đăng nhập"]</msg>
+<status status="PASS" starttime="20231002 14:08:59.790" endtime="20231002 14:08:59.900"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:59.071" endtime="20231002 14:08:59.901"/>
+</kw>
+<kw name="Click &quot;Quản lý tài khoản&quot; menu" library="common" sourcename="Click &quot;${name}&quot; menu">
+<kw name="Click menu" library="common">
+<kw name="Click Element" library="AppiumLibrary">
+<arg>//android.view.View/android.view.View[contains(@content-desc,"Home")]/preceding-sibling::android.view.View[contains(@index,'0')]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:08:59.908" level="INFO">Clicking element '//android.view.View/android.view.View[contains(@content-desc,"Home")]/preceding-sibling::android.view.View[contains(@index,'0')]'.</msg>
+<msg timestamp="20231002 14:09:00.655" level="INFO">xpath criteria: //android.view.View/android.view.View[contains(@content-desc,"Home")]/preceding-sibling::android.view.View[contains(@index,'0')]</msg>
+<status status="PASS" starttime="20231002 14:08:59.904" endtime="20231002 14:09:00.656"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:59.903" endtime="20231002 14:09:00.656"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.view.View/android.view.View[contains(@content-desc,"${name}") and @clickable='true']</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:09:00.657" level="INFO">${element} = //android.view.View/android.view.View[contains(@content-desc,"Quản lý tài khoản") and @clickable='true']</msg>
+<status status="PASS" starttime="20231002 14:09:00.657" endtime="20231002 14:09:00.657"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:09:00.664" level="INFO">Clicking element '//android.view.View/android.view.View[contains(@content-desc,"Quản lý tài khoản") and @clickable='true']'.</msg>
+<msg timestamp="20231002 14:09:02.286" level="INFO">xpath criteria: //android.view.View/android.view.View[contains(@content-desc,"Quản lý tài khoản") and @clickable='true']</msg>
+<status status="PASS" starttime="20231002 14:09:00.658" endtime="20231002 14:09:02.287"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:59.902" endtime="20231002 14:09:02.287"/>
+</kw>
+<kw name="Click &quot;Tài khoản người dùng&quot; sub menu under &quot;Quản lý tài khoản&quot;" library="common" sourcename="Click &quot;${name}&quot; sub menu under &quot;${Main_Name}&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.view.View[contains(@content-desc,"${Main_Name}")]/android.view.View/android.view.View/android.view.View[contains(@content-desc,"${name}")]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:09:02.289" level="INFO">${element} = //android.view.View[contains(@content-desc,"Quản lý tài khoản")]/android.view.View/android.view.View/android.view.View[contains(@content-desc,"Tài khoản người dùng")]</msg>
+<status status="PASS" starttime="20231002 14:09:02.288" endtime="20231002 14:09:02.289"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20231002 14:09:02.382" level="INFO">xpath criteria: //android.view.View[contains(@content-desc,"Quản lý tài khoản")]/android.view.View/android.view.View/android.view.View[contains(@content-desc,"Tài khoản người dùng")]</msg>
+<status status="PASS" starttime="20231002 14:09:02.289" endtime="20231002 14:09:02.382"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>${element}</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:09:02.387" level="INFO">Clicking element '//android.view.View[contains(@content-desc,"Quản lý tài khoản")]/android.view.View/android.view.View/android.view.View[contains(@content-desc,"Tài khoản người dùng")]'.</msg>
+<msg timestamp="20231002 14:09:02.505" level="INFO">xpath criteria: //android.view.View[contains(@content-desc,"Quản lý tài khoản")]/android.view.View/android.view.View/android.view.View[contains(@content-desc,"Tài khoản người dùng")]</msg>
+<status status="PASS" starttime="20231002 14:09:02.383" endtime="20231002 14:09:02.505"/>
+</kw>
+<status status="PASS" starttime="20231002 14:09:02.288" endtime="20231002 14:09:02.505"/>
+</kw>
+<kw name="Click on the &quot;Xóa&quot; button in the &quot;LG_04_02 Distinctio ullam.&quot; line" library="common" sourcename="Click on the &quot;${button}&quot; button in the &quot;${name}&quot; line">
+<kw name="Check Text" library="common">
+<var>${name}</var>
+<arg>${name}</arg>
+<kw name="Get Regexp Matches" library="String">
+<var>${containsS}</var>
+<arg>${text}</arg>
+<arg>_@(.+)@_</arg>
+<arg>1</arg>
+<doc>Returns a list of all non-overlapping matches in the given string.</doc>
+<msg timestamp="20231002 14:09:02.507" level="INFO">${containsS} = []</msg>
+<status status="PASS" starttime="20231002 14:09:02.507" endtime="20231002 14:09:02.507"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${cntS}</var>
+<arg>${containsS}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20231002 14:09:02.508" level="INFO">Length is 0</msg>
+<msg timestamp="20231002 14:09:02.509" level="INFO">${cntS} = 0</msg>
+<status status="PASS" starttime="20231002 14:09:02.508" endtime="20231002 14:09:02.510"/>
+</kw>
+<if>
+<branch type="IF" condition="${cntS} &gt; 0">
+<kw name="Set Variable" library="BuiltIn">
+<var>${text}</var>
+<arg>${STATE["${containsS[0]}"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20231002 14:09:02.513" endtime="20231002 14:09:02.514"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:09:02.512" endtime="20231002 14:09:02.514"/>
+</branch>
+<status status="PASS" starttime="20231002 14:09:02.511" endtime="20231002 14:09:02.515"/>
+</if>
+<msg timestamp="20231002 14:09:02.515" level="INFO">${name} = LG_04_02 Distinctio ullam.</msg>
+<status status="PASS" starttime="20231002 14:09:02.506" endtime="20231002 14:09:02.515"/>
+</kw>
+<kw name="Get Current Date" library="DateTime">
+<var>${today}</var>
+<arg>local</arg>
+<arg>result_format=%d/%m/%Y</arg>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20231002 14:09:02.517" level="INFO">${today} = 02/10/2023</msg>
+<status status="PASS" starttime="20231002 14:09:02.516" endtime="20231002 14:09:02.517"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${element}</var>
+<arg>//android.view.View[contains(@content-desc,'${today}')]/android.view.View[contains(@content-desc,"${name}")]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:09:02.519" level="INFO">${element} = //android.view.View[contains(@content-desc,'02/10/2023')]/android.view.View[contains(@content-desc,"LG_04_02 Distinctio ullam.")]</msg>
+<status status="PASS" starttime="20231002 14:09:02.518" endtime="20231002 14:09:02.519"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${element_des}</var>
+<arg>${element}/android.view.View[contains(@NAF,'true')]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20231002 14:09:02.520" level="INFO">${element_des} = //android.view.View[contains(@content-desc,'02/10/2023')]/android.view.View[contains(@content-desc,"LG_04_02 Distinctio ullam.")]/android.view.View[contains(@NAF,'true')]</msg>
+<status status="PASS" starttime="20231002 14:09:02.520" endtime="20231002 14:09:02.521"/>
+</kw>
+<kw name="Swipe" library="AppiumLibrary">
+<arg>500</arg>
+<arg>400</arg>
+<arg>100</arg>
+<arg>400</arg>
+<doc>Swipe from one point to another point, for an optional duration.</doc>
+<status status="PASS" starttime="20231002 14:09:02.521" endtime="20231002 14:09:03.937"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${button}&quot; == &quot;Xóa&quot;">
+<kw name="Click A Point" library="AppiumLibrary">
+<arg>560</arg>
+<arg>394</arg>
+<doc>*DEPRECATED!!* Since selenium v4, use other keywords.</doc>
+<msg timestamp="20231002 14:09:03.938" level="WARN">Keyword 'AppiumLibrary.Click A Point' is deprecated. Since selenium v4, use other keywords.</msg>
+<msg timestamp="20231002 14:09:03.948" level="INFO">Clicking on a point (560,394).</msg>
+<status status="PASS" starttime="20231002 14:09:03.938" endtime="20231002 14:09:05.634"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="AppiumLibrary">
+<arg>//android.view.View/android.view.View[contains(@content-desc,"Đồng ý")]</arg>
+<doc>Waits until element specified with `locator` appears on current page.</doc>
+<msg timestamp="20231002 14:09:05.712" level="INFO">xpath criteria: //android.view.View/android.view.View[contains(@content-desc,"Đồng ý")]</msg>
+<status status="PASS" starttime="20231002 14:09:05.634" endtime="20231002 14:09:05.712"/>
+</kw>
+<kw name="Click Element" library="AppiumLibrary">
+<arg>//android.view.View/android.view.View[contains(@content-desc,"Đồng ý")]</arg>
+<doc>Click element identified by `locator`.</doc>
+<msg timestamp="20231002 14:09:05.715" level="INFO">Clicking element '//android.view.View/android.view.View[contains(@content-desc,"Đồng ý")]'.</msg>
+<msg timestamp="20231002 14:09:05.806" level="INFO">xpath criteria: //android.view.View/android.view.View[contains(@content-desc,"Đồng ý")]</msg>
+<status status="PASS" starttime="20231002 14:09:05.713" endtime="20231002 14:09:05.806"/>
+</kw>
+<status status="PASS" starttime="20231002 14:09:03.937" endtime="20231002 14:09:05.807"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${button}&quot; == &quot;Sửa&quot;">
+<kw name="Click A Point" library="AppiumLibrary">
+<arg>610</arg>
+<arg>394</arg>
+<doc>*DEPRECATED!!* Since selenium v4, use other keywords.</doc>
+<msg timestamp="20231002 14:09:05.811" level="WARN">Keyword 'AppiumLibrary.Click A Point' is deprecated. Since selenium v4, use other keywords.</msg>
+<status status="NOT RUN" starttime="20231002 14:09:05.809" endtime="20231002 14:09:05.823"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:09:05.807" endtime="20231002 14:09:05.823"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${button}&quot; == &quot;Đổi mật khẩu&quot;">
+<kw name="Click A Point" library="AppiumLibrary">
+<arg>666</arg>
+<arg>394</arg>
+<doc>*DEPRECATED!!* Since selenium v4, use other keywords.</doc>
+<msg timestamp="20231002 14:09:05.829" level="WARN">Keyword 'AppiumLibrary.Click A Point' is deprecated. Since selenium v4, use other keywords.</msg>
+<status status="NOT RUN" starttime="20231002 14:09:05.828" endtime="20231002 14:09:05.839"/>
+</kw>
+<status status="NOT RUN" starttime="20231002 14:09:05.824" endtime="20231002 14:09:05.840"/>
+</branch>
+<status status="PASS" starttime="20231002 14:09:03.937" endtime="20231002 14:09:05.841"/>
+</if>
+<status status="PASS" starttime="20231002 14:09:02.506" endtime="20231002 14:09:05.841"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:53.442" endtime="20231002 14:09:05.844"/>
+</kw>
+<kw name="Tear Down" library="common" type="TEARDOWN">
+<kw name="Close All Applications" library="AppiumLibrary">
+<doc>Closes all open applications.</doc>
+<status status="PASS" starttime="20231002 14:09:05.847" endtime="20231002 14:09:06.273"/>
+</kw>
+<status status="PASS" starttime="20231002 14:09:05.845" endtime="20231002 14:09:06.273"/>
+</kw>
+<status status="PASS" starttime="20231002 14:08:44.651" endtime="20231002 14:09:06.274"/>
+</test>
+<status status="PASS" starttime="20231002 14:08:41.283" endtime="20231002 14:09:06.300"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Login Binh">Login Binh</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20231002 14:09:03.938" level="WARN">Keyword 'AppiumLibrary.Click A Point' is deprecated. Since selenium v4, use other keywords.</msg>
+<msg timestamp="20231002 14:09:05.811" level="WARN">Keyword 'AppiumLibrary.Click A Point' is deprecated. Since selenium v4, use other keywords.</msg>
+<msg timestamp="20231002 14:09:05.829" level="WARN">Keyword 'AppiumLibrary.Click A Point' is deprecated. Since selenium v4, use other keywords.</msg>
+</errors>
+</robot>

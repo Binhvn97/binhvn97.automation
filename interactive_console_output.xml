@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20230905 11:55:53.500" rpa="false" schemaversion="4">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\thanh\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="When Create a test account">
+<arg>Farmer Side</arg>
+<msg timestamp="20230905 11:55:55.656" level="FAIL">No keyword with name 'When Create a test account' found.</msg>
+<status status="FAIL" starttime="20230905 11:55:55.656" endtime="20230905 11:55:55.656"/>
+</kw>
+<kw name="when Click on the &quot;Chi tiết&quot; button in the &quot;_@Họ và tên@_&quot; table line">
+<status status="NOT RUN" starttime="20230905 11:55:55.657" endtime="20230905 11:55:55.657"/>
+</kw>
+<kw name="When Click &quot;Khóa&quot; button">
+<status status="NOT RUN" starttime="20230905 11:55:55.660" endtime="20230905 11:55:55.660"/>
+</kw>
+<kw name="Then User look message &quot;Khóa thành công&quot; popup">
+<status status="NOT RUN" starttime="20230905 11:55:55.661" endtime="20230905 11:55:55.661"/>
+</kw>
+<kw name="When Click select &quot;Kích hoạt&quot; with &quot;Mở Khóa&quot;">
+<status status="NOT RUN" starttime="20230905 11:55:55.664" endtime="20230905 11:55:55.665"/>
+</kw>
+<kw name="Then Account &quot;_@Họ và tên@_&quot; should not be visible in table line">
+<status status="NOT RUN" starttime="20230905 11:55:55.669" endtime="20230905 11:55:55.669"/>
+</kw>
+<kw name="When Click select &quot;Kích hoạt&quot; with &quot;Khóa&quot;">
+<status status="NOT RUN" starttime="20230905 11:55:55.673" endtime="20230905 11:55:55.673"/>
+</kw>
+<kw name="Then Account &quot;_@Họ và tên@_&quot; should be visible in table line">
+<status status="NOT RUN" starttime="20230905 11:55:55.676" endtime="20230905 11:55:55.676"/>
+</kw>
+<kw name="When Click on the &quot;Xóa&quot; button in the &quot;_@Họ và tên@_&quot; table line">
+<status status="NOT RUN" starttime="20230905 11:55:55.678" endtime="20230905 11:55:55.679"/>
+</kw>
+<status status="PASS" starttime="20230905 11:55:53.545" endtime="20230905 11:55:55.800"/>
+</kw>
+<status status="PASS" starttime="20230905 11:55:53.544" endtime="20230905 11:55:55.800"/>
+</test>
+<status status="PASS" starttime="20230905 11:55:53.504" endtime="20230905 11:55:55.804"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
