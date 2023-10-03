@@ -472,6 +472,7 @@ Confirm adding account "${url}" page
 
 ### Relate to number of list page ###
 Count the number account in list
+  Wait Until Element Spin
   ${element}=                Set Variable                      xpath=//tbody//tr[contains(@class, 'ant-table-row')]
   ${count}=                  Get Element Count                 ${element}
   IF    ${count} > 0
@@ -531,6 +532,7 @@ Number account of page
   [Return]                   ${pageNumber}
 
 Check the amount of page list
+  Wait Until Element Spin
   ${countA}=                 Count the number account in list
   ${totalA}=                 Get the number of total account
   IF    ${countA} == ${totalA}
@@ -566,6 +568,7 @@ Move to the last page and check
   Should Be Equal             ${count}                         ${countS}         
 
 Click on "${ordinal}" selection to change the number of account show in list and check
+  Wait Until Element Spin
   ${cnt}=                       Get Length                      ${ordinal}        
   IF        ${cnt} > 3 and '${ordinal}' == 'first'
     ${select}=                  Set Variable                    1
