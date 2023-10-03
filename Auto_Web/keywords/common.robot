@@ -477,6 +477,10 @@ Count the number account in list
   ${count}=                  Get Element Count                 ${element}
   IF    ${count} <= 0
     Wait Until Element Spin
+    ${count}=                Get Element Count                 ${element}
+    ${count}=                Convert To Integer                ${count}
+    ${countS}                Evaluate                          ${count} + 1
+    Set Global Variable      ${LastNum}                        ${countS}
   ELSE 
     ${count}=                Convert To Integer                ${count}
     ${countS}                Evaluate                          ${count} + 1
