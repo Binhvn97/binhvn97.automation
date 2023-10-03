@@ -23,17 +23,6 @@ CA_01 Verify that navigating to the right "Customer-Account" page
     Then Webpage should contains the "Trạng thái" filter function
     Then Webpage should contains the "Kích hoạt" filter function
 
-CA_000 Test
-    Go to "Customer Account" page
-    ${count1}=                    Check the amount of page list
-    Log To Console    Count 1 is: ${count1}
-    Click on "second" selection to change the number of account show in list and check
-    ${count2}=                    Check the amount of page list
-    Log To Console    Count 2 is: ${count2}
-    Click on "third" selection to change the number of account show in list and check
-    ${count3}=                    Check the amount of page list
-    Log To Console    Count 3 is: ${count3}
-    Click on "fourth" selection to change the number of account show in list and check
 CA_02 Verify the function changing the number of accounts show in each list
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Customer Account" page

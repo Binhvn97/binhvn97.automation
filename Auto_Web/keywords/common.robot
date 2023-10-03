@@ -265,6 +265,7 @@ Click Confirm To Action
   IF    ${count} > 0
     Click                   ${element}
     Sleep                   ${SHOULD_TIMEOUT}
+    Wait Until Element Spin
   END
 
 Wait Until Element Spin
@@ -479,12 +480,8 @@ Count the number account in list
     Wait Until Element Spin
     ${count}=                Get Element Count                 ${element}
     ${count}=                Convert To Integer                ${count}
-    ${countS}                Evaluate                          ${count} + 1
-    Set Global Variable      ${LastNum}                        ${countS}
   ELSE 
     ${count}=                Convert To Integer                ${count}
-    ${countS}                Evaluate                          ${count} + 1
-    Set Global Variable      ${LastNum}                        ${countS}
   END
   [Return]                   ${count}
       
@@ -494,9 +491,10 @@ Get number account list in last page
   ${pageNum}=                Count the number account in list
   ${total}=                  Get Regexp Matches                ${text}                     của (.+) mục                1 
   ${total}=                  Convert To Integer                ${total[0]}
-  ${NumberAcc}=              Evaluate                          ${total} % ${pageNum}  
-  ${cnt}=                    Get Length                        ${text}
-  IF  ${cnt} > 0
+  ${NumberAcc}=              Evaluate                          ${total} % ${pageNum}
+  IF    ${NumberAcc} == 0
+    ${NumberAccount}=        Set Variable                      ${pageNum}
+  ELSE
     ${NumberAccount}=        Set Variable                      ${NumberAcc}
   END
   [Return]                   ${NumberAccount}  
@@ -518,7 +516,12 @@ Get the last page number
   ${pageNum}=                Count the number account in list
   ${totalP}=                 Get Regexp Matches                ${text}                     của (.+) mục                1 
   ${totalP}=                 Convert To Integer                ${totalP[0]}
-  ${lastPN}=                 Evaluate                          (${totalP}//${pageNum})+1
+  ${con}=                    Evaluate                          ${totalP} % ${pageNum}
+  IF    ${con} == 0
+    ${lastPN}=               Evaluate                          ${totalP}//${pageNum}
+  ELSE
+    ${lastPN}=               Evaluate                          (${totalP}//${pageNum})+1
+  END
   ${cnt}=                    Get Length                        ${text}
   IF  ${cnt} > 0
     ${lastPageNumber}=       Set Variable                      ${lastPN}
