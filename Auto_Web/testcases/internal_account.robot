@@ -44,7 +44,7 @@ IA_03 Verify the function navigating to other lists of account page
     Then Move to the last page and check
 
 IA_04 Verify the highlight table line function after operated
-    [Tags]                                                                                        UI
+    [Tags]                                                                                        MainPage                                     UI
     Create a test account with "Kế toán" type 
     When Click on the "Sửa" button in the "_@Họ và tên@_" table line
     When Click "Đóng lại" button
@@ -53,7 +53,7 @@ IA_04 Verify the highlight table line function after operated
 
 ### Verify the correct design in detail information's account page ###
 IA_05 Verify that navigating to the right "Detail-information" page
-    [Tags]                                                                                        UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     Create a test account with "CSKH" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     Then Heading should contains "Xem chi tiết thông tin tài khoản" inner Text
@@ -61,7 +61,7 @@ IA_05 Verify that navigating to the right "Detail-information" page
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_06_01 Check account information after creation (CSKH)
-    [Tags]                                                                                        UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
     Create a test account with "Kế toán" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
@@ -75,7 +75,7 @@ IA_06_01 Check account information after creation (CSKH)
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_06_02 Check account information after creation (Kế toán)
-    [Tags]                                                                                        UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
     Create a test account with "Kế toán" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
@@ -383,7 +383,7 @@ IA_32 Create a new account with the invalid phone number
     When Enter "password" in "Mật khẩu" with "_RANDOM_"
     When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
     When Click "Lưu lại" button
-    Then Required message "Xin vui lòng nhập số điện thoại hợp lệ!" displayed under "Số điện thoại" field
+    Then User look message "Số điện thoại gồm 10 số" pop up
 
 IA_33 Create a new account with the existed phone number
     [Tags]                                                                                        Create                                       Invalid

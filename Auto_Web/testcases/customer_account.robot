@@ -408,7 +408,7 @@ CA_34 Create a new account with the invalid phone number
     When Enter "password" in "Mật khẩu" with "_RANDOM_"
     When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
     When Click "Lưu lại" button
-    Then Required message "Xin vui lòng nhập số điện thoại hợp lệ!" displayed under "Số điện thoại" field
+    Then User look message "Số điện thoại gồm 10 số" pop up
 
 CA_35 Create a new account with the existed phone number
     [Tags]                                                                                        Create                                      Invalid
@@ -533,7 +533,7 @@ CA_44 Verify the changing "Họ và tên" field
 
 CA_45 Verify the changing "Số điện thoại" field
     [Tags]                                                                                        ChangeInfo
-    Create a test account with "Farmer" type
+    Create a test account with "Farmer Side" type
     When Click on the "Sửa" button in the "_@Họ và tên@_" table line
     When Enter "number" in "Số điện thoại" with "_RANDOM_"
     When Click "Lưu lại" button

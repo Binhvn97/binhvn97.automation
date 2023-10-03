@@ -277,12 +277,21 @@ Wait Until Element Spin
   END
 
 ### --- New --- ###
+Click on "${name}" check box
+  ${element}=                Get Element                      //span[contains(text(),"${name}")]//ancestor::label/span[contains(@class,'ant-checkbox')]
+  Click                      ${element}
+  
+Log out account
+  Click                      //img[contains(@alt,'Avatar')]
+  Click                      //li[contains(text(),'Đăng xuất')]  
 Click on magnifier icon in search box
   Click                      xpath=//*[contains(@class, "ext-lg las la-search")]
 
 Click on eye icon in "${name}" field 
-  ${element}=                Get Element                       //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input//ancestor::div[contains(@class, 'relative ng-star-inserted')]     
-  Click                      xpath=${element}/i[contains(@class, "la-eye-slash")]  
+  Wait Until Element Spin
+  ${element}=                Get Element                       //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input//ancestor::div[contains(@class, 'relative ng-star-inserted')]
+  Click                      ${element}/i[contains(@class, "la-eye-slash")]  
+  Sleep                      ${SHOULD_TIMEOUT}
 
 Click on the left arrow icon 
   ${element}=                Get Element                       //i[contains(@class,'la-arrow-left')]
@@ -407,6 +416,16 @@ Click on the "${text}" button in the "${name}" table line with cancel
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   Get Property              //button[contains(text(),"${name}")]//ancestor::tr            className                      contains                  bg-blue-100    
+
+User look message "Tài khoản ${message} không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup in login
+  ${message}=               Check Text                        ${message}
+  Element Text Should Be    id=swal2-html-container           Tài khoản ${message} không tồn tại trong hệ thống. Vui lòng đăng ký mới.
+  ${element}=               Set Variable                      xpath=//*[contains(@class, "swal2-confirm")]
+  ${passed}                 Run Keyword And Return Status
+                            ...   Element Should Be Visible   ${element}
+  IF    '${passed}' == 'True'
+        Click               ${element}
+  END
 
 ### Related to images ###
 Wait Until Image Visible
