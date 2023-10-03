@@ -475,7 +475,9 @@ Count the number account in list
   Wait Until Element Spin
   ${element}=                Set Variable                      xpath=//tbody//tr[contains(@class, 'ant-table-row')]
   ${count}=                  Get Element Count                 ${element}
-  IF    ${count} > 0
+  IF    ${count} <= 0
+    Wait Until Element Spin
+  ELSE 
     ${count}=                Convert To Integer                ${count}
     ${countS}                Evaluate                          ${count} + 1
     Set Global Variable      ${LastNum}                        ${countS}
