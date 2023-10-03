@@ -80,7 +80,7 @@ Get Random Text
   ELSE IF  ${cnt} > 0 and '${type}' == 'email'
     ${new_text}=            FakerLibrary.Email
   ELSE IF  ${cnt} > 0 and '${type}' == 'phone'
-    ${new_text}=            FakerLibrary.Random Int           min=200000000                 max=999999999
+    ${new_text}=            FakerLibrary.Random Int           min=2000000000                max=9999999999
     ${new_text}=            Convert To String                 ${new_text}
     ${new_text}=            Catenate                          SEPARATOR=                    0                           ${new_text}
   ELSE IF  ${cnt} > 0 and '${type}' == 'color'
