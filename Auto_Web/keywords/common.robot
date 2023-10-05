@@ -418,16 +418,6 @@ Click on the "${text}" button in the "${name}" table line with cancel
   ${name}=                  Check Text                         ${name}
   Get Property              //button[contains(text(),"${name}")]//ancestor::tr            className                      contains                  bg-blue-100    
 
-User look message "Tài khoản ${message} không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup in login
-  ${message}=               Check Text                        ${message}
-  Element Text Should Be    id=swal2-html-container           Tài khoản ${message} không tồn tại trong hệ thống. Vui lòng đăng ký mới.
-  ${element}=               Set Variable                      xpath=//*[contains(@class, "swal2-confirm")]
-  ${passed}                 Run Keyword And Return Status
-                            ...   Element Should Be Visible   ${element}
-  IF    '${passed}' == 'True'
-        Click               ${element}
-  END
-
 ### Related to images ###
 Wait Until Image Visible
   ${elementS}= 		          Get Element 			                 //div[contains(@class,'gslide loaded current')]
