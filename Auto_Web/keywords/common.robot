@@ -15,7 +15,7 @@ ${STATE}            Evaluate    json.loads('''{}''')  json
 *** Keywords ***
 Login to admin
   Enter "email" in "Email" with "admin@gmail.com"
-  Enter "text" in "Mật khẩu" with "123123"
+  Enter "password" in "Mật khẩu" with "123123"
   Click "Đăng nhập" button
   User look message "Success" popup
 
@@ -111,11 +111,12 @@ Required message "${text}" displayed under "${name}" field
 Enter "${type}" in "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //input[contains(@class, "ant-input")]
+  Click                     ${element}
   Clear Text                ${element}
   Fill Text                 ${element}                        ${text}                       True
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
-    Set Global Variable     ${STATE["${name}"]}               ${text}
+    Set Global Variable     \${STATE["${name}"]}              ${text}
   END
 
 Enter "${type}" in textarea "${name}" with "${text}"
@@ -125,7 +126,7 @@ Enter "${type}" in textarea "${name}" with "${text}"
   Fill Text                 ${element}                        ${text}
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
-    Set Global Variable     ${STATE["${name}"]}               ${text}
+    Set Global Variable     \${STATE["${name}"]}              ${text}
   END
 
 Enter date in "${name}" with "${text}"
@@ -150,7 +151,7 @@ Click select "${name}" with "${text}"
   Click                     xpath=//*[contains(@class, "ant-select-item-option") and @title="${text}"]
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
-    Set Global Variable     ${STATE["${name}"]}               ${text}
+    Set Global Variable     \${STATE["${name}"]}              ${text}
   END
 
 Enter "${type}" in editor "${name}" with "${text}"
@@ -309,7 +310,7 @@ Enter "${type}" in placeholder "${placeholder}" with "${text}"
   Fill Text                  ${element}                        ${text}
   ${cnt}=                    Get Length                        ${text}
   IF  ${cnt} > 0
-    Set Global Variable     ${STATE["${placeholder}"]}         ${text}
+    Set Global Variable      \${STATE["${placeholder}"]}       ${text}
   END
 
 Enter date in placeholder "${name}" with "${date}"
@@ -320,7 +321,7 @@ Enter date in placeholder "${name}" with "${date}"
   Keyboard Key                Press                            Enter
   ${cnt}=                     Get Length                       ${date}
   IF  ${cnt} > 0
-    Set Global Variable       ${STATE["${date}"]}              ${date}
+    Set Global Variable       \${STATE["${date}"]}             ${date}
   END
   Wait Until Element Spin  
 
@@ -455,10 +456,11 @@ Click filter "${name}" with "${text}"
   ${text}=                  Get Random Text                    Text                       ${text}
   ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
   Click                     ${element}
+  Wait Until Element Spin
   Click                     xpath=//*[contains(@class, "ant-select-item-option") and @title="${text}"]
   ${cnt}=                   Get Length                         ${text}
   IF  ${cnt} > 0
-    Set Global Variable     ${STATE["${name}"]}                ${text}
+    Set Global Variable     \${STATE["${name}"]}               ${text}
   END
 
 Click on cross icon in select "${name}" 
@@ -484,7 +486,7 @@ Webpage should contains the list account from database
   ${element}=               Get Element                        //div[contains(@class,'datatable-wrapper')]    
   ${count}=                 Get Element Count                  ${element}
   IF    ${count} > 0
-    Set Global Variable     ${STATE["${count}"]}               ${count}
+    Set Global Variable     \${STATE["${count}"]}              ${count}
   END    
 Confirm adding account "${url}" page
   ${current_url}=           Get Url 
@@ -631,6 +633,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
       ${name}=                  Get the first account name
       ${ordinal_before}=        Evaluate                        ${current_number} + 2
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
       Get Text                  //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]        equal                       ${name}
@@ -638,6 +641,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
       ${ordinal_before}=        Evaluate                        ${select_number} + 2
       ${name}=                  Get Text                        //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
       Move to the "next" page
@@ -646,12 +650,14 @@ Click on "${ordinal}" selection to change the number of account show in list and
       Move to the "previous" page
     ELSE IF                     ${current_number} = ${select_number}
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]        
       Wait Until Element Spin
     END    
   ELSE IF                       ${amountPage} < 2 
     IF                          ${current_number} <= ${select_number}
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
     ELSE IF                     ${current_number} > ${select_number}
@@ -660,6 +666,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
         ${ordinal_before}=      Evaluate                         ${select_number} + 2
         ${name}=                Get Text                         //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
         Click                   xpath=//*[contains(@class, 'ant-select-selection-item')]
+        Wait Until Element Spin
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
         Wait Until Element Spin
         Move to the "next" page
@@ -668,6 +675,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
         Move to the "previous" page
       ELSE IF    ${account_number} <= ${select_number}
         Click                   xpath=//*[contains(@class, 'ant-select-selection-item')]
+        Wait Until Element Spin
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]   
         Wait Until Element Spin
       END    
@@ -682,7 +690,7 @@ Get the last account name
   ${LAname}=                  Get Text                         ${element}
   ${cnt}=                     Get Length                       ${LAname}
   IF   ${cnt} > 0
-    Set Global Variable       ${LAname}                        ${LAname} 
+    Set Global Variable       \${LAname}                        ${LAname} 
   END
   [Return]                    ${LAname}
 
