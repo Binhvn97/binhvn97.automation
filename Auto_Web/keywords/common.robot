@@ -693,3 +693,8 @@ Get the first account name
   END
   [Return]                    ${Fname}
 
+#Real Estate
+Get the number of real Estate
+  ${element}=                 Get Element                      //label[contains(text(),'Mã lô đất')]//following-sibling::div/strong        
+  ${code}=                    Get Property                     ${element}              innerText
+  [Return]                    ${code}
