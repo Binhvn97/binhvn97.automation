@@ -225,9 +225,16 @@ Click on the previously created "${name}" tree to edit
 
 ###  -----  Element  -----  ###
 Click "${text}" button
+  ${cnt}=	                  Get Element Count		              //button[@title = "${text}"]
+  IF	${cnt} > 0	
   Click                     xpath=//button[@title = "${text}"]
   Click Confirm To Action
   Scroll By                 ${None}
+  ELSE
+  Click 	            //span[contains(text(),"${text}")]
+  Click Confirm To Action
+  Scroll By                 ${None}
+  END
 
 Click "${text}" tab button
   Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
