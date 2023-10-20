@@ -320,6 +320,16 @@ Enter "${type}" in placeholder "${placeholder}" with "${text}"
     Set Global Variable      \${STATE["${placeholder}"]}       ${text}
   END
 
+Enter "${type}" in login placeholder "${placeholder}" with "${text}"
+  ${text}=                   Get Random Text                   ${type}                       ${text}
+  ${element}=                Get Element                       //input[contains(@id,'login') and @placeholder = '${placeholder}']
+  Clear Text                 ${element}
+  Fill Text                  ${element}                        ${text}
+  ${cnt}=                    Get Length                        ${text}
+  IF  ${cnt} > 0
+    Set Global Variable      \${STATE["${placeholder}"]}       ${text}
+  END
+
 Enter date in placeholder "${name}" with "${date}"
   ${element}=                 Get Element                      //input[contains(@placeholder, "${name}")]
   Clear Text                  ${element}
