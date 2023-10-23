@@ -200,7 +200,7 @@ Click on the "${text}" button in the "${name}" item line
 
 Get Element Table Item By Name
   [Arguments]               ${name}                           ${xpath}
-  [Return]                  xpath=//*[contains(@class, "ant-table-row")]//*[contains(text(), "${name}")]/ancestor::tr${xpath}
+  [Return]                  xpath=//*[contains(@class, "ant-table-row")]//*[(text()="${name}")]/ancestor::tr${xpath}
 
 ###  -----  Tree  -----  ###
 Get Element Tree By Name
@@ -225,13 +225,14 @@ Click on the previously created "${name}" tree to edit
 
 ###  -----  Element  -----  ###
 Click "${text}" button
+  Sleep                     ${SHOULD_TIMEOUT}
   ${cnt}=	                  Get Element Count		              //button[@title = "${text}"]
   IF	${cnt} > 0	
   Click                     xpath=//button[@title = "${text}"]
   Click Confirm To Action
   Scroll By                 ${None}
   ELSE
-  Click 	            //span[contains(text(),"${text}")]
+  Click 	                  //span[contains(text(),"${text}")]
   Click Confirm To Action
   Scroll By                 ${None}
   END
