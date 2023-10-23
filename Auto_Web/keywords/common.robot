@@ -393,6 +393,7 @@ Click on "${number}" to change the view list
   Click                     xpath=//a[contains(@aria-label, "page ${number}")] 
 
 Click on the "${text}" button in the "${name}" table line
+  Sleep                       ${SHOULD_TIMEOUT}
   Wait Until Element Spin
   ${name}=                    Check Text                        ${name}
   IF    '${text}' == 'Chi tiết'
@@ -574,7 +575,7 @@ Check the amount of page list
   ${totalA}=                 Get the number of total account
   IF    ${countA} == ${totalA}
     ${amountPage}=           Set Variable                      1
-    Log To Console           'This list contains only one page'
+    Pass Execution           'This list contains only one page'
   ELSE IF    ${countA} < ${totalA}
     ${amountPage}=           Evaluate                          (${totalA}//${countA})+1        
     ${amountPage}=           Set Variable                      ${amountPage}
