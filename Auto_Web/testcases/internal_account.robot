@@ -15,29 +15,29 @@ IA_01 Verify that navigating to the right "Internal-Account" page
     Login to admin
     When Click "QUẢN LÝ TÀI KHOẢN" menu
     When Click "Tài khoản Nội bộ" sub menu to "/internal-account"
-    Then Heading should contains "Danh sách tài khoản nội bộ" inner Text
-    Then Webpage should contains the list account from database
-    Then Webpage should contains the search function
-    Then Webpage should contains the "Ngày tham gia" filter function
-    Then Webpage should contains the "Loại tài khoản" filter function
-    Then Webpage should contains the "Kích hoạt" filter function
+    Then Heading should contain "Danh sách tài khoản nội bộ" inner Text
+    Then Webpage should contain the list data from database
+    Then Webpage should contain the search function
+    Then Webpage should contain the "Ngày tham gia" filter function
+    Then Webpage should contain the "Loại tài khoản" filter function
+    Then Webpage should contain the "Kích hoạt" filter function
 
 IA_02 Verify the function changing the number of accounts show in each list
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Internal Account" page
-    When Click on "second" selection to change the number of account show in list and check
-    When Click on "third" selection to change the number of account show in list and check
-    When Click on "fourth" selection to change the number of account show in list and check
-    When Click on "fifth" selection to change the number of account show in list and check
+    When Click on "second" selection to change the number of data show in list and check
+    When Click on "third" selection to change the number of data show in list and check
+    When Click on "fourth" selection to change the number of data show in list and check
+    When Click on "fifth" selection to change the number of data show in list and check
     
 IA_03 Verify the function navigating to other lists of account page
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest                                                
     Go to "Internal Account" page
     Then Check the amount of page list
-         ${Last_name}=                                                                            Get the last account name
+         ${Last_name}=                                                                            Get data in the last row
     When Create another test account with "CSKH" type
     When Move to the "next" page
-         ${First_name}=                                                                           Get the first account name
+         ${First_name}=                                                                           Get data in the first row
     Then Should Be Equal                                                                          ${First_name}                                ${Last_name}
     When Move to the "previous" page 
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
@@ -56,7 +56,7 @@ IA_05 Verify that navigating to the right "Detail-information" page
     [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     Create a test account with "CSKH" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Heading should contains "Xem chi tiết thông tin tài khoản" inner Text
+    Then Heading should contain "Xem chi tiết thông tin tài khoản" inner Text
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -65,12 +65,12 @@ IA_06_01 Check account information after creation (CSKH)
     ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
     Create a test account with "Kế toán" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Account's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Account's information in "Email" should be equal "_@Email@_"
-    Then Account's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Account's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Account's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Account's information in "Ngày hoạt động cuối" should be equal "${today}"
+    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+    Then Data's information in "Email" should be equal "_@Email@_"
+    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -79,12 +79,12 @@ IA_06_02 Check account information after creation (Kế toán)
     ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
     Create a test account with "Kế toán" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Account's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Account's information in "Email" should be equal "_@Email@_"
-    Then Account's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Account's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Account's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Account's information in "Ngày hoạt động cuối" should be equal "${today}"
+    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+    Then Data's information in "Email" should be equal "_@Email@_"
+    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 ### Verify the lock account function ###
@@ -96,7 +96,7 @@ IA_07 Verify the block account funtion
     Then User look message "Khóa tài khoản người dùng thành công !" popup
     When Click "Trở lại" button
     When Click filter "Kích hoạt" with "Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_08 Verify the unblock account function
@@ -109,7 +109,7 @@ IA_08 Verify the unblock account function
     Then User look message "Mở khóa tài khoản người dùng thành công." popup
     When Click "Trở lại" button
     When Click filter "Kích hoạt" with "Mở Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Verify the search function ###
@@ -118,7 +118,7 @@ IA_09 Verify the search function when enter the existed name
     Create a test account with "Kế toán" type   
     When Enter "test name" in "Tìm kiếm" with "_@Họ và tên@_"
     When Click on magnifier icon in search box
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
 
 IA_10 Verify the search function when enter the name was not existed
@@ -129,7 +129,7 @@ IA_10 Verify the search function when enter the name was not existed
     Then Table line should show empty
     When Enter "test name" in "Tìm kiếm" with "_@Họ và tên@_"
     When Click on magnifier icon in search box
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
 
 IA_11 Check the update of account list after cancel the search action
@@ -138,11 +138,11 @@ IA_11 Check the update of account list after cancel the search action
     Create another test account with "Kế toán" type
     When Enter "text" in "Tìm kiếm" with "${AccountName}"
     When Click on magnifier icon in search box
-    Then Account "${AccountName}" should be visible in table line
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "${AccountName}" should be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Enter "text" in "Tìm kiếm" with ""
     When Click on magnifier icon in search box
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
     When Click on the "Xóa" button in the "${AccountName}" table line
 
@@ -151,18 +151,18 @@ IA_12 Verify the "Loại tài khoản" filter function when select "CSKH"
     [Tags]                                                                                        Filter            
     Create a test account with "CSKH" type
     When Click filter "Loại tài khoản" with "Kế toán"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Loại tài khoản" with "CSKH"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_13 Verify the "Loại tài khoản" filter function when select "CSKH"
     [Tags]                                                                                        Filter           
     Create a test account with "Kế toán" type
     When Click filter "Loại tài khoản" with "CSKH"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Loại tài khoản" with "Kế toán"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_14 Verify the "Kích hoạt" filter function when select "Khóa"
@@ -173,18 +173,18 @@ IA_14 Verify the "Kích hoạt" filter function when select "Khóa"
     Then User look message "Khóa tài khoản người dùng thành công !" popup
     When Click "Trở lại" button
     When Click filter "Kích hoạt" with "Mở Khóa" 
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Kích hoạt" with "Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_15 Verify the "Kích hoạt" filter function when select "Mở Khóa"
     [Tags]                                                                                        Filter     
     Create a test account with "Kế toán" type
     When Click filter "Kích hoạt" with "Mở Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click filter "Kích hoạt" with "Khóa"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click on cross icon in select "Kích hoạt"
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -192,9 +192,9 @@ IA_16 Verify the deselect filter function when click on cross button
     [Tags]                                                                                        Filter    
     Create a test account with "CSKH" type
     When Click filter "Loại tài khoản" with "Kế toán"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click on cross icon in select "Loại tài khoản"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_17 Verify the date selection filter function
@@ -204,10 +204,10 @@ IA_17 Verify the date selection filter function
     Create a test account with "CSKH" type
     When Enter date in placeholder "Bắt đầu" with "${yesterday}"
     When Enter date in placeholder "Kết thúc" with "${yesterday}"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Enter date in placeholder "Bắt đầu" with "${today}"
     When Enter date in placeholder "Kết thúc" with "${today}"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_18 Verify the filter function by applying all filter at the same time
@@ -218,7 +218,7 @@ IA_18 Verify the filter function by applying all filter at the same time
     When Enter date in placeholder "Kết thúc" with "${today}"
     When Click filter "Loại tài khoản" with "CSKH"
     When Click filter "Kích hoạt" with "Mở Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     
 ### Verify the creating account function ###
@@ -226,8 +226,8 @@ IA_19 Verify "Tạo mới" button function
     [Tags]                                                                                        Create                                       Smoketest
     Go to "Internal Account" page
     When Click "Tạo mới" button
-    Then Heading should contains "Tạo mới tài khoản nội bộ" inner Text
-    Then Confirm adding account "/internal-account" page
+    Then Heading should contain "Tạo mới tài khoản nội bộ" inner Text
+    Then Confirm adding "/internal-account" page
 
 IA_20 Create new account with the valid data
     [Tags]                                                                                        Create                                       Smoketest
@@ -258,7 +258,7 @@ IA_22 Check the update of account list after creating a new account
     [Tags]                                                                                        Create                                       Smoketest
     Go to "Internal Account" page
     When Create another test account with "Kế toán" type
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Create new account with blank field ###
@@ -550,13 +550,13 @@ IA_47 Verify the delete account function
     Create a test account with "CSKH" type
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     Then User look message "Xóa thành công" popup
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
 
 IA_48 Verify the cancel action button when delete account
     [Tags]                                                                                        Delete        
     Create a test account with "Kế toán" type
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line with cancel
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 *** Keywords ***

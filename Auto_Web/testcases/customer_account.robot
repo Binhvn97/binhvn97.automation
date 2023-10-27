@@ -15,32 +15,32 @@ CA_01 Verify that navigating to the right "Customer-Account" page
     Login to admin
     When Click "QUẢN LÝ TÀI KHOẢN" menu
     When Click "Tài khoản Người dùng" sub menu to "/customer-account"
-    Then Heading should contains "Danh sách tài khoản khách hàng" inner Text
-    Then Webpage should contains the list account from database
-    Then Webpage should contains the search function
-    Then Webpage should contains the "Ngày tham gia" filter function
-    Then Webpage should contains the "Loại tài khoản" filter function
-    Then Webpage should contains the "Trạng thái" filter function
-    Then Webpage should contains the "Kích hoạt" filter function
+    Then Heading should contain "Danh sách tài khoản khách hàng" inner Text
+    Then Webpage should contain the list data from database
+    Then Webpage should contain the search function
+    Then Webpage should contain the "Ngày tham gia" filter function
+    Then Webpage should contain the "Loại tài khoản" filter function
+    Then Webpage should contain the "Trạng thái" filter function
+    Then Webpage should contain the "Kích hoạt" filter function
 
 CA_02 Verify the function changing the number of accounts show in each list
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Customer Account" page
-    When Click on "second" selection to change the number of account show in list and check
-    When Click on "third" selection to change the number of account show in list and check
-    When Click on "fourth" selection to change the number of account show in list and check
-    When Click on "fifth" selection to change the number of account show in list and check
-    When Click on "third" selection to change the number of account show in list and check
-    When Click on "second" selection to change the number of account show in list and check
+    When Click on "second" selection to change the number of data show in list and check
+    When Click on "third" selection to change the number of data show in list and check
+    When Click on "fourth" selection to change the number of data show in list and check
+    When Click on "fifth" selection to change the number of data show in list and check
+    When Click on "third" selection to change the number of data show in list and check
+    When Click on "second" selection to change the number of data show in list and check
 
 CA_03 Verify the function of navigating the list of account page
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Customer Account" page
     Then Check the amount of page list
-         ${Last_name}=                                                                            Get the last account name
+         ${Last_name}=                                                                            Get data in the last row
     When Create another test account with "Farmer Side" type
     When Move to the "next" page
-         ${First_name}=                                                                           Get the first account name
+         ${First_name}=                                                                           Get data in the first row
          Should Be Equal                                                                          ${First_name}                                ${Last_name}
     When Move to the "previous" page 
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
@@ -59,7 +59,7 @@ CA_05 Verify that navigating to the right "Detail-information" page
     [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
     Create a test account with "Farmer Side" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Heading should contains "Xem chi tiết thông tin tài khoản" inner Text
+    Then Heading should contain "Xem chi tiết thông tin tài khoản" inner Text
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -68,12 +68,12 @@ CA_06_01 Check account information after creation (Farmer Side)
     ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
     Create a test account with "Farmer Side" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Account's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Account's information in "Email" should be equal "_@Email@_"
-    Then Account's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Account's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Account's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Account's information in "Ngày hoạt động cuối" should be equal "${today}"
+    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+    Then Data's information in "Email" should be equal "_@Email@_"
+    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -82,14 +82,14 @@ CA_06_02 Check account information after creation (Order Side)
     ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
     Create a test account with "Order Side" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Account's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Account's information in "Email" should be equal "_@Email@_"
-    Then Account's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Account's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Account's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Account's information in "Ngày hoạt động cuối" should be equal "${today}"
-    Then Account's information should contain "Số phòng khám" field
-    Then Account's information should contain "Tổng số đơn hàng" field
+    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+    Then Data's information in "Email" should be equal "_@Email@_"
+    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+    Then Data's information should contain "Số phòng khám" field
+    Then Data's information should contain "Tổng số đơn hàng" field
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -102,7 +102,7 @@ CA_07 Verify the lock funtion
     Then User look message "Khóa tài khoản người dùng thành công !" popup
     When Click "Trở lại" button
     When Click filter "Kích hoạt" with "Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_08 Verify the unlock function
@@ -115,7 +115,7 @@ CA_08 Verify the unlock function
     Then User look message "Mở khóa tài khoản người dùng thành công." popup
     When Click "Trở lại" button
     When Click filter "Kích hoạt" with "Mở Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Verify the search function ###
@@ -124,7 +124,7 @@ CA_09 Verify the search function when enter the existed name
     Create a test account with "Farmer Side" type     
     When Enter "test name" in "Tìm kiếm" with "_@Họ và tên@_"
     When Click on magnifier icon in search box
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
 
 CA_10 Verify the search function when enter the name was not existed
@@ -135,7 +135,7 @@ CA_10 Verify the search function when enter the name was not existed
     Then Table line should show empty
     When Enter "test name" in "Tìm kiếm" with ""
     When Click on magnifier icon in search box
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
 
 CA_11 Check the update of account list after cancel the search action
@@ -144,11 +144,11 @@ CA_11 Check the update of account list after cancel the search action
     Create another test account with "Order Side" type
     When Enter "text" in "Tìm kiếm" with "${AccountName}"
     When Click on magnifier icon in search box
-    Then Account "${AccountName}" should be visible in table line
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "${AccountName}" should be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Enter "text" in "Tìm kiếm" with ""
     When Click on magnifier icon in search box
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
     When Click on the "Xóa" button in the "${AccountName}" table line
 
@@ -157,36 +157,36 @@ CA_12 Verify the "Loại tài khoản" filter function when select "Farmer Side"
     [Tags]                                                                                        Filter            
     Create a test account with "Farmer Side" type
     When Click filter "Loại tài khoản" with "Order Side"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Loại tài khoản" with "Farmer Side"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_13 Verify the "Loại tài khoản" filter function when select "Order Side"
     [Tags]                                                                                        Filter           
     Create a test account with "Order Side" type
     When Click filter "Loại tài khoản" with "Farmer Side"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Loại tài khoản" with "Order Side"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_14 Verify the "Trạng thái" filter function when select "Đã xác thực"
     [Tags]                                                                                        Filter           
     Create a test account with "Farmer Side" type
     When Click filter "Trạng thái" with "Chưa xác thực"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Trạng thái" with "Đã xác thực"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
 
 CA_15 Verify the "Trạng thái" filter function when select "Chưa xác thực"
     [Tags]                                                                                        Filter
     Create a test account with "Farmer Side" type
     When Click select "Trạng thái" with "Đã xác thực"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Trạng thái" with "Chưa xác thực"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_16 Verify the "Kích hoạt" filter function when select "Khóa"
@@ -197,18 +197,18 @@ CA_16 Verify the "Kích hoạt" filter function when select "Khóa"
     Then User look message "Khóa tài khoản người dùng thành công !" popup
     When Click "Trở lại" button
     When Click filter "Kích hoạt" with "Mở Khóa"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Kích hoạt" with "Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_17 Verify the "Kích hoạt" filter function when select "Mở Khóa"
     [Tags]                                                                                        Filter     
     Create a test account with "Farmer Side" type
     When Click filter "Kích hoạt" with "Mở Khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click filter "Kích hoạt" with "Khóa"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click on cross icon in select "Kích hoạt"
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -216,9 +216,9 @@ CA_18 Verify the deselect filter function when click on cross button
     [Tags]                                                                                        Filter    
     Create a test account with "Order Side" type
     When Click filter "Loại tài khoản" with "Farmer Side"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Click on cross icon in select "Loại tài khoản"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_19 Verify the date selection filter function
@@ -228,10 +228,10 @@ CA_19 Verify the date selection filter function
     Create a test account with "Farmer Side" type
     When Enter date in placeholder "Bắt đầu" with "${yesterday}"
     When Enter date in placeholder "Kết thúc" with "${yesterday}"
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
     When Enter date in placeholder "Bắt đầu" with "${today}"
     When Enter date in placeholder "Kết thúc" with "${today}"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_20 Verify the filter function by applying all filter at the same time
@@ -243,7 +243,7 @@ CA_20 Verify the filter function by applying all filter at the same time
     When Enter date in placeholder "Kết thúc" with "${today}"
     When Click filter "Trạng thái" with "Đã xác thực"
     When Click filter "Kích hoạt" with "Mở khóa"
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     
 ### Verify the creating account function ###
@@ -251,8 +251,17 @@ CA_21 Verify "Tạo mới" button function
     [Tags]                                                                                        Create                                      Smoketest
     Go to "Customer Account" page
     When Click "Tạo mới" button
-    Then Heading should contains "Tạo mới tài khoản khách hàng" inner Text
-    Then Confirm adding account "/customer-account" page
+    Then Heading should contain "Tạo mới tài khoản khách hàng" inner Text
+    Then Confirm adding "/customer-account" page
+    Then Webpage should contain "Họ và tên" input field
+    Then Webpage should contain "Email" input field
+    Then Webpage should contain "Số điện thoại" input field
+    Then Webpage should contain "Giới tính" select field
+    Then Webpage should contain "Loại tài khoản" select field
+    Then Webpage should contain "Mật khẩu" input field
+    Then Webpage should contain "Xác nhận mật khẩu" input field
+    Then Webpage should contain "Lưu lại" button
+    Then Webpage should contain "Đóng lại" button
 
 CA_22 Create new customer account with the valid data
     [Tags]                                                                                        Create                                      Smoketest
@@ -283,7 +292,7 @@ CA_24 Check the update of account list after creating a new account
     [Tags]                                                                                        Create                                      Smoketest            
     Go to "Customer Account" page
     When Create another test account with "Farmer Side" type
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Create new account with blank field ###
@@ -576,13 +585,13 @@ CA_48 Verify the changing with the existed "Số điện thoại"
     Create a test account with "Order Side" type
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     Then User look message "Xóa thành công" popup
-    Then Account "_@Họ và tên@_" should not be visible in table line
+    Then "_@Họ và tên@_" should not be visible in table line
 
 CA_50 Verify the cancel action button when delete account
     [Tags]                                                                                        Delete        
     Create a test account with "Farmer Side" type
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line with cancel
-    Then Account "_@Họ và tên@_" should be visible in table line
+    Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 *** Keywords ***

@@ -200,7 +200,7 @@ Click on the "${text}" button in the "${name}" item line
 
 Get Element Table Item By Name
   [Arguments]               ${name}                           ${xpath}
-  [Return]                  xpath=//*[contains(@class, "ant-table-row")]//*[(text()="${name}")]/ancestor::tr${xpath}
+  [Return]                  xpath=//*[contains(@class, "ant-table-row")]//*[contains(text(),"${name}")]/ancestor::tr${xpath}
 
 ###  -----  Tree  -----  ###
 Get Element Tree By Name
@@ -343,42 +343,57 @@ Enter date in placeholder "${name}" with "${date}"
   END
   Wait Until Element Spin  
 
-Account "${name}" should be visible in table line
+"${name}" should be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   Get Property              //tbody/tr[2]/td[2]/button[1]      innerText                   equal                         ${name}       
 
-Account "${name}" should not be visible in table line
+"${name}" should not be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${count}=                 Count the number account in list
+  ${count}=                 Count the number data in list
   IF    ${count} > 0
       Get Property          //tbody/tr[2]/td[2]/button[1]      innerText                   inequal                       ${name}       
   ELSE
       Get Text              //tbody/tr[2]                      equal                       No Data
   END
 
-Account's information in "${field}" should be equal "${value}"
-  ${value}=                 Check Text                         ${value}        
-  ${element}=               Get Element                        //th[contains(text(),"${field}")]//following-sibling::th[1]
-  Get Text                  ${element}                         equal                                                     ${value}
-
-Account's information should contain "${name_field}" field 
-  ${name_field}=            Check Text                         ${name_field}
-  ${element}=               Get Element                        //th[contains(text(),"${name_field}")]
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} > 0
-
-Profile's information in "${name}" should be equal "${value}"
-  ${value}=                 Check Text                         ${value}
-  ${element}		            Get Element		                     //label[contains(text(),"${name}")]//parent::div
-  Get Text		              ${element}/strong	                 equal			                ${value}
-
-Profile's information should be contained "${name}" field
+"${name}" table line should be highlighted
+  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${element}                Get Element                        //label[contains(text(),"${name}")]
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} > 0   
+  Get Property              //button[contains(text(),"${name}")]//ancestor::tr            className                      contains                  bg-blue-100    
+
+"${name}" should be visible in the first table line
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  Get Text                  //tbody/tr[2]/td[2]/*              equal                         ${name}
+
+"${name}" should be visible in the first table line
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
+
+Data's information in "${name}" should be equal "${value}"
+  ${value}=                 Check Text                         ${value}
+  ${cnt}=                   Get Element Count                  //label[contains(text(),"${name}")]
+  IF    ${cnt} > 0
+    ${element}=             Set Variable                       //label[contains(text(),"${name}")]//ancestor::*[contains(@class,'ant-form-item')]//input    
+    Get Text                ${element}                        equal                        ${value}
+  ELSE
+    ${element}=             Set Variable                       //th[contains(text(),"${name}")]//following-sibling::th[1]
+    Get Text                ${element}                        equal                        ${value}
+  END
+
+Data's information should contain "${name}" field 
+  ${name_field}=            Check Text                         ${name}
+  ${cnt}=                   Get Element Count                  //label[contains(text(),"${name}")]
+  IF    ${cnt} > 0
+    Should Be True          ${cnt} >= 1
+  ELSE
+    ${element}=             Set Variable                      //th[contains(text(),"${name}")]
+    ${cntS}=                Get Element Count                 ${element}
+    Should Be True          ${cntS} > 0
+  END
 
 Table line should show empty 
   Wait Until Element Spin
@@ -389,9 +404,6 @@ The hidden password in "${name}" field should be visibled as "${text}"
   ${element}=               Get Element                        //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input
   Get Property              ${element}                         type                       ==                             text                     
   Get Text                  ${element}                         equal                      ${text}
-
-Click on "${number}" to change the view list
-  Click                     xpath=//a[contains(@aria-label, "page ${number}")] 
 
 Click on the "${text}" button in the "${name}" table line
   Sleep                       ${SHOULD_TIMEOUT}
@@ -413,7 +425,7 @@ Click on the "${text}" button in the "${name}" table line
   Click Confirm To Action
   
 Click Cancel Action
-  ${element}                Set Variable                       xpath=//*[contains(@class, "ant-popover")]//button[1]
+  ${element}                Set Variable                       //*[contains(@class, "ant-popover")]//button[1]
   ${count}=                 Get Element Count                  ${element}
   IF    ${count} > 0
     Click                   ${element}
@@ -421,21 +433,17 @@ Click Cancel Action
   END
 
 Click "${text}" button with cancel action
-  Click                     xpath=//button[@title = "${text}"]
+  Click                     //button[@title = "${text}"]
   Click Cancel Action
   Scroll By                 ${None}
 
 Click on the "${text}" button in the "${name}" table line with cancel
+  Sleep                     ${SHOULD_TIMEOUT}
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
   Click                     ${element}
   Click Cancel Action
-
-"${name}" table line should be highlighted
-  Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}
-  Get Property              //button[contains(text(),"${name}")]//ancestor::tr            className                      contains                  bg-blue-100    
 
 ### Related to images ###
 Wait Until Image Visible
@@ -478,31 +486,47 @@ Click on cross icon in select "${name}"
   Click                     xpath=//span[contains(@class, "anticon-close-circle")]/*[1]
 
 # Check the existence of function
-Webpage should contains the search function
+Webpage should contain the search function
   ${element}=               Get Element                        //*[contains(@class,'flex-col')]//label[contains(text(),"Tìm kiếm")]
   ${count}=                 Get Element Count                  ${element}
   Should Be True            ${count} >= 1
 
-Webpage should contains the "${name}" filter function
+Webpage should contain the "${name}" filter function
   ${element}=               Get Element                        //*[contains(@class,'flex-col')]//label[contains(text(),"${name}")]
   ${count}=                 Get Element Count                 ${element}
   Should Be True            ${count} >= 1
 
-Heading should contains "${text}" inner Text
+Heading should contain "${text}" inner Text
   Get Text                  //h2                               equal                      ${text}    
 
-Webpage should contains the list account from database
+Webpage should contain the list data from database
   ${element}=               Get Element                        //div[contains(@class,'datatable-wrapper')]    
   ${count}=                 Get Element Count                  ${element}
   IF    ${count} > 0
     Set Global Variable     \${STATE["${count}"]}              ${count}
-  END    
-Confirm adding account "${url}" page
+  END
+
+Webpage should contain "${name}" select field   
+  ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//input[contains(@class,'ant-select')]
+  ${count}=                 Get Element Count                  ${element}
+  Should Be True            ${count} >= 1
+
+Webpage should contain "${name}" input field                   
+  ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//input[contains(@class,'ant-input')] 
+  ${count}=                 Get Element Count                  ${element}
+  Should Be True            ${count} >= 1
+
+Webpage should contain "${name}" button
+  ${element}=               Set Variable                       //button[contains(text(),"${name}")]
+  ${count}=                 Get Element Count                  ${element}
+  Should Be True            ${count} >= 1
+
+Confirm adding "${url}" page
   ${current_url}=           Get Url 
   Should Contain            ${current_url}                     ${URL_DEFAULT}${url}/add  
 
 ### Relate to number of list page ###
-Count the number account in list
+Count the number data in list
   Wait Until Element Spin
   ${element}=                Set Variable                      xpath=//tbody//tr[contains(@class, 'ant-table-row')]
   ${count}=                  Get Element Count                 ${element}
@@ -515,10 +539,10 @@ Count the number account in list
   END
   [Return]                   ${count}
       
-Get number account list in last page
+Get number data list in last page
   ${element}=                Get Element                       //span[contains(@class, 'ml-3')]
   ${text}=                   Get Text                          ${element}        
-  ${pageNum}=                Count the number account in list
+  ${pageNum}=                Count the number data in list
   ${total}=                  Get Regexp Matches                ${text}                     của (.+) mục                1 
   ${total}=                  Convert To Integer                ${total[0]}
   ${NumberAcc}=              Evaluate                          ${total} % ${pageNum}
@@ -529,7 +553,7 @@ Get number account list in last page
   END
   [Return]                   ${NumberAccount}  
 
-Get the number of total account
+Get the number of total data
   ${element}=                Get Element                       //span[contains(@class, 'ml-3')]
   ${text}=                   Get Text                          ${element}
   ${total}=                  Get Regexp Matches                ${text}                     của (.+) mục                1 
@@ -543,7 +567,7 @@ Get the number of total account
 Get the last page number
   ${element}=                Get Element                       //span[contains(@class, 'ml-3')]
   ${text}=                   Get Text                          ${element}        
-  ${pageNum}=                Count the number account in list
+  ${pageNum}=                Count the number data in list
   ${totalP}=                 Get Regexp Matches                ${text}                     của (.+) mục                1 
   ${totalP}=                 Convert To Integer                ${totalP[0]}
   ${con}=                    Evaluate                          ${totalP} % ${pageNum}
@@ -558,22 +582,11 @@ Get the last page number
     ${lastPageNumber}=       Convert To String                 ${lastPageNumber} 
   END
   [Return]                   ${lastPageNumber}
-    
-Number account of page
-  ${element}=                Get Element                       //span[contains(@class, 'ml-3')]
-  ${text}=                   Get Text                          ${element}        
-  ${pageNum}=                Get Regexp Matches                ${text}                     -(.+) của                   1
-  ${pageNum}=                Set Variable                      ${pageNum[0]}
-  ${cnt}=                    Get Length                        ${text}
-  IF  ${cnt} > 0
-    ${pageNumber}=           Set Variable                      ${pageNum}
-  END 
-  [Return]                   ${pageNumber}
 
 Check the amount of page list
   Wait Until Element Spin
-  ${countA}=                 Count the number account in list
-  ${totalA}=                 Get the number of total account
+  ${countA}=                 Count the number data in list
+  ${totalA}=                 Get the number of total data
   IF    ${countA} == ${totalA}
     ${amountPage}=           Set Variable                      1
     Pass Execution           'This list contains only one page'
@@ -597,7 +610,7 @@ Move to the "${target}" page
   Wait Until Element Spin
 
 Move to the last page and check
-  ${countS}=                  Get number account list in last page
+  ${countS}=                  Get number data list in last page
   ${number}=                  Get the last page number
   Move to the "${number}" page
   Wait Until Element Spin
@@ -606,7 +619,7 @@ Move to the last page and check
   ${count}=                   Convert To Integer               ${count}
   Should Be Equal             ${count}                         ${countS}         
 
-Click on "${ordinal}" selection to change the number of account show in list and check
+Click on "${ordinal}" selection to change the number of data show in list and check
   Wait Until Element Spin
   ${cnt}=                       Get Length                      ${ordinal}        
   IF        ${cnt} > 3 and '${ordinal}' == 'first'
@@ -639,7 +652,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
   IF                            ${amountPage} >= 2
     IF                          ${current_number} < ${select_number}
       Move to the "next" page
-      ${name}=                  Get the first account name
+      ${name}=                  Get data in the first row
       ${ordinal_before}=        Evaluate                        ${current_number} + 2
       Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
       Wait Until Element Spin
@@ -654,7 +667,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
       Move to the "next" page
-      ${nameS}=                 Get the first account name
+      ${nameS}=                 Get data in the last row
       Should Be Equal           ${nameS}                         ${name}
       Move to the "previous" page
     ELSE IF                     ${current_number} = ${select_number}
@@ -670,7 +683,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
     ELSE IF                     ${current_number} > ${select_number}
-      ${account_number}=        Count the number account in list
+      ${account_number}=        Count the number data in list
       IF       ${account_number} > ${select_number}
         ${ordinal_before}=      Evaluate                         ${select_number} + 2
         ${name}=                Get Text                         //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
@@ -679,7 +692,7 @@ Click on "${ordinal}" selection to change the number of account show in list and
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
         Wait Until Element Spin
         Move to the "next" page
-        ${nameS}=               Get the first account name
+        ${nameS}=               Get data in the first row
         Should Be Equal         ${nameS}                         ${name}
         Move to the "previous" page
       ELSE IF    ${account_number} <= ${select_number}
@@ -692,8 +705,8 @@ Click on "${ordinal}" selection to change the number of account show in list and
   END
 
 ### --- Get the account name --- ###
-Get the last account name
-  ${pageN}=                   Count the number account in list
+Get data in the last row
+  ${pageN}=                   Count the number data in list
   ${number}=                  Evaluate                         ${pageN}+1
   ${element}=                 Get Element                      //tbody//tr[${number}]//button[contains(@title,"Chi tiết")]
   ${LAname}=                  Get Text                         ${element}
@@ -703,7 +716,7 @@ Get the last account name
   END
   [Return]                    ${LAname}
 
-Get the first account name
+Get data in the first row
   ${element}=                 Get Element                      //tbody//tr[2]//button[contains(@title,"Chi tiết")]
   ${Fname}=                   Get Text                         ${element}
   ${cnt}=                     Get Length                       ${Fname}
