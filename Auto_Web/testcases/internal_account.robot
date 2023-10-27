@@ -228,6 +228,16 @@ IA_19 Verify "Tạo mới" button function
     When Click "Tạo mới" button
     Then Heading should contain "Tạo mới tài khoản nội bộ" inner Text
     Then Confirm adding "/internal-account" page
+    Then Confirm adding "/customer-account" page
+    Then Webpage should contain "Họ và tên" input field
+    Then Webpage should contain "Email" input field
+    Then Webpage should contain "Số điện thoại" input field
+    Then Webpage should contain "Giới tính" select field
+    Then Webpage should contain "Loại tài khoản" select field
+    Then Webpage should contain "Mật khẩu" input field
+    Then Webpage should contain "Xác nhận mật khẩu" input field
+    Then Webpage should contain "Lưu lại" button
+    Then Webpage should contain "Đóng lại" button
 
 IA_20 Create new account with the valid data
     [Tags]                                                                                        Create                                       Smoketest
