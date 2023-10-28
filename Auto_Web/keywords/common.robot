@@ -373,6 +373,18 @@ Enter date in placeholder "${name}" with "${date}"
   ${name}=                  Check Text                         ${name}
   Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
 
+"${name}" should be visible in the tree line
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${cnt}=                   Get Element Count                  //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
+  Should Be True            ${cnt} > 0
+
+"${name}" should not be visible in the tree line
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${cnt}=                   Get Element Count                  //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
+  Should Be True            ${cnt} < 1
+
 Data's information in "${name}" should be equal "${value}"
   ${value}=                 Check Text                         ${value}
   ${cnt}=                   Get Element Count                  //label[text()="${name}"]

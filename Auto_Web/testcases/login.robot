@@ -62,10 +62,9 @@ LO_07 Verify the remember account function when click on "Ghi nhớ" check field
   Then User look message "Success" popup
   When Log out account
 
-CA_02 Check code
+CA_03 TestCode
   Login to admin
-  Click "QUẢN LÝ DANH MỤC" menu
-  Click "Post" sub menu to "/post"
-  Click on the "Chi tiết" button in the "admin@gmail.comadmin@gmail.com" table line
-  Data's information in "Tiêu đề" should be equal "admin@gmail.comadmin@gmail.com"
-  Data's information should contain "Tiêu đề SEO" field 
+  Click "SUPERADMIN" menu
+  Click "Phân quyền điều hướng" sub menu to "/navigation"
+  ${text}=            Get Property    //body/app-root[1]/app-main[1]/main[1]/div[4]/app-navigations[1]/div[1]/div[1]/div[1]/div[1]/div[2]/nz-spin[1]/div[1]/nz-tree[1]/div[3]/div[1]/nz-tree-node[18]/nz-tree-node-title[1]    title
+  Log To Console    ${text}
