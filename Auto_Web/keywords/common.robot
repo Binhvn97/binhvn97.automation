@@ -377,11 +377,17 @@ Data's information in "${name}" should be equal "${value}"
   ${value}=                 Check Text                         ${value}
   ${cnt}=                   Get Element Count                  //label[contains(text(),"${name}")]
   IF    ${cnt} > 0
-    ${element}=             Set Variable                       //label[contains(text(),"${name}")]//ancestor::*[contains(@class,'ant-form-item')]//input    
-    Get Text                ${element}                        equal                        ${value}
+    ${element}=             Set Variable                       //label[contains(text(),"${name}")]//ancestor::*[contains(@class,'ant-form-item')]//*[contains(@class,'ant-input')]    
+    ${cntS}=                Get Element Count                  ${element}
+    IF    ${cntS} > 0
+      Get Text              ${element}                         equal                        ${value}
+    ELSE
+      ${element}=           Set Variable                       //label[contains(text(),"${name}")]//ancestor::*[contains(@class,'ant-form-item')]//*[contains(@class,'ant-select-selection-item')] 
+      Get Text              ${element}                         equal                        ${value}
+    END
   ELSE
     ${element}=             Set Variable                       //th[contains(text(),"${name}")]//following-sibling::th[1]
-    Get Text                ${element}                        equal                        ${value}
+    Get Text                ${element}                         equal                        ${value}
   END
 
 Data's information should contain "${name}" field 

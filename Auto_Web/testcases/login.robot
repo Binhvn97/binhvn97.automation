@@ -61,3 +61,12 @@ LO_07 Verify the remember account function when click on "Ghi nhớ" check field
   When Click "Đăng nhập" button
   Then User look message "Success" popup
   When Log out account
+
+CA_02 Check code
+  Login to admin
+  Click "QUẢN LÝ DANH MỤC" menu
+  Click "Quản lý dữ liệu" sub menu to "/data"
+  Click on the "Chi tiết" button in the "Phelan Buchanan" table line
+  Data's information in "Chuyên mục" should be equal "Test"
+  Data's information in "Tiêu đề" should be equal "Phelan Buchanan"
+  Data's information in "Mô tả" should be equal "Consectetur quas ip"
