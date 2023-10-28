@@ -647,10 +647,6 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
   ${current_number}=            Set Variable                    ${current[0]}
   ${current_number}             Convert To Integer              ${current_number}
   Click                         xpath=//*[contains(@class, 'ant-select-selection-item')]
-  ${text_default}=              Get Text                        //nz-option-item[1]/div[contains(@class,'ant-select-item-option-content')]
-  ${default}=                   Get Regexp Matches              ${text_default}                          (.+) / page                    1
-  ${default_number}=            Set Variable                    ${default[0]}
-  ${default_number}=            Convert To Integer              ${default_number}
   ${text_select}=               Get Text                        //nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]      
   ${select_string}=             Get Regexp Matches              ${text_select}                           (.+) / page                    1
   ${select_number}=             Set Variable                    ${select_string[0]}
@@ -673,7 +669,7 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
       Move to the "next" page
-      ${nameS}=                 Get data in the last row
+      ${nameS}=                 Get data in the first row
       Should Be Equal           ${nameS}                         ${name}
       Move to the "previous" page
     ELSE IF                     ${current_number} = ${select_number}
