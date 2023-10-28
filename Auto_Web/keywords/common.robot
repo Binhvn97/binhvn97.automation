@@ -375,14 +375,14 @@ Enter date in placeholder "${name}" with "${date}"
 
 Data's information in "${name}" should be equal "${value}"
   ${value}=                 Check Text                         ${value}
-  ${cnt}=                   Get Element Count                  //label[contains(text(),"${name}")]
+  ${cnt}=                   Get Element Count                  //label[text()="${name}"]
   IF    ${cnt} > 0
-    ${element}=             Set Variable                       //label[contains(text(),"${name}")]//ancestor::*[contains(@class,'ant-form-item')]//*[contains(@class,'ant-input')]    
+    ${element}=             Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]   
     ${cntS}=                Get Element Count                  ${element}
     IF    ${cntS} > 0
       Get Text              ${element}                         equal                        ${value}
     ELSE
-      ${element}=           Set Variable                       //label[contains(text(),"${name}")]//ancestor::*[contains(@class,'ant-form-item')]//*[contains(@class,'ant-select-selection-item')] 
+      ${element}=           Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-select-selection-item')] 
       Get Text              ${element}                         equal                        ${value}
     END
   ELSE

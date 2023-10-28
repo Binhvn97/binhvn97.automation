@@ -61,3 +61,11 @@ LO_07 Verify the remember account function when click on "Ghi nhớ" check field
   When Click "Đăng nhập" button
   Then User look message "Success" popup
   When Log out account
+
+CA_02 Check code
+  Login to admin
+  Click "QUẢN LÝ DANH MỤC" menu
+  Click "Post" sub menu to "/post"
+  Click on the "Chi tiết" button in the "admin@gmail.comadmin@gmail.com" table line
+  Data's information in "Tiêu đề" should be equal "admin@gmail.comadmin@gmail.com"
+  Data's information should contain "Tiêu đề SEO" field 
