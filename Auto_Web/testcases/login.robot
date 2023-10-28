@@ -61,4 +61,3 @@ LO_07 Verify the remember account function when click on "Ghi nhớ" check field
   When Click "Đăng nhập" button
   Then User look message "Success" popup
   When Log out account
-  
