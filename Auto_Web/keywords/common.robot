@@ -294,7 +294,7 @@ Log out account
   Click                      //img[contains(@alt,'Avatar')]
   Click                      //li[contains(text(),'Đăng xuất')]  
 Click on magnifier icon in search box
-  Click                      xpath=//*[contains(@class, "ext-lg las la-search")]
+  Click                      xpath=//*[contains(@class, "text-lg las la-search")]
 
 Click on eye icon in "${name}" field 
   Wait Until Element Spin
@@ -386,10 +386,11 @@ Enter date in placeholder "${name}" with "${date}"
   Should Be True            ${cnt} < 1
 
 Data's information in "${name}" should be equal "${value}"
+  Wait Until Element Spin
   ${value}=                 Check Text                         ${value}
   ${cnt}=                   Get Element Count                  //label[text()="${name}"]
   IF    ${cnt} > 0
-    ${element}=             Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]   
+    ${element}=             Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]
     ${cntS}=                Get Element Count                  ${element}
     IF    ${cntS} > 0
       Get Text              ${element}                         equal                        ${value}
@@ -441,7 +442,8 @@ Click on the "${text}" button in the "${name}" table line
     Click                     ${element} 
   END
   Click Confirm To Action
-  
+  Wait Until Network Is Idle
+
 Click Cancel Action
   ${element}                Set Variable                       //*[contains(@class, "ant-popover")]//button[1]
   ${count}=                 Get Element Count                  ${element}
@@ -462,7 +464,8 @@ Click on the "${text}" button in the "${name}" table line with cancel
   ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
   Click                     ${element}
   Click Cancel Action
-
+  Wait Until Network Is Idle
+  
 ### Related to images ###
 Wait Until Image Visible
   ${elementS}= 		          Get Element 			                 //div[contains(@class,'gslide loaded current')]

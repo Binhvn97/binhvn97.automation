@@ -61,10 +61,3 @@ LO_07 Verify the remember account function when click on "Ghi nhớ" check field
   When Click "Đăng nhập" button
   Then User look message "Success" popup
   When Log out account
-
-CA_03 TestCode
-  Login to admin
-  Click "SUPERADMIN" menu
-  Click "Phân quyền điều hướng" sub menu to "/navigation"
-  ${text}=            Get Property    //body/app-root[1]/app-main[1]/main[1]/div[4]/app-navigations[1]/div[1]/div[1]/div[1]/div[1]/div[2]/nz-spin[1]/div[1]/nz-tree[1]/div[3]/div[1]/nz-tree-node[18]/nz-tree-node-title[1]    title
-  Log To Console    ${text}
