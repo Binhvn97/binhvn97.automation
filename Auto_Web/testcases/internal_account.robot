@@ -586,24 +586,6 @@ Go to page create account "${name}" with "${url}"
     When Click "${name}" sub menu to "${url}"
     When Click "Tạo mới" button
 
-Background ${type} Happy paths ${name} with ${url}
-    When Go to page create account ${name} with ${url}
-    When Enter "test name" in "Họ và tên" with "_RANDOM_"
-    When Enter "email" in "Email" with "_RANDOM_"
-    When Enter "phone" in "Số điện thoại" with "_RANDOM_"
-    When Click select "Giới tính" with "Nam"
-    When Click select "Loại tài khoản" with "${type}"
-    When Enter "password" in "Mật khẩu" with "_RANDOM_"
-    When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
-    When Click "Lưu lại" button
-
-Verify create account when inputting valid data into all fields
-  [Arguments]           ${code}       ${name}      ${url}      ${type}
-  Set Global Variable   ${TEST NAME}  ${code}
-  When Background ${type} Happy paths ${name} with ${url}
-  Then User look message "Tạo tài khoản thành công" popup
-  When Click on the "Xóa" button in the "_@Họ và tên@_" table line
-
 Create a test account with "${type}" type
     When Go to page create account "Tài khoản Nội bộ" with "/internal-account"
     When Enter "test name" in "Họ và tên" with "_RANDOM_"
@@ -634,16 +616,3 @@ Create another test account with "${type}" type
     When Click "Lưu lại" button
     Then User look message "Tạo tài khoản thành công" popup
 
-Create random test account
-    [Arguments]            ${code}         ${accName}    ${URL}    ${acctype}
-    Set Global Variable    ${TEST NAME}    ${code}
-    When Go to page create account "${accName}" with "${URL}"
-    When Enter "test name" in "Họ và tên" with "_RANDOM_"
-    When Enter "email" in "Email" with "_RANDOM_"
-    When Enter "phone" in "Số điện thoại" with "_RANDOM_"
-    When Click select "Giới tính" with "Nam"
-    When Click select "Loại tài khoản" with "${acctype}"
-    When Enter "password" in "Mật khẩu" with "_RANDOM_"
-    When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
-    When Click "Lưu lại" button
-    Then User look message "Tạo tài khoản thành công" popup
