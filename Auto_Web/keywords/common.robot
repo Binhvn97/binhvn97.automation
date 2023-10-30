@@ -163,6 +163,7 @@ Enter "${type}" in editor "${name}" with "${text}"
 Select file in "${name}" with "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
   Upload File By Selector   ${element}                        test/upload/${text}
+  Wait Until Network Is Idle
 
 Click radio "${name}" in line "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
@@ -197,6 +198,7 @@ Click on the "${text}" button in the "${name}" item line
   ${element}=               Get Element Item By Name          ${name}                       //button[@title = "${text}"]
   Click                     ${element}
   Click Confirm To Action
+  Wait Until Network Is Idle
 
 Get Element Table Item By Name
   [Arguments]               ${name}                           ${xpath}
@@ -215,13 +217,14 @@ Click on the previously created "${name}" tree to delete
   Mouse Move Relative To    ${element}                        0
   Click                     ${element}//*[contains(@class, "la-trash")]
   Click Confirm To Action
+  Wait Until Network Is Idle
 
 Click on the previously created "${name}" tree to edit
   Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
   Click                     ${element}
-
+  Wait Until Network Is Idle
 
 ###  -----  Element  -----  ###
 Click "${text}" button
