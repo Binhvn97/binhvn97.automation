@@ -245,6 +245,7 @@ Click "${text}" tab button
 
 Select on the "${text}" item line
   Wait Until Element Spin
+  ${text}=                  Check Text                        ${text}
   ${element}=               Get Element Item By Name          ${text}
   Click                     ${element}
 
@@ -535,7 +536,7 @@ Webpage should contain "${name}" select field
   Should Be True            ${count} >= 1
 
 Webpage should contain "${name}" input field                   
-  ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//[contains(@class,'ant-input')] 
+  ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//*[contains(@class,'ant-input')] 
   ${count}=                 Get Element Count                  ${element}
   Should Be True            ${count} >= 1
 
