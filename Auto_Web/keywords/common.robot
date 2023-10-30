@@ -349,17 +349,16 @@ Enter date in placeholder "${name}" with "${date}"
 "${name}" should be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  Get Property              //tbody/tr[2]/td[2]/button[1]      innerText                   equal                         ${name}       
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} > 0
 
 "${name}" should not be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${count}=                 Count the number data in list
-  IF    ${count} > 0
-      Get Property          //tbody/tr[2]/td[2]/button[1]      innerText                   inequal                       ${name}       
-  ELSE
-      Get Text              //tbody/tr[2]                      equal                       No Data
-  END
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} < 1
 
 "${name}" table line should be highlighted
   Wait Until Element Spin
@@ -552,7 +551,7 @@ Confirm adding "${url}" page
 Confirm locating exactly in "${name}" page
   ${cnt}=                   Get Element Count                  //header//span[contains(text(),"${name}")]
   Should Be True            ${cnt} > 0
-  
+
 ### Relate to number of list page ###
 Count the number data in list
   Wait Until Element Spin
