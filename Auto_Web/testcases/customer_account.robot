@@ -15,6 +15,7 @@ CA_01 Verify that navigating to the right "Customer-Account" page
     Login to admin
     When Click "QUẢN LÝ TÀI KHOẢN" menu
     When Click "Tài khoản Người dùng" sub menu to "/customer-account"
+    Then Confirm locating exactly in "Tài khoản khách hàng" page
     Then Heading should contain "Danh sách tài khoản khách hàng" inner Text
     Then Webpage should contain the list data from database
     Then Webpage should contain the search function
@@ -615,7 +616,7 @@ Go to page create account "${name}" with "${url}"
     Click "Tạo mới" button
 
 Create a test account with "${type}" type
-    ${condition}=            Run Keyword And Return Status        Heading should contain "Danh sách tài khoản khách hàng" inner Text
+    ${condition}=            Run Keyword And Return Status        Confirm locating exactly in "Tài khoản khách hàng" page
     IF    '${condition}' == 'True'
       Click "Tạo mới" button
     ELSE

@@ -549,6 +549,10 @@ Confirm adding "${url}" page
   ${current_url}=           Get Url 
   Should Contain            ${current_url}                     ${URL_DEFAULT}${url}/add  
 
+Confirm locating exactly in "${name}" page
+  ${cnt}=                   Get Element Count                  //header//span[contains(text(),"${name}")]
+  Should Be True            ${cnt} > 0
+  
 ### Relate to number of list page ###
 Count the number data in list
   Wait Until Element Spin

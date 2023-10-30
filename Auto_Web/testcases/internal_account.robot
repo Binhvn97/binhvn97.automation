@@ -15,6 +15,7 @@ IA_01 Verify that navigating to the right "Internal-Account" page
     Login to admin
     When Click "QUẢN LÝ TÀI KHOẢN" menu
     When Click "Tài khoản Nội bộ" sub menu to "/internal-account"
+    Then Confirm locating exactly in "Tài khoản nội bộ" page
     Then Heading should contain "Danh sách tài khoản nội bộ" inner Text
     Then Webpage should contain the list data from database
     Then Webpage should contain the search function
@@ -587,7 +588,7 @@ Go to page create account "${name}" with "${url}"
   Click "Tạo mới" button
 
 Create a test account with "${type}" type
-  ${condition}=            Run Keyword And Return Status        Heading should contain "Danh sách tài khoản khách hàng" inner Text
+  ${condition}=            Run Keyword And Return Status        Confirm locating exactly in "Tài khoản nội bộ" page
   IF    '${condition}' == 'True'
     Click "Tạo mới" button
   ELSE
