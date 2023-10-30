@@ -35,7 +35,7 @@ IA_03 Verify the function navigating to other lists of account page
     Go to "Internal Account" page
     Then Check the amount of page list
          ${Last_name}=                                                                            Get data in the last row
-    When Create another test account with "CSKH" type
+    When Create a test account with "CSKH" type
     When Move to the "next" page
          ${First_name}=                                                                           Get data in the first row
     Then Should Be Equal                                                                          ${First_name}                                ${Last_name}
@@ -135,7 +135,7 @@ IA_10 Verify the search function when enter the name was not existed
 IA_11 Check the update of account list after cancel the search action
     [Tags]                                                                                        Search           
     ${AccountName}=                                                                               Create a test account with "CSKH" type
-    Create another test account with "Kế toán" type
+    Create a test account with "Kế toán" type
     When Enter "text" in "Tìm kiếm" with "${AccountName}"
     When Click on magnifier icon in search box
     Then "${AccountName}" should be visible in table line
@@ -267,7 +267,7 @@ IA_21 Verify showing "Mật khẩu" and "Xác nhận mật khẩu" on "Tạo m�
 IA_22 Check the update of account list after creating a new account
     [Tags]                                                                                        Create                                       Smoketest
     Go to "Internal Account" page
-    When Create another test account with "Kế toán" type
+    When Create a test account with "Kế toán" type
     Then "_@Họ và tên@_" should be visible in table line
     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -545,7 +545,7 @@ IA_45 Verify the changing "Loại tài khoản" field
 IA_46 Verify the changing with the existed "Số điện thoại"
     [Tags]                                                                                        ChangeInfo
     ${AccountName}=                                                                               Create a test account with "CSKH" type        
-    Create another test account with "Kế toán" type
+    Create a test account with "Kế toán" type
     When Click on the "Sửa" button in the "${AccountName}" table line
     When Enter "number" in "Số điện thoại" with "_@Số điện thoại@_"
     When Click "Lưu lại" button
@@ -581,38 +581,28 @@ Go to "${page}" page
   END
 
 Go to page create account "${name}" with "${url}"
-    When Login to admin
-    When Click "QUẢN LÝ TÀI KHOẢN" menu
-    When Click "${name}" sub menu to "${url}"
-    When Click "Tạo mới" button
+  Login to admin
+  Click "QUẢN LÝ TÀI KHOẢN" menu
+  Click "${name}" sub menu to "${url}"
+  Click "Tạo mới" button
 
 Create a test account with "${type}" type
-    When Go to page create account "Tài khoản Nội bộ" with "/internal-account"
-    When Enter "test name" in "Họ và tên" with "_RANDOM_"
-         ${text}=               Check Text             _@Họ và tên@_
-         ${name}=               Set Variable           ${text}
-         [Return]               ${name}
-    When Enter "email" in "Email" with "_RANDOM_"
-    When Enter "phone" in "Số điện thoại" with "_RANDOM_"
-    When Click select "Giới tính" with "Nam"
-    When Click select "Loại tài khoản" with "${type}"
-    When Enter "password" in "Mật khẩu" with "_RANDOM_"
-    When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
-    When Click "Lưu lại" button
-    Then User look message "Tạo tài khoản thành công" popup
-
-Create another test account with "${type}" type
-    When Click "Tạo mới" button
-    When Enter "test name" in "Họ và tên" with "_RANDOM_"
-         ${text}=               Check Text             _@Họ và tên@_
-         ${nameS}=              Set Variable           ${text}
-         [Return]               ${nameS}
-    When Enter "email" in "Email" with "_RANDOM_"
-    When Enter "phone" in "Số điện thoại" with "_RANDOM_"
-    When Click select "Giới tính" with "Nữ"
-    When Click select "Loại tài khoản" with "${type}"
-    When Enter "password" in "Mật khẩu" with "_RANDOM_"
-    When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
-    When Click "Lưu lại" button
-    Then User look message "Tạo tài khoản thành công" popup
+  ${condition}=            Run Keyword And Return Status        Heading should contain "Danh sách tài khoản khách hàng" inner Text
+  IF    '${condition}' == 'True'
+    Click "Tạo mới" button
+  ELSE
+    Go to page create account "Tài khoản Người dùng" with "/customer-account"
+  END
+  Enter "test name" in "Họ và tên" with "_RANDOM_"
+   ${text}=               Check Text             _@Họ và tên@_
+   ${name}=               Set Variable           ${text}
+   [Return]               ${name}
+  Enter "email" in "Email" with "_RANDOM_"
+  Enter "phone" in "Số điện thoại" with "_RANDOM_"
+  Click select "Giới tính" with "Nam"
+  Click select "Loại tài khoản" with "${type}"
+  Enter "password" in "Mật khẩu" with "_RANDOM_"
+  Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
+  Click "Lưu lại" button
+  User look message "Tạo tài khoản thành công" popup
 

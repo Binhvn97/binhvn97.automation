@@ -536,7 +536,7 @@ Webpage should contain "${name}" select field
   Should Be True            ${count} >= 1
 
 Webpage should contain "${name}" input field                   
-  ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//input[contains(@class,'ant-input')] 
+  ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//[contains(@class,'ant-input')] 
   ${count}=                 Get Element Count                  ${element}
   Should Be True            ${count} >= 1
 
