@@ -88,6 +88,7 @@ IA_06_02 Check account information after creation (Kế toán)
     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+
 ### Verify the lock account function ###
 IA_07 Verify the block account funtion
     [Tags]                                                                                        Lock                                         Smoketest                              
@@ -229,7 +230,6 @@ IA_19 Verify "Tạo mới" button function
     When Click "Tạo mới" button
     Then Heading should contain "Tạo mới tài khoản nội bộ" inner Text
     Then Confirm adding "/internal-account" page
-    Then Confirm adding "/customer-account" page
     Then Webpage should contain "Họ và tên" input field
     Then Webpage should contain "Email" input field
     Then Webpage should contain "Số điện thoại" input field
@@ -592,7 +592,7 @@ Create a test account with "${type}" type
   IF    '${condition}' == 'True'
     Click "Tạo mới" button
   ELSE
-    Go to page create account "Tài khoản Người dùng" with "/customer-account"
+    Go to page create account "Tài khoản Nội bộ" with "/internal-account"
   END
   Enter "test name" in "Họ và tên" with "_RANDOM_"
    ${text}=               Check Text             _@Họ và tên@_

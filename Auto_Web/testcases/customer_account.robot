@@ -239,11 +239,11 @@ CA_20 Verify the filter function by applying all filter at the same time
     [Tags]                                                                                        Filter
     ${today}=                                                                                     Get Current Date                             local                   result_format=%Y-%m-%d
     Create a test account with "Farmer Side" type
-    When Click filter "Loại tài khoản" with "Farmer side"
+    When Click filter "Loại tài khoản" with "Farmer Side"
     When Enter date in placeholder "Bắt đầu" with "${today}"
     When Enter date in placeholder "Kết thúc" with "${today}"
     When Click filter "Trạng thái" with "Đã xác thực"
-    When Click filter "Kích hoạt" with "Mở khóa"
+    When Click filter "Kích hoạt" with "Mở Khóa"
     Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     

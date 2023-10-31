@@ -8,6 +8,7 @@ ${BROWSER}          chromium
 ${HEADLESS}         ${False}
 ${BROWSER_TIMEOUT}  60 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
+${TIME_TRY}         0.3 seconds
 
 ${URL_DEFAULT}      http://dev1.geneat.vn:7802/vn
 ${STATE}            Evaluate    json.loads('''{}''')  json
@@ -113,7 +114,7 @@ Enter "${type}" in "${name}" with "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[contains(@class, "ant-input")]
   Click                     ${element}
   Clear Text                ${element}
-  Fill Text                 ${element}                        ${text}                       True
+  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                  Fill Text                 ${element}                        ${text}                       True
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
@@ -123,7 +124,7 @@ Enter "${type}" in textarea "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //textarea
   Clear Text                ${element}
-  Fill Text                 ${element}                        ${text}
+  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                  Fill Text                 ${element}                        ${text}
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
@@ -134,7 +135,7 @@ Enter date in "${name}" with "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-picker-input")]/input
   Click                     ${element}
   Clear Text                ${element}
-  Fill Text                 ${element}                        ${text}
+  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                  Fill Text                 ${element}                        ${text}
   Press Keys                ${element}                        Tab
   Press Keys                ${element}                        Tab
   ${cnt}=                   Get Length                        ${text}
@@ -239,6 +240,7 @@ Click "${text}" button
   Click Confirm To Action
   Scroll By                 ${None}
   END
+  Wait Until Network Is Idle
 
 Click "${text}" tab button
   Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
@@ -264,7 +266,7 @@ User look message "${message}" popup
   IF  ${cnt} > 0
     ${message}=             Replace String                    ${message}                    _@${contains[0]}@_          ${STATE["${contains[0]}"]}
   END
-  Element Text Should Be    id=swal2-html-container           ${message}
+  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                 Element Text Should Be            id=swal2-html-container           ${message}
   ${element}=               Set Variable                      xpath=//*[contains(@class, "swal2-confirm")]
   ${passed}                 Run Keyword And Return Status
                             ...   Element Should Be Visible   ${element}
@@ -428,21 +430,21 @@ The hidden password in "${name}" field should be visibled as "${text}"
   Get Text                  ${element}                         equal                      ${text}
 
 Click on the "${text}" button in the "${name}" table line
-  Sleep                       ${SHOULD_TIMEOUT}
+  Sleep                      ${SHOULD_TIMEOUT}
   Wait Until Element Spin
-  ${name}=                    Check Text                        ${name}
+  ${name}=                   Check Text                        ${name}
   IF    '${text}' == 'Chi tiết'
-    ${element1}=              Get Element Table Item By Name    ${name}                      //button[@title = "${text}"]
-    ${count}=                 Get Element Count                 ${element1}
+    ${element1}=             Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
+    ${count}=                Get Element Count                 ${element1}
     IF    ${count} > 0
-      Click                   ${element1}
+      Click                  ${element1}
     ELSE
-      ${elementS}=            Get Element Table Item By Name    ${name}                      //p[contains(text(),"${name}")]
-      Click                   ${elementS}       
+      ${elementS}=           Get Element Table Item By Name    ${name}                     //p[contains(text(),"${name}")]
+      Click                  ${elementS}       
     END
   ELSE
-    ${element}=               Get Element Table Item By Name    ${name}                      //button[@title = "${text}"]
-    Click                     ${element} 
+    ${element}=              Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
+    Click                    ${element} 
   END
   Click Confirm To Action
   Wait Until Network Is Idle
