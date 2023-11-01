@@ -97,7 +97,7 @@ CA_DA_09 Create a new data with the invalid "Mã"
 ### Verify the funtion of changing data information ###
 CA_DA_10 Verify the changing "Tên loại" field
     [Tags]                                                                                        ChangeInfo
-    Create a test category 
+    Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
     When Enter "test name" in "Tên loại" with "_RANDOM_"
     When Click "Lưu lại" button

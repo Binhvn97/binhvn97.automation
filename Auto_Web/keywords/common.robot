@@ -114,7 +114,12 @@ Enter "${type}" in "${name}" with "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[contains(@class, "ant-input")]
   Click                     ${element}
   Clear Text                ${element}
-  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                  Fill Text                 ${element}                        ${text}                       True
+  Fill Text                 ${element}                        ${text}                       True
+  ${condition}=             Get Text                          ${element}
+  WHILE    '${condition}' != '${text}'    limit=10
+    Fill Text               ${element}                        ${text}
+    ${condition}=           Get Text                          ${element}     
+  END
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
@@ -125,11 +130,16 @@ Enter "${type}" in textarea "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //textarea
   Clear Text                ${element}
-  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                  Fill Text                 ${element}                        ${text}
+  Fill Text                 ${element}                        ${text}
+  ${condition}=             Get Text                          ${element}
+  WHILE    '${condition}' != '${text}'    limit=10
+    Fill Text               ${element}                        ${text}
+    ${condition}=           Get Text                          ${element}     
+  END
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
-    Set Global Variable     \${STATE["${name}"]}              ${text}
-  END
+  Set Global Variable       \${STATE["${name}"]}              ${text}
+  END  
   Wait Until Network Is Idle
 
 Enter date in "${name}" with "${text}"
@@ -137,7 +147,12 @@ Enter date in "${name}" with "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-picker-input")]/input
   Click                     ${element}
   Clear Text                ${element}
-  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                  Fill Text                 ${element}                        ${text}
+  Fill Text                 ${element}                        ${text}
+  ${condition}=             Get Text                          ${element}
+  WHILE    '${condition}' != '${text}'    limit=10
+    Fill Text               ${element}                        ${text}
+    ${condition}=           Get Text                          ${element}     
+  END
   Press Keys                ${element}                        Tab
   Press Keys                ${element}                        Tab
   ${cnt}=                   Get Length                        ${text}
@@ -358,14 +373,16 @@ Enter date in placeholder "${name}" with "${date}"
 
 "${name}" should be visible in table line
   Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}                  
-  ${cnt}=                   Get Element Count                  //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]                  
+  ${cnt}=                   Get Element Count                  ${element}
   Should Be True            ${cnt} > 0
 
 "${name}" should not be visible in table line
   Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}    
-  ${cnt}=                   Get Element Count                  //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]   
+  ${cnt}=                   Get Element Count                  ${element}
   Should Be True            ${cnt} < 1
 
 "${name}" table line should be highlighted
