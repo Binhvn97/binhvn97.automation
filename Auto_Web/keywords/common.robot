@@ -247,7 +247,6 @@ Click on the previously created "${name}" tree to edit
 
 ###  -----  Element  -----  ###
 Click "${text}" button
-  Sleep                     ${SHOULD_TIMEOUT}
   ${cnt}=	                  Get Element Count		              //button[@title = "${text}"]
   IF	${cnt} > 0	
   Click                     xpath=//button[@title = "${text}"]
@@ -258,7 +257,9 @@ Click "${text}" button
   Click Confirm To Action
   Scroll By                 ${None}
   END
+  Wait Until Element Spin
   Wait Until Network Is Idle
+  Sleep                     ${SHOULD_TIMEOUT}
 
 Click "${text}" tab button
   Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
