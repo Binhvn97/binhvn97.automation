@@ -119,6 +119,7 @@ Enter "${type}" in "${name}" with "${text}"
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
   END
+  Wait Until Network Is Idle
 
 Enter "${type}" in textarea "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
@@ -129,6 +130,7 @@ Enter "${type}" in textarea "${name}" with "${text}"
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
   END
+  Wait Until Network Is Idle
 
 Enter date in "${name}" with "${text}"
   ${text}=                  Get Random Text                   date                          ${text}
@@ -142,6 +144,7 @@ Enter date in "${name}" with "${text}"
   IF  ${cnt} > 0
       Set Global Variable   ${STATE["${name}"]}               ${text}
   END
+  Wait Until Network Is Idle
 
 Click select "${name}" with "${text}"
   ${text}=                  Get Random Text                   Text                          ${text}
@@ -298,9 +301,13 @@ Click on "${name}" check box
   
 Log out account
   Click                      //img[contains(@alt,'Avatar')]
-  Click                      //li[contains(text(),'Đăng xuất')]  
+  Wait Until Element Spin
+  Click                      //li[contains(text(),'Đăng xuất')]
+  
 Click on magnifier icon in search box
   Click                      xpath=//*[contains(@class, "text-lg las la-search")]
+  Wait Until Element Spin
+  Wait Until Network Is Idle
 
 Click on eye icon in "${name}" field 
   Wait Until Element Spin
@@ -351,16 +358,14 @@ Enter date in placeholder "${name}" with "${date}"
 
 "${name}" should be visible in table line
   Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}
-  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
-  ${cnt}=                   Get Element Count                  ${element}
+  ${name}=                  Check Text                         ${name}                  
+  ${cnt}=                   Get Element Count                  //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
   Should Be True            ${cnt} > 0
 
 "${name}" should not be visible in table line
   Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}
-  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
-  ${cnt}=                   Get Element Count                  ${element}
+  ${name}=                  Check Text                         ${name}    
+  ${cnt}=                   Get Element Count                  //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
   Should Be True            ${cnt} < 1
 
 "${name}" table line should be highlighted
@@ -377,6 +382,18 @@ Enter date in placeholder "${name}" with "${date}"
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
+
+"${name}" should be visible in item line
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${cnt}=                   Get Element Count                  //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+  Should Be True            ${cnt} > 0
+
+"${name}" should not be visible in item line
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${cnt}=                   Get Element Count                  //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+  Should Be True            ${cnt} < 1
 
 "${name}" should be visible in the tree line
   Wait Until Element Spin
@@ -470,7 +487,16 @@ Click on the "${text}" button in the "${name}" table line with cancel
   Click                     ${element}
   Click Cancel Action
   Wait Until Network Is Idle
-  
+
+Click on the "${text}" button in the "${name}" item line with cancel
+  Sleep                     ${SHOULD_TIMEOUT}
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Get Element Item By Name           ${name}                    //button[@title = "${text}"]
+  Click                     ${element}
+  Click Cancel Action
+  Wait Until Network Is Idle
+
 ### Related to images ###
 Wait Until Image Visible
   ${elementS}= 		          Get Element 			                 //div[contains(@class,'gslide loaded current')]
@@ -523,7 +549,8 @@ Webpage should contain the "${name}" filter function
   Should Be True            ${count} >= 1
 
 Heading should contain "${text}" inner Text
-  Get Text                  //h2                               equal                      ${text}    
+  ${element}=               Get Element                       //i[contains(@class,'la-arrow-left')]//ancestor::*[contains(@class,'mx-auto')]//h2
+  Get Text                  ${element}                        equal                      ${text}    
 
 Webpage should contain the list data from database
   ${element}=               Get Element                        //div[contains(@class,'datatable-wrapper')]    
@@ -546,6 +573,10 @@ Webpage should contain "${name}" button
   ${element}=               Set Variable                       //button[contains(text(),"${name}")]
   ${count}=                 Get Element Count                  ${element}
   Should Be True            ${count} >= 1
+
+Webpage should contain left arrow icon
+  ${count}=                 Get Element Count                  //i[contains(@class,'la-arrow-left')]
+  Should Be True            ${count} > 0
 
 Confirm adding "${url}" page
   ${current_url}=           Get Url 
