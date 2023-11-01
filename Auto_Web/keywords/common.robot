@@ -6,7 +6,7 @@ Library             String
 *** Variables ***
 ${BROWSER}          chromium
 ${HEADLESS}         ${False}
-${BROWSER_TIMEOUT}  60 seconds
+${BROWSER_TIMEOUT}  10 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
 ${TIME_TRY}         0.3 seconds
 
@@ -247,6 +247,7 @@ Click on the previously created "${name}" tree to edit
 
 ###  -----  Element  -----  ###
 Click "${text}" button
+  Sleep                     ${SHOULD_TIMEOUT}
   ${cnt}=	                  Get Element Count		              //button[@title = "${text}"]
   IF	${cnt} > 0	
   Click                     xpath=//button[@title = "${text}"]
@@ -257,9 +258,8 @@ Click "${text}" button
   Click Confirm To Action
   Scroll By                 ${None}
   END
-  Wait Until Element Spin
   Wait Until Network Is Idle
-  Sleep                     ${SHOULD_TIMEOUT}
+  
 
 Click "${text}" tab button
   Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
@@ -321,6 +321,7 @@ Log out account
   Click                      //li[contains(text(),'Đăng xuất')]
   
 Click on magnifier icon in search box
+  Sleep                      ${SHOULD_TIMEOUT}
   Click                      xpath=//*[contains(@class, "text-lg las la-search")]
   Wait Until Element Spin
   Wait Until Network Is Idle
@@ -375,7 +376,11 @@ Enter date in placeholder "${name}" with "${date}"
 "${name}" should be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]                  
+  ${cntS}=                  Get Element Count                  //tbody/tr[contains(@class,'ant-table-row')]
+  WHILE    ${cntS} < 1      limit=10
+    ${cntS}=                  Get Element Count                //tbody/tr[contains(@class,'ant-table-row')]
+  END
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]                   
   ${cnt}=                   Get Element Count                  ${element}
   Should Be True            ${cnt} > 0
 

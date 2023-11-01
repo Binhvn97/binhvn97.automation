@@ -106,7 +106,7 @@ DA_08 Verify the "Left-arrow" button
 
 ### Verify the search function ###
 DA_09 Verify the search function when enter the existed name
-    [Tags]                                                                                        Search                                      Smoketest    BUG
+    [Tags]                                                                                        Search                                      Smoketest
     Create a category 
     Create a test data with "_@Tên loại@_" type    
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
