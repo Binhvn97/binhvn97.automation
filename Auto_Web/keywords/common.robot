@@ -29,22 +29,7 @@ Setup
 Tear Down
   Close Browser               ALL
 
-Wait Until Element Is Visible
-  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
-  Wait For Elements State   ${locator}  visible               ${timeout}                    ${message}
-
-Wait Until Page Does Not Contain Element
-  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
-  Wait For Elements State   ${locator}  detached              ${timeout}                    ${message}
-
-Element Should Be Visible
-  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${SHOULD_TIMEOUT}
-  Wait For Elements State   ${locator}  visible               ${timeout}                    ${message}
-
-Element Text Should Be
-  [Arguments]               ${locator}  ${expected}           ${message}=${EMPTY}           ${ignore_case}=${EMPTY}
-  Get Text                  ${locator}  equal                 ${expected}                   ${message}
-
+###  -----  Form & Fill  -----  ###
 Check Text
   [Arguments]               ${text}
   ${containsS}=             Get Regexp Matches                ${text}                      _@(.+)@_                   1
@@ -54,7 +39,6 @@ Check Text
   END
   [Return]    ${text}
 
-###  -----  Form  -----  ###
 Get Random Text
   [Arguments]               ${type}                           ${text}
   ${symbol}                 Set Variable                      _RANDOM_
@@ -100,14 +84,6 @@ Get Random Text
     ${text}=                Replace String                    ${text}                       ${symbol}                   ${new_text}
   END
   [Return]    ${text}
-
-Get Element Form Item By Name
-  [Arguments]               ${name}                           ${xpath}=${EMPTY}
-  [Return]                  xpath=//*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]${xpath}
-
-Required message "${text}" displayed under "${name}" field
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-form-item-explain-error")]
-  Element Text Should Be    ${element}                        ${text}
 
 Enter "${type}" in "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
@@ -161,186 +137,6 @@ Enter date in "${name}" with "${text}"
   END
   Wait Until Network Is Idle
 
-Click select "${name}" with "${text}"
-  ${text}=                  Get Random Text                   Text                          ${text}
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-select-show-arrow")]
-  Click                     ${element}
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-select-selection-search-input")]
-  Fill Text                                                   ${element}                    ${text}
-  Click                     xpath=//*[contains(@class, "ant-select-item-option") and @title="${text}"]
-  ${cnt}=                   Get Length                        ${text}
-  IF  ${cnt} > 0
-    Set Global Variable     \${STATE["${name}"]}              ${text}
-  END
-
-Enter "${type}" in editor "${name}" with "${text}"
-  ${text}=                  Get Random Text                   ${type}                       ${text}
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ce-paragraph")]
-  Clear Text                                                  ${element}
-  Fill Text                                                   ${element}                    ${text}
-
-Select file in "${name}" with "${text}"
-  ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
-  Upload File By Selector   ${element}                        test/upload/${text}
-  Wait Until Network Is Idle
-
-Click radio "${name}" in line "${text}"
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
-  Click                     ${element}
-
-Click switch "${name}" to be activated
-  ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
-  Click                     ${element}
-
-Click tree select "${name}" with "${text}"
-  ${text}=                  Get Random Text                   Text                          ${text}
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-tree-select")]
-  Click                     ${element}
-  Fill Text                 ${element}//input                 ${text}
-  Click                     xpath=//*[contains(@class, "ant-select-tree-node-content-wrapper") and @title="${text}"]
-
-Click assign list "${list}"
-  ${words}=                 Split String                      ${list}                       ,${SPACE}
-  FOR    ${word}    IN    @{words}
-    Click                   xpath=//*[contains(@class, "ant-checkbox-wrapper")]/*[text()="${word}"]
-  END
-  Click                     xpath=//*[contains(@class, "ant-transfer-operation")]/button[2]
-
-###  -----  Table  -----  ###
-Get Element Item By Name
-  [Arguments]               ${name}                           ${xpath}=${EMPTY}
-  [Return]                  xpath=//*[contains(@class, "item-text") and contains(text(), "${name}")]/ancestor::*[contains(@class, "item")]${xpath}
-
-Click on the "${text}" button in the "${name}" item line
-  Wait Until Element Spin
-  ${name}=                  Check Text                        ${name}
-  ${element}=               Get Element Item By Name          ${name}                       //button[@title = "${text}"]
-  Click                     ${element}
-  Click Confirm To Action
-  Wait Until Network Is Idle
-
-Get Element Table Item By Name
-  [Arguments]               ${name}                           ${xpath}
-  [Return]                  xpath=//*[contains(@class, "ant-table-row")]//*[contains(text(),"${name}")]/ancestor::tr${xpath}
-
-###  -----  Tree  -----  ###
-Get Element Tree By Name
-  [Arguments]               ${name}                           ${xpath}=${EMPTY}
-  [Return]                  xpath=//*[contains(@class, "ant-tree-node-content-wrapper") and @title = "${name}"]/*[contains(@class, "group")]${xpath}
-
-Click on the previously created "${name}" tree to delete
-  Wait Until Element Spin
-  ${name}=                  Check Text                        ${name}
-  ${element}=               Get Element Tree By Name          ${name}
-  Scroll To Element         ${element}
-  Mouse Move Relative To    ${element}                        0
-  Click                     ${element}//*[contains(@class, "la-trash")]
-  Click Confirm To Action
-  Wait Until Network Is Idle
-
-Click on the previously created "${name}" tree to edit
-  Wait Until Element Spin
-  ${name}=                  Check Text                        ${name}
-  ${element}=               Get Element Tree By Name          ${name}
-  Click                     ${element}
-  Wait Until Network Is Idle
-
-###  -----  Element  -----  ###
-Click "${text}" button
-  Sleep                     ${SHOULD_TIMEOUT}
-  ${cnt}=	                  Get Element Count		              //button[@title = "${text}"]
-  IF	${cnt} > 0	
-  Click                     xpath=//button[@title = "${text}"]
-  Click Confirm To Action
-  Scroll By                 ${None}
-  ELSE
-  Click 	                  //span[contains(text(),"${text}")]
-  Click Confirm To Action
-  Scroll By                 ${None}
-  END
-  Wait Until Network Is Idle
-  
-
-Click "${text}" tab button
-  Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
-
-Select on the "${text}" item line
-  Wait Until Element Spin
-  ${text}=                  Check Text                        ${text}
-  ${element}=               Get Element Item By Name          ${text}
-  Click                     ${element}
-
-Click "${text}" menu
-  Click                     xpath=//li[contains(@class, "menu") and descendant::span[contains(text(), "${text}")]]
-
-Click "${text}" sub menu to "${url}"
-  Wait Until Element Spin
-  Click                     xpath=//a[contains(@class, "sub-menu") and descendant::span[contains(text(), "${text}")]]
-  ${curent_url}=            Get Url
-  Should Contain            ${curent_url}                     ${URL_DEFAULT}${url}
-
-User look message "${message}" popup
-  ${contains}=              Get Regexp Matches                ${message}                    _@(.+)@_                    1
-  ${cnt}=                   Get length                        ${contains}
-  IF  ${cnt} > 0
-    ${message}=             Replace String                    ${message}                    _@${contains[0]}@_          ${STATE["${contains[0]}"]}
-  END
-  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                 Element Text Should Be            id=swal2-html-container           ${message}
-  ${element}=               Set Variable                      xpath=//*[contains(@class, "swal2-confirm")]
-  ${passed}                 Run Keyword And Return Status
-                            ...   Element Should Be Visible   ${element}
-  IF    '${passed}' == 'True'
-        Click               ${element}
-  END
-
-Click Confirm To Action
-  ${element}                Set Variable                      xpath=//*[contains(@class, "ant-popover")]//*[contains(@class, "ant-btn-primary")]
-  ${count}=                 Get Element Count                 ${element}
-  IF    ${count} > 0
-    Click                   ${element}
-    Sleep                   ${SHOULD_TIMEOUT}
-    Wait Until Element Spin
-  END
-
-Wait Until Element Spin
-  Sleep                     ${SHOULD_TIMEOUT}
-  ${element}                Set Variable                      xpath=//*[contains(@class, "ant-spin-spinning")]
-  ${count}=                 Get Element Count                 ${element}
-  IF    ${count} > 0
-    Wait Until Page Does Not Contain Element                  ${element}
-  END
-
-### --- New --- ###
-Click on "${name}" check box
-  ${element}=                Get Element                      //span[contains(text(),"${name}")]//ancestor::label/span[contains(@class,'ant-checkbox')]
-  Click                      ${element}
-  
-Log out account
-  Click                      //img[contains(@alt,'Avatar')]
-  Wait Until Element Spin
-  Click                      //li[contains(text(),'Đăng xuất')]
-  
-Click on magnifier icon in search box
-  Sleep                      ${SHOULD_TIMEOUT}
-  Click                      xpath=//*[contains(@class, "text-lg las la-search")]
-  Wait Until Element Spin
-  Wait Until Network Is Idle
-
-Click on eye icon in "${name}" field 
-  Wait Until Element Spin
-  ${element}=                Get Element                       //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input//ancestor::div[contains(@class, 'relative ng-star-inserted')]
-  Click                      ${element}/i[contains(@class, "la-eye-slash")]  
-  Sleep                      ${SHOULD_TIMEOUT}
-
-Click on the left arrow icon 
-  ${element}=                Get Element                       //i[contains(@class,'la-arrow-left')]
-  Click                      ${element}
-  Wait Until Element Spin
-
-Delete data in "${name}" 
-  ${element}                 Get Element Form Item By Name     ${name}                      //input[contains(@class, "ant-input")]
-  Clear Text                 ${element}
-
 Enter "${type}" in placeholder "${placeholder}" with "${text}"
   ${text}=                   Get Random Text                   ${type}                       ${text}
   ${element}=                Get Element                       //input[contains(@placeholder, "${placeholder}")]
@@ -373,6 +169,17 @@ Enter date in placeholder "${name}" with "${date}"
   END
   Wait Until Element Spin  
 
+Enter "${type}" in editor "${name}" with "${text}"
+  ${text}=                  Get Random Text                   ${type}                       ${text}
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ce-paragraph")]
+  Clear Text                                                  ${element}
+  Fill Text                                                   ${element}                    ${text}
+
+###  -----  Table  -----  ###
+Get Element Table Item By Name
+  [Arguments]               ${name}                           ${xpath}
+  [Return]                  xpath=//*[contains(@class, "ant-table-row")]//*[contains(text(),"${name}")]/ancestor::tr${xpath}
+
 "${name}" should be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
@@ -391,6 +198,10 @@ Enter date in placeholder "${name}" with "${date}"
   ${cnt}=                   Get Element Count                  ${element}
   Should Be True            ${cnt} < 1
 
+Table line should show empty 
+  Wait Until Element Spin
+  Get Property              //p[contains(@class, 'ant-empty-description')]                innerText                      equal                     No Data 
+
 "${name}" table line should be highlighted
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
@@ -406,6 +217,64 @@ Enter date in placeholder "${name}" with "${date}"
   ${name}=                  Check Text                         ${name}
   Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
 
+Click on the "${text}" button in the "${name}" table line
+  Sleep                      ${SHOULD_TIMEOUT}
+  Wait Until Element Spin
+  ${name}=                   Check Text                        ${name}
+  IF    '${text}' == 'Chi tiết'
+    ${element1}=             Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
+    ${count}=                Get Element Count                 ${element1}
+    IF    ${count} > 0
+      Click                  ${element1}
+    ELSE
+      ${elementS}=           Get Element Table Item By Name    ${name}                     //p[contains(text(),"${name}")]
+      Click                  ${elementS}       
+    END
+  ELSE
+    ${element}=              Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
+    Click                    ${element} 
+  END
+  Click Confirm To Action
+  Wait Until Network Is Idle
+
+Click on the "${text}" button in the "${name}" table line with cancel
+  Sleep                     ${SHOULD_TIMEOUT}
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
+  Click                     ${element}
+  Click Cancel Action
+  Wait Until Network Is Idle
+
+###  -----  Item  -----  ###
+Get Element Item By Name
+  [Arguments]               ${name}                           ${xpath}=${EMPTY}
+  [Return]                  xpath=//*[contains(@class, "item-text") and contains(text(), "${name}")]/ancestor::*[contains(@class, "item")]${xpath}
+
+Click on the "${text}" button in the "${name}" item line
+  Wait Until Element Spin
+  ${name}=                  Check Text                        ${name}
+  ${element}=               Get Element Item By Name          ${name}                       //button[@title = "${text}"]
+  Click                     ${element}
+  Click Confirm To Action
+  Wait Until Network Is Idle
+
+Click on the "${text}" button in the "${name}" item line with cancel
+  Sleep                     ${SHOULD_TIMEOUT}
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Get Element Item By Name           ${name}                    //button[@title = "${text}"]
+  Click                     ${element}
+  Click Cancel Action
+  Wait Until Network Is Idle
+
+Select on the "${text}" item line
+  Wait Until Element Spin
+  ${text}=                  Check Text                        ${text}
+  ${element}=               Get Element Item By Name          ${text}
+  Click                     ${element}
+  Wait Until Network Is Idle
+
 "${name}" should be visible in item line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
@@ -418,6 +287,34 @@ Enter date in placeholder "${name}" with "${date}"
   ${cnt}=                   Get Element Count                  //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
   Should Be True            ${cnt} < 1
 
+"${name}" item line should be highlighted
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${element}                Get Element Item By Name           ${name}
+  Get Property              ${element}                         className                  contains                       bg-blue-100
+
+###  -----  Tree  -----  ###
+Get Element Tree By Name
+  [Arguments]               ${name}                           ${xpath}=${EMPTY}
+  [Return]                  xpath=//*[contains(@class, "ant-tree-node-content-wrapper") and @title = "${name}"]/*[contains(@class, "group")]${xpath}
+
+Click on the previously created "${name}" tree to delete
+  Wait Until Element Spin
+  ${name}=                  Check Text                        ${name}
+  ${element}=               Get Element Tree By Name          ${name}
+  Scroll To Element         ${element}
+  Mouse Move Relative To    ${element}                        0
+  Click                     ${element}//*[contains(@class, "la-trash")]
+  Click Confirm To Action
+  Wait Until Network Is Idle
+
+Click on the previously created "${name}" tree to edit
+  Wait Until Element Spin
+  ${name}=                  Check Text                        ${name}
+  ${element}=               Get Element Tree By Name          ${name}
+  Click                     ${element}
+  Wait Until Network Is Idle
+
 "${name}" should be visible in the tree line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
@@ -429,6 +326,184 @@ Enter date in placeholder "${name}" with "${date}"
   ${name}=                  Check Text                         ${name}
   ${cnt}=                   Get Element Count                  //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
   Should Be True            ${cnt} < 1
+
+Click tree select "${name}" with "${text}"
+  ${text}=                  Get Random Text                   Text                          ${text}
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-tree-select")]
+  Click                     ${element}
+  Fill Text                 ${element}//input                 ${text}
+  Click                     xpath=//*[contains(@class, "ant-select-tree-node-content-wrapper") and @title="${text}"]
+
+###  -----  Element  -----  ###
+Element Should Be Visible
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${SHOULD_TIMEOUT}
+  Wait For Elements State   ${locator}  visible               ${timeout}                    ${message}
+
+Element Text Should Be
+  [Arguments]               ${locator}  ${expected}           ${message}=${EMPTY}           ${ignore_case}=${EMPTY}
+  Get Text                  ${locator}  equal                 ${expected}                   ${message}
+
+Get Element Form Item By Name
+  [Arguments]               ${name}                           ${xpath}=${EMPTY}
+  [Return]                  xpath=//*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]${xpath}
+
+Click "${text}" button
+  Sleep                     ${SHOULD_TIMEOUT}
+  ${cnt}=	                  Get Element Count		              //button[@title = "${text}"]
+  IF	${cnt} > 0	
+  Click                     xpath=//button[@title = "${text}"]
+  Click Confirm To Action
+  Scroll By                 ${None}
+  ELSE
+  Click 	                  //span[contains(text(),"${text}")]
+  Click Confirm To Action
+  Scroll By                 ${None}
+  END
+  Wait Until Network Is Idle
+
+Click "${text}" tab button
+  Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
+
+Click "${text}" menu
+  Click                     xpath=//li[contains(@class, "menu") and descendant::span[contains(text(), "${text}")]]
+
+Click "${text}" sub menu to "${url}"
+  Wait Until Element Spin
+  Click                     xpath=//a[contains(@class, "sub-menu") and descendant::span[contains(text(), "${text}")]]
+  ${curent_url}=            Get Url
+  Should Contain            ${curent_url}                     ${URL_DEFAULT}${url}
+
+Click on "${name}" check box
+  ${element}=                Get Element                      //span[contains(text(),"${name}")]//ancestor::label/span[contains(@class,'ant-checkbox')]
+  Click                      ${element}
+
+Click select "${name}" with "${text}"
+  ${text}=                  Get Random Text                   Text                          ${text}
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-select-show-arrow")]
+  Click                     ${element}
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-select-selection-search-input")]
+  Fill Text                                                   ${element}                    ${text}
+  Click                     xpath=//*[contains(@class, "ant-select-item-option") and @title="${text}"]
+  ${cnt}=                   Get Length                        ${text}
+  IF  ${cnt} > 0
+    Set Global Variable     \${STATE["${name}"]}              ${text}
+  END
+
+Log out account
+  Click                      //img[contains(@alt,'Avatar')]
+  Wait Until Element Spin
+  Click                      //li[contains(text(),'Đăng xuất')]
+  
+Click on magnifier icon in search box
+  Sleep                      ${SHOULD_TIMEOUT}
+  Click                      xpath=//*[contains(@class, "text-lg las la-search")]
+  Wait Until Element Spin
+  Wait Until Network Is Idle
+
+Click on eye icon in "${name}" field 
+  Wait Until Element Spin
+  ${element}=                Get Element                       //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input//ancestor::div[contains(@class, 'relative ng-star-inserted')]
+  Click                      ${element}/i[contains(@class, "la-eye-slash")]  
+  Sleep                      ${SHOULD_TIMEOUT}
+
+Click on the left arrow icon 
+  ${element}=                Get Element                       //i[contains(@class,'la-arrow-left')]
+  Click                      ${element}
+  Wait Until Element Spin
+
+Click Confirm To Action
+  ${element}                Set Variable                      xpath=//*[contains(@class, "ant-popover")]//*[contains(@class, "ant-btn-primary")]
+  ${count}=                 Get Element Count                 ${element}
+  IF    ${count} > 0
+    Click                   ${element}
+    Sleep                   ${SHOULD_TIMEOUT}
+    Wait Until Element Spin
+  END
+
+Click Cancel Action
+  ${element}                Set Variable                       //*[contains(@class, "ant-popover")]//button[1]
+  ${count}=                 Get Element Count                  ${element}
+  IF    ${count} > 0
+    Click                   ${element}
+    Sleep                   ${SHOULD_TIMEOUT}
+  END
+
+Click "${text}" button with cancel action
+  Click                     //button[@title = "${text}"]
+  Click Cancel Action
+  Scroll By                 ${None}
+
+Select file in "${name}" with "${text}"
+  ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
+  Upload File By Selector   ${element}                        test/upload/${text}
+  Wait Until Network Is Idle
+
+Click radio "${name}" in line "${text}"
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
+  Click                     ${element}
+
+Click switch "${name}" to be activated
+  ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
+  Click                     ${element}
+
+Click assign list "${list}"
+  ${words}=                 Split String                      ${list}                       ,${SPACE}
+  FOR    ${word}    IN    @{words}
+    Click                   xpath=//*[contains(@class, "ant-checkbox-wrapper")]/*[text()="${word}"]
+  END
+  Click                     xpath=//*[contains(@class, "ant-transfer-operation")]/button[2]
+
+Click filter "${name}" with "${text}"
+  ${text}=                  Get Random Text                    Text                       ${text}
+  ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
+  Click                     ${element}
+  Wait Until Element Spin
+  Click                     xpath=//*[contains(@class, "ant-select-item-option") and @title="${text}"]
+  ${cnt}=                   Get Length                         ${text}
+  IF  ${cnt} > 0
+    Set Global Variable     \${STATE["${name}"]}               ${text}
+  END
+
+Click on cross icon in select "${name}" 
+  ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
+  Click                     ${element}
+  Click                     xpath=//span[contains(@class, "anticon-close-circle")]/*[1]
+
+###  -----  Wait feature  -----  ###
+Wait Until Element Spin
+  Sleep                     ${SHOULD_TIMEOUT}
+  ${element}                Set Variable                      xpath=//*[contains(@class, "ant-spin-spinning")]
+  ${count}=                 Get Element Count                 ${element}
+  IF    ${count} > 0
+    Wait Until Page Does Not Contain Element                  ${element}
+  END
+
+Wait Until Element Is Visible
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
+  Wait For Elements State   ${locator}  visible               ${timeout}                    ${message}
+
+Wait Until Page Does Not Contain Element
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
+  Wait For Elements State   ${locator}  detached              ${timeout}                    ${message}
+
+###  -----  Check feature  -----  ###
+User look message "${message}" popup
+  ${contains}=              Get Regexp Matches                ${message}                    _@(.+)@_                    1
+  ${cnt}=                   Get length                        ${contains}
+  IF  ${cnt} > 0
+    ${message}=             Replace String                    ${message}                    _@${contains[0]}@_          ${STATE["${contains[0]}"]}
+  END
+  Wait Until Keyword Succeeds                                 ${SHOULD_TIMEOUT}             ${TIME_TRY}                 Element Text Should Be            id=swal2-html-container           ${message}
+  ${element}=               Set Variable                      xpath=//*[contains(@class, "swal2-confirm")]
+  ${passed}                 Run Keyword And Return Status
+                            ...   Element Should Be Visible   ${element}
+  IF    '${passed}' == 'True'
+        Click               ${element}
+  END
+
+Required message "${text}" displayed under "${name}" field
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-form-item-explain-error")]
+  Element Text Should Be    ${element}                        ${text}
 
 Data's information in "${name}" should be equal "${value}"
   Wait Until Element Spin
@@ -459,108 +534,13 @@ Data's information should contain "${name}" field
     Should Be True          ${cntS} > 0
   END
 
-Table line should show empty 
-  Wait Until Element Spin
-  Get Property              //p[contains(@class, 'ant-empty-description')]                innerText                      equal                     No Data 
-
 The hidden password in "${name}" field should be visibled as "${text}"
   ${text}=                  Check Text                         ${text}            
   ${element}=               Get Element                        //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input
   Get Property              ${element}                         type                       ==                             text                     
   Get Text                  ${element}                         equal                      ${text}
 
-Click on the "${text}" button in the "${name}" table line
-  Sleep                      ${SHOULD_TIMEOUT}
-  Wait Until Element Spin
-  ${name}=                   Check Text                        ${name}
-  IF    '${text}' == 'Chi tiết'
-    ${element1}=             Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
-    ${count}=                Get Element Count                 ${element1}
-    IF    ${count} > 0
-      Click                  ${element1}
-    ELSE
-      ${elementS}=           Get Element Table Item By Name    ${name}                     //p[contains(text(),"${name}")]
-      Click                  ${elementS}       
-    END
-  ELSE
-    ${element}=              Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
-    Click                    ${element} 
-  END
-  Click Confirm To Action
-  Wait Until Network Is Idle
-
-Click Cancel Action
-  ${element}                Set Variable                       //*[contains(@class, "ant-popover")]//button[1]
-  ${count}=                 Get Element Count                  ${element}
-  IF    ${count} > 0
-    Click                   ${element}
-    Sleep                   ${SHOULD_TIMEOUT}
-  END
-
-Click "${text}" button with cancel action
-  Click                     //button[@title = "${text}"]
-  Click Cancel Action
-  Scroll By                 ${None}
-
-Click on the "${text}" button in the "${name}" table line with cancel
-  Sleep                     ${SHOULD_TIMEOUT}
-  Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}
-  ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
-  Click                     ${element}
-  Click Cancel Action
-  Wait Until Network Is Idle
-
-Click on the "${text}" button in the "${name}" item line with cancel
-  Sleep                     ${SHOULD_TIMEOUT}
-  Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}
-  ${element}=               Get Element Item By Name           ${name}                    //button[@title = "${text}"]
-  Click                     ${element}
-  Click Cancel Action
-  Wait Until Network Is Idle
-
-### Related to images ###
-Wait Until Image Visible
-  ${elementS}= 		          Get Element 			                 //div[contains(@class,'gslide loaded current')]
-  Wait For Elements State                                      ${elementS}                visible                    
-
-Click on the "${name}" image
-  ${element}=	              Get Element 			                 //p[contains(text(),'${name}')]//following-sibling::div//img
-  Click	                    ${element}
-  Wait Until Image Visible
-
-Image should be enlarged 	                 
-  ${cnt}=	                  Get Element Count			             //img[contains(@class,'zoomable')]
-  Should Be True	          ${cnt} > 0
-
-Click on cross button to close image
-  ${element}                Get Element                        //button[contains(@aria-label,'Close')]
-  Click                     ${element}      
-
-Move to the "${name}" image
-  ${element}               Get Element                         //button[contains(@aria-label,'${name}')]
-  Click                    ${element}      
-  Wait Until Image Visible
-
-# Use for filter function #
-Click filter "${name}" with "${text}"
-  ${text}=                  Get Random Text                    Text                       ${text}
-  ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
-  Click                     ${element}
-  Wait Until Element Spin
-  Click                     xpath=//*[contains(@class, "ant-select-item-option") and @title="${text}"]
-  ${cnt}=                   Get Length                         ${text}
-  IF  ${cnt} > 0
-    Set Global Variable     \${STATE["${name}"]}               ${text}
-  END
-
-Click on cross icon in select "${name}" 
-  ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
-  Click                     ${element}
-  Click                     xpath=//span[contains(@class, "anticon-close-circle")]/*[1]
-
-# Check the existence of function
+# Check UI or Existence #
 Webpage should contain the search function
   ${element}=               Get Element                        //*[contains(@class,'flex-col')]//label[contains(text(),"Tìm kiếm")]
   ${count}=                 Get Element Count                  ${element}
@@ -608,6 +588,29 @@ Confirm adding "${url}" page
 Confirm locating exactly in "${name}" page
   ${cnt}=                   Get Element Count                  //header//span[contains(text(),"${name}")]
   Should Be True            ${cnt} > 0
+
+### Related to images ###
+Wait Until Image Visible
+  ${elementS}= 		          Get Element 			                 //div[contains(@class,'gslide loaded current')]
+  Wait For Elements State                                      ${elementS}                visible                    
+
+Click on the "${name}" image
+  ${element}=	              Get Element 			                 //p[contains(text(),'${name}')]//following-sibling::div//img
+  Click	                    ${element}
+  Wait Until Image Visible
+
+Image should be enlarged 	                 
+  ${cnt}=	                  Get Element Count			             //img[contains(@class,'zoomable')]
+  Should Be True	          ${cnt} > 0
+
+Click on cross button to close image
+  ${element}                Get Element                        //button[contains(@aria-label,'Close')]
+  Click                     ${element}      
+
+Move to the "${name}" image
+  ${element}               Get Element                         //button[contains(@aria-label,'${name}')]
+  Click                    ${element}      
+  Wait Until Image Visible
 
 ### Relate to number of list page ###
 Count the number data in list

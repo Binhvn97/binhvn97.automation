@@ -11,12 +11,25 @@ Test Teardown       Tear Down
 ### Check the User Interface of the Categories Data page ###
 CA_DA_01 Verify that navigating to the right "Categories Data" page
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
-   Login to admin
-   When Click "QUẢN LÝ DANH MỤC" menu
-   When Click "Quản lý dữ liệu" sub menu to "/data"
-   Then Confirm locating exactly in "Quản lý dữ liệu" page
-   Then Webpage should contain the list data from database
-   Then Webpage should contain "Tạo mới" button
+    Login to admin
+    When Click "QUẢN LÝ DANH MỤC" menu
+    When Click "Quản lý dữ liệu" sub menu to "/data"
+    Then Confirm locating exactly in "Quản lý dữ liệu" page
+    Then Webpage should contain the list data from database
+    Then Webpage should contain "Tạo mới" button
+
+CA_DA_02 Verify that navigating to the right "Categories Data" page
+    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    Go to "Quản lý dữ liệu" page
+    When Click "QUẢN LÝ DANH MỤC" menu
+    When Click "Quản lý dữ liệu" sub menu to "/data"
+    When Click "Tạo mới" button
+    When Enter "test name" in "Tên loại" with "_RANDOM_"
+    When Enter "number" in "Mã" with "_RANDOM_"
+    When Click "Lưu lại" button
+    When Select on the "_@Tên loại@_" item line
+    Then "_@Tên loại@_" item line should be highlighted
+    When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 ### Verify the creating data function ###
 CA_DA_02 Verify "Tạo mới" button function
@@ -32,7 +45,7 @@ CA_DA_02 Verify "Tạo mới" button function
     Then Webpage should contain left arrow icon
 
 CA_DA_03 Create new data with the valid data
-    [Tags]                                                                                        Create                                      Smoketest
+    [Tags]                                                                                        Create                                       Smoketest
     Go to page create category "Quản lý dữ liệu" with "/data"
     When Enter "test name" in "Tên loại" with "_RANDOM_"
     When Enter "number" in "Mã" with "_RANDOM_"
@@ -73,7 +86,7 @@ CA_DA_07 Create a new data when leaving "Mã" field blank
 
 ### Create new data with invalid data ###
 CA_DA_08 Create a new data with the existence of "Tên loại"
-    [Tags]                                                                                        Create                                      Invalid
+    [Tags]                                                                                        Create                                       Invalid
     Create a test category
     When Click "Tạo mới" button
     When Enter "test name" in "Tên loại" with "_@Tên loại@_"
@@ -84,7 +97,7 @@ CA_DA_08 Create a new data with the existence of "Tên loại"
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 CA_DA_09 Create a new data with the invalid "Mã"
-    [Tags]                                                                                        Create                                      Invalid
+    [Tags]                                                                                        Create                                       Invalid
     ${Cate1}=                                                                                     Create a test category
     When Click "Tạo mới" button
     When Enter "test name" in "Tên loại" with "_RANDOM_"
