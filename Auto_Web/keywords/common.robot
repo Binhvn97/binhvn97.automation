@@ -547,13 +547,18 @@ Webpage should contain the search function
   Should Be True            ${count} >= 1
 
 Webpage should contain the "${name}" filter function
-  ${element}=               Get Element                        //*[contains(@class,'flex-col')]//label[contains(text(),"${name}")]
+  ${element}=               Get Element                       //*[contains(@class,'flex-col')]//label[contains(text(),"${name}")]
   ${count}=                 Get Element Count                 ${element}
   Should Be True            ${count} >= 1
 
 Heading should contain "${text}" inner Text
-  ${element}=               Get Element                       //i[contains(@class,'la-arrow-left')]//ancestor::*[contains(@class,'mx-auto')]//h2
-  Get Text                  ${element}                        equal                      ${text}    
+  ${element}=               Set Variable                      //i[contains(@class,'la-arrow-left')]//ancestor::*[contains(@class,'mx-auto')]//h2
+  ${cnt}=                   Get Element Count                 ${element}
+  IF    ${cnt} > 0
+    Get Text                ${element}                        equal                      ${text}
+  ELSE
+    Get Text                //h2                              equal                      ${text}  
+  END
 
 Webpage should contain the list data from database
   ${element}=               Get Element                        //div[contains(@class,'datatable-wrapper')]    
