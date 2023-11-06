@@ -87,7 +87,7 @@ Get Random Text
 
 Enter "${type}" in "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
-  ${element}=               Get Element Form Item By Name     ${name}                       //input[contains(@class, "ant-input")]
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-input")]
   Click                     ${element}
   Clear Text                ${element}
   Fill Text                 ${element}                        ${text}                       True
@@ -96,6 +96,7 @@ Enter "${type}" in "${name}" with "${text}"
     Fill Text               ${element}                        ${text}
     ${condition}=           Get Text                          ${element}     
   END
+  Scroll To Element         ${element}
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
@@ -112,6 +113,7 @@ Enter "${type}" in textarea "${name}" with "${text}"
     Fill Text               ${element}                        ${text}
     ${condition}=           Get Text                          ${element}     
   END
+  Scroll To Element         ${element}
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
   Set Global Variable       \${STATE["${name}"]}              ${text}
@@ -435,7 +437,7 @@ Click "${text}" button with cancel action
 
 Select file in "${name}" with "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
-  Upload File By Selector   ${element}                        test/upload/${text}
+  Upload File By Selector   ${element}                        Auto_Web/upload/${text}
   Wait Until Network Is Idle
 
 Click radio "${name}" in line "${text}"
@@ -728,11 +730,11 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
     ${select}=                  Convert To Integer              ${ordinal}
   END
   ${amountPage}=                Check the amount of page list
-  ${text_current}=              Get Text                        //*[contains(@class, 'ant-select-selection-item')]
+  ${text_current}=              Get Text                        //g-pagination//*[contains(@class, 'ant-select-selection-item')]
   ${current}=                   Get Regexp Matches              ${text_current}                          (.+) / page                    1
   ${current_number}=            Set Variable                    ${current[0]}
   ${current_number}             Convert To Integer              ${current_number}
-  Click                         xpath=//*[contains(@class, 'ant-select-selection-item')]
+  Click                         xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
   ${text_select}=               Get Text                        //nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]      
   ${select_string}=             Get Regexp Matches              ${text_select}                           (.+) / page                    1
   ${select_number}=             Set Variable                    ${select_string[0]}
@@ -742,7 +744,7 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
       Move to the "next" page
       ${name}=                  Get data in the first row
       ${ordinal_before}=        Evaluate                        ${current_number} + 2
-      Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Click                     xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
       Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
@@ -750,7 +752,7 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
     ELSE IF                     ${current_number} > ${select_number}
       ${ordinal_before}=        Evaluate                        ${select_number} + 2
       ${name}=                  Get Text                        //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
-      Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Click                     xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
       Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
@@ -759,14 +761,14 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
       Should Be Equal           ${nameS}                         ${name}
       Move to the "previous" page
     ELSE IF                     ${current_number} = ${select_number}
-      Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Click                     xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
       Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]        
       Wait Until Element Spin
     END    
   ELSE IF                       ${amountPage} < 2 
     IF                          ${current_number} <= ${select_number}
-      Click                     xpath=//*[contains(@class, 'ant-select-selection-item')]
+      Click                     xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
       Wait Until Element Spin
       Click                     xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
       Wait Until Element Spin
@@ -775,7 +777,7 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
       IF       ${account_number} > ${select_number}
         ${ordinal_before}=      Evaluate                         ${select_number} + 2
         ${name}=                Get Text                         //tbody//tr[${ordinal_before}]//button[contains(@title,"Chi tiết")]
-        Click                   xpath=//*[contains(@class, 'ant-select-selection-item')]
+        Click                   xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
         Wait Until Element Spin
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
         Wait Until Element Spin
@@ -784,7 +786,7 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
         Should Be Equal         ${nameS}                         ${name}
         Move to the "previous" page
       ELSE IF    ${account_number} <= ${select_number}
-        Click                   xpath=//*[contains(@class, 'ant-select-selection-item')]
+        Click                   xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
         Wait Until Element Spin
         Click                   xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]   
         Wait Until Element Spin

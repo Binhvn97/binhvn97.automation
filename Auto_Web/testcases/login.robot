@@ -29,7 +29,7 @@ LO_04 Verify that log in with leaving the blank field in "Email"
 
 LO_05 Verify that log in with leaving the blank field in "Mật khẩu"
   [Tags]                                                                                            Login                            BlankField                       Smoketest
-  When Enter "password" in "Mật khẩu" with "_RANDOM_"
+  When Enter "email" in "Email" with "admin@gmail.com"
   When Click "Đăng nhập" button
   Then Required message "Xin vui lòng nhập mật khẩu" displayed under "Mật khẩu" field
 

@@ -1,0 +1,23 @@
+IA_49 Delete test account
+   Go to "Customer Account" page
+   ${condition}=            Get data in the first row
+   WHILE    '${condition}' != 'xin'        limit=30
+      Click on the "Xóa" button in the "${condition}" table line
+      Wait Until Element Spin
+      ${condition}=            Get data in the first row
+   END
+
+DA_49 Delete test account
+   Go to "Quản lý dữ liệu" page
+   ${condition}=            Get data in the first row
+   WHILE    '${condition}' != 'HSBC test'        limit=30
+      Click on the "Xóa" button in the "${condition}" table line
+      Wait Until Element Spin
+      ${condition}=            Get data in the first row
+   END
+   ${conditionS}=            Get Text    //body[1]/app-root[1]/app-main[1]/main[1]/div[4]/app-data[1]/div[1]/div[1]/div[1]/div[2]/nz-spin[1]/div[1]/button[1]/span
+   WHILE    '${conditionS}' != '1. HSBC'        limit=30
+      Click on the "Xóa" button in the "${conditionS}" item line
+      Wait Until Element Spin
+      ${conditionS}=            Get Text    //body[1]/app-root[1]/app-main[1]/main[1]/div[4]/app-data[1]/div[1]/div[1]/div[1]/div[2]/nz-spin[1]/div[1]/button[1]/span
+   END

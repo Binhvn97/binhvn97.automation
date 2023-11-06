@@ -294,7 +294,7 @@ DA_24 Verify the changing "Mô tả" field
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "text" in textarea "Mô tả" with "_RANDOM_"
+    When Enter "paragraph" in "Mô tả" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Cập nhật thành công" popup
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
@@ -309,7 +309,7 @@ DA_25 Verify the changing "Nội dung" field
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "paragraph" in textarea "Nội dung" with "_RANDOM_"
+    When Enter "paragraph" in "Nội dung" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Cập nhật thành công" popup
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
