@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: DockerfileApp
+    ports:
+      - '3000:3000'
+    volumes:
+      - app:/app
+    command: npm run serve
+    networks:
+      - network
+
+  robotframework:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - robotframework:/test
+    command: >
+      robot -d result testcases/login.robot
+    networks:
+      - network
+    depends_on:
+      - app
+
+networks:
+  network:
+    driver: bridge
+    name: network
+
+volumes:
+  app:
+  robotframework:
