@@ -198,7 +198,7 @@ CA_DA_18_01 Check the left arrow icon ("Trở lại" button) in edit infomation 
     Then Webpage should contain "Tạo mới" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
-CA_DA_18_01 Check the left arrow icon ("Trở lại" button) in edit infomation page
+CA_DA_18_02 Check the (left arrow icon) "Trở lại" button in edit infomation page
     [Tags]                                                                                        ChangeInfo                                       Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line

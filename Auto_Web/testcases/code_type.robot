@@ -520,7 +520,7 @@ CO_14_02 Verify "Thêm mới" button function in "Độ khó" category
     Select on the "Độ khó" item line
     When Click "Thêm mới" button
     Then Heading should contain "Thêm mới Độ khó" inner Text
-    Then Confirm adding "code-types/MEDICAL_PROCEDURE_DIFFICULTY" page
+    Then Confirm adding "/code-types/MEDICAL_PROCEDURE_DIFFICULTY" page
     Then Webpage should contain "Tiêu đề" input field
     Then Webpage should contain "Thứ tự" input field
     Then Webpage should contain "Mã" input field
@@ -550,7 +550,7 @@ CO_14_04 Verify "Thêm mới" button function in "Số răng" category
     Select on the "Số răng" item line
     When Click "Thêm mới" button
     Then Heading should contain "Thêm mới Số răng" inner Text
-    Then Confirm adding "/code-types/MEDICAL_OF_TEETH" page
+    Then Confirm adding "/code-types/NUMBER_OF_TEETH" page
     Then Webpage should contain "Tiêu đề" input field
     Then Webpage should contain "Thứ tự" input field
     Then Webpage should contain "Mã" input field
