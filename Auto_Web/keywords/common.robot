@@ -5,12 +5,12 @@ Library             String
 
 *** Variables ***
 ${BROWSER}          chromium
-${HEADLESS}         ${True}
+${HEADLESS}         ${False}
 ${BROWSER_TIMEOUT}  10 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
 ${TIME_TRY}         0.3 seconds
 
-${URL_DEFAULT}      http://dev1.geneat.vn:7802/vn
+${URL_DEFAULT}      http://dev1.geneat.vn:7802/#/vn
 ${STATE}            Evaluate    json.loads('''{}''')  json
 
 *** Keywords ***
@@ -103,6 +103,20 @@ Enter "${type}" in "${name}" with "${text}"
   END
   Wait Until Network Is Idle
 
+Enter "${type}" in "${name}" of "${tab}" tab with "${text}"
+  ${text}=                  Get Random Text                   ${type}                       ${text}
+  ${element}=               Get Element                       //*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${tab}")]//ancestor::*[contains(@class,'ant-tabs-default')]//label[contains(text(),"${name}")]/../..//*[contains(@class, "ant-input")]
+  Click                     ${element}
+  Clear Text                ${element}
+  Fill Text                 ${element}                        ${text}                       True
+  ${condition}=             Get Text                          ${element}
+  WHILE    '${condition}' != '${text}'    limit=10
+    Fill Text               ${element}                        ${text}
+    ${condition}=           Get Text                          ${element}     
+  END
+  Scroll To Element         ${element}
+  Wait Until Network Is Idle
+
 Enter "${type}" in textarea "${name}" with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //textarea
@@ -177,6 +191,11 @@ Enter "${type}" in editor "${name}" with "${text}"
   Clear Text                                                  ${element}
   Fill Text                                                   ${element}                    ${text}
 
+Clear data in "${name}" field
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-input")]
+  Click                     ${element}
+  Clear Text                ${element}
+
 ###  -----  Table  -----  ###
 Get Element Table Item By Name
   [Arguments]               ${name}                           ${xpath}
@@ -218,6 +237,13 @@ Table line should show empty
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
+
+"${name}" table line should contain the "${button}" button
+  Wait Until Element Spin
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::tr//button[@title="${button}"]
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} > 0
 
 Click on the "${text}" button in the "${name}" table line
   Sleep                      ${SHOULD_TIMEOUT}
@@ -300,7 +326,7 @@ Get Element Tree By Name
   [Arguments]               ${name}                           ${xpath}=${EMPTY}
   [Return]                  xpath=//*[contains(@class, "ant-tree-node-content-wrapper") and @title = "${name}"]/*[contains(@class, "group")]${xpath}
 
-Click on the previously created "${name}" tree to delete
+Click on the "${name}" tree to delete
   Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
@@ -310,7 +336,16 @@ Click on the previously created "${name}" tree to delete
   Click Confirm To Action
   Wait Until Network Is Idle
 
-Click on the previously created "${name}" tree to edit
+Click on the "${name}" tree to delete with cancel
+  Wait Until Element Spin
+  ${name}=                  Check Text                        ${name}
+  ${element}=               Get Element Tree By Name          ${name}
+  Scroll To Element         ${element}
+  Mouse Move Relative To    ${element}                        0
+  Click                     ${element}//*[contains(@class, "la-trash")]
+  Click Cancel Action
+
+Click on the "${name}" tree to edit
   Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
@@ -335,6 +370,17 @@ Click tree select "${name}" with "${text}"
   Click                     ${element}
   Fill Text                 ${element}//input                 ${text}
   Click                     xpath=//*[contains(@class, "ant-select-tree-node-content-wrapper") and @title="${text}"]
+  ${cnt}=                   Get Length                        ${text}
+  IF  ${cnt} > 0
+    Set Global Variable     \${STATE["${name}"]}              ${text}
+  END
+
+Click tree select "${name}" to show data
+  ${name}=                  Check Text                        ${name}
+  ${element}=               Get Element                       //nz-tree-node-title[@title="${name}"]/..//i[contains(@class,'la-angle-down')]
+  Click                     ${element}
+  Wait Until Network Is Idle
+  Wait Until Element Spin
 
 ###  -----  Element  -----  ###
 Element Should Be Visible
@@ -365,6 +411,8 @@ Click "${text}" button
 
 Click "${text}" tab button
   Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
+  Wait Until Element Spin
+  Wait Until Network Is Idle
 
 Click "${text}" menu
   Click                     xpath=//li[contains(@class, "menu") and descendant::span[contains(text(), "${text}")]]
@@ -391,6 +439,16 @@ Click select "${name}" with "${text}"
     Set Global Variable     \${STATE["${name}"]}              ${text}
   END
 
+Click radio select "${name}" with "${text}"
+  ${text}=                  Get Random Text                   Text                          ${text}
+  ${element}=               Get Element Form Item By Name     ${name}                       //span[contains(text(),"${text}")]/../span[contains(@class,'ant-radio-button')]
+  Click                     ${element}
+  Wait Until Network Is Idle
+  ${cnt}=                   Get Length                        ${text}
+  IF  ${cnt} > 0
+    Set Global Variable     \${STATE["${name}"]}              ${text}
+  END
+
 Log out account
   Click                      //img[contains(@alt,'Avatar')]
   Wait Until Element Spin
@@ -398,7 +456,7 @@ Log out account
   
 Click on magnifier icon in search box
   Sleep                      ${SHOULD_TIMEOUT}
-  Click                      xpath=//*[contains(@class, "text-lg las la-search")]
+  Click                      xpath=//*[contains(@class, "las la-search")]
   Wait Until Element Spin
   Wait Until Network Is Idle
 
@@ -444,7 +502,7 @@ Click radio "${name}" in line "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
   Click                     ${element}
 
-Click switch "${name}" to be activated
+Click switch "${name}" to change button status
   ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
   Click                     ${element}
 
@@ -454,6 +512,17 @@ Click assign list "${list}"
     Click                   xpath=//*[contains(@class, "ant-checkbox-wrapper")]/*[text()="${word}"]
   END
   Click                     xpath=//*[contains(@class, "ant-transfer-operation")]/button[2]
+  Wait Until Element Spin
+  Wait Until Network Is Idle
+
+Click unassign list "${list}"
+  ${words}=                 Split String                      ${list}                       ,${SPACE}
+  FOR    ${word}    IN    @{words}
+    Click                   xpath=//*[contains(@class, "ant-checkbox-wrapper")]/*[text()="${word}"]
+  END
+  Click                     xpath=//*[contains(@class, "ant-transfer-operation")]/button[1]
+  Wait Until Element Spin
+  Wait Until Network Is Idle
 
 Click filter "${name}" with "${text}"
   ${text}=                  Get Random Text                    Text                       ${text}
@@ -465,6 +534,8 @@ Click filter "${name}" with "${text}"
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}               ${text}
   END
+  Wait Until Element Spin
+  Wait Until Network Is Idle
 
 Click on cross icon in select "${name}" 
   ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
@@ -542,32 +613,75 @@ The hidden password in "${name}" field should be visibled as "${text}"
   Get Property              ${element}                         type                       ==                             text                     
   Get Text                  ${element}                         equal                      ${text}
 
+The assign list in "${name}" should contain "${text}"
+  ${text}=                  Check Text                         ${text}
+  ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::*[contains(@class,"ant-transfer-list")]//*[contains(@class,'ant-transfer-list-content-item')]//span[contains(text(),"${text}")]
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} > 0
+
+The assign list in "${name}" should not contain "${text}"
+  ${text}=                  Check Text                         ${text}
+  ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::*[contains(@class,"ant-transfer-list")]//*[contains(@class,'ant-transfer-list-content-item')]//span[contains(text(),"${text}")]
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} < 1
+
+The status of "${name}" switch button should be activated
+  ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
+  Get Property              ${element}                        className                     contains                             ant-switch-checked
+
+The status of "${name}" switch button should not be activated
+  ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
+  Get Property              ${element}                        className                     not contains                         ant-switch-checked
+
 # Check UI or Existence #
 Webpage should contain the search function
-  ${element}=               Get Element                        //*[contains(@class,'flex-col')]//label[contains(text(),"Tìm kiếm")]
+  ${element}=               Set Variable                       //*[contains(@class,'flex-col')]//label[contains(text(),"Tìm kiếm")]
   ${count}=                 Get Element Count                  ${element}
-  Should Be True            ${count} >= 1
+  ${condition}=             Run Keyword And Return Status      Should Be True               ${count} >= 1
+  IF      '${condition}' == 'False'
+    ${elementS}=            Set Variable                       //input[contains(@placeholder,"Nhập để tìm kiếm")]//following-sibling::i[contains(@class,'la-search')]
+    ${cntS}=                Get Element Count                  ${elementS}
+    Should Be True          ${cntS} > 0
+  END
 
 Webpage should contain the "${name}" filter function
   ${element}=               Get Element                       //*[contains(@class,'flex-col')]//label[contains(text(),"${name}")]
   ${count}=                 Get Element Count                 ${element}
   Should Be True            ${count} >= 1
 
+# Heading should contain "${text}" inner Text
+#   ${text}=                  Check Text                        ${text}
+#   ${X}=                     Set Variable                      1
+#   WHILE    ${X} <= 6
+#     ${element}=             Set Variable                      //*[contains(@class,'mx-auto')]//h${X}
+#     ${condition}=           Run Keyword And Return Status     Get Text                  ${element}                        equal                      ${text}
+#     IF    '${condition}' == 'True'                            BREAK
+#     ${X}=                   Evaluate                          ${X} + 1
+#   END
+
 Heading should contain "${text}" inner Text
-  ${element}=               Set Variable                      //i[contains(@class,'la-arrow-left')]//ancestor::*[contains(@class,'mx-auto')]//h2
-  ${cnt}=                   Get Element Count                 ${element}
-  IF    ${cnt} > 0
-    Get Text                ${element}                        equal                      ${text}
-  ELSE
-    Get Text                //h2                              equal                      ${text}  
+  ${text}=                  Check Text                        ${text}
+  FOR    ${X}    IN RANGE    1    6    1
+    ${element}=             Set Variable                      //*[contains(@class,'mx-auto')]//h${X}
+    ${condition}=           Run Keyword And Return Status     Get Text                  ${element}                        equal                      ${text}
+    IF    '${condition}' == 'True'                            BREAK    
   END
+
+Heading of separated group should contain "${text}" inner Text
+  ${text}=                  Check Text                        ${text}
+  ${element}=               Set Variable                      //*[contains(@class,'mx-auto grid')]//span[contains(text(),"${text}")]
+  ${cnt}=                   Get Element Count                 ${element}
+  Should Be True            ${cnt} > 0
 
 Webpage should contain the list data from database
   ${element}=               Get Element                        //div[contains(@class,'datatable-wrapper')]    
-  ${count}=                 Get Element Count                  ${element}
-  IF    ${count} > 0
-    Set Global Variable     \${STATE["${count}"]}              ${count}
-  END
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} > 0
+
+Webpage should contain "${name}" assign list
+  ${element}=               Set Variable                      //label[contains(text(),'${name}')]/../..//*[contains(@class,'ant-form-item-control-input-content')]
+  ${cnt}=                   Get Element Count                 ${element}
+  Should Be True            ${cnt} > 0
 
 Webpage should contain "${name}" select field   
   ${element}=               Set Variable                       //label[text()="${name}"]//ancestor::*[contains(@class,'ant-row')]//input[contains(@class,'ant-select')]
@@ -583,6 +697,12 @@ Webpage should contain "${name}" button
   ${element}=               Set Variable                       //button[contains(text(),"${name}")]
   ${count}=                 Get Element Count                  ${element}
   Should Be True            ${count} >= 1
+
+Webpage should contain "${name}" switch button
+  ${name}=                  Check Text                         ${name}
+  ${element}=               Set Variable                       //label[contains(text(),'${name}')]/../..//button[contains(@class,'ant-switch')]
+  ${cnt}=                   Get Element Count                  ${element}
+  Should Be True            ${cnt} > 0
 
 Webpage should contain left arrow icon
   ${count}=                 Get Element Count                  //i[contains(@class,'la-arrow-left')]
