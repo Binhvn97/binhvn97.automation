@@ -83,7 +83,7 @@ CO_03_02 Verify the function navigating to other pages in the list of "Độ kh�
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then Move to the last page and check
 
-CO_03_02 Verify the function navigating to other pages in the list of "Bằng cấp chuyên môn"
+CO_03_03 Verify the function navigating to other pages in the list of "Bằng cấp chuyên môn"
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
@@ -97,7 +97,7 @@ CO_03_02 Verify the function navigating to other pages in the list of "Bằng c�
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then Move to the last page and check
 
-CO_03_02 Verify the function navigating to other pages in the list of "Số răng"
+CO_03_04 Verify the function navigating to other pages in the list of "Số răng"
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
     Go to "Danh mục" page
     Select on the "Số răng" item line
@@ -120,7 +120,7 @@ CO_04_01 Verify the highlight table line funtion in "Nhóm thủ thuật" after 
     Then "_@Tiêu đề@_" table line should be highlighted
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_04_01 Verify the highlight table line funtion in "Độ khó" after operated
+CO_04_02 Verify the highlight table line funtion in "Độ khó" after operated
     [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Create a test data of "Độ khó" category
@@ -129,7 +129,7 @@ CO_04_01 Verify the highlight table line funtion in "Độ khó" after operated
     Then "_@Tiêu đề@_" table line should be highlighted
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_04_01 Verify the highlight table line funtion in "Bằng cấp chuyên môn" after operated
+CO_04_03 Verify the highlight table line funtion in "Bằng cấp chuyên môn" after operated
     [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Create a test data of "Bằng cấp chuyên môn" category
@@ -442,20 +442,6 @@ CO_13_01 Check the update of data list after cancel the search action (in "Nhóm
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_13_01 Check the update of data list after cancel the search action (in "Nhóm thủ thuật" category)
-    [Tags]                                                                                        Search
-    ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
-    Create a test data of "Nhóm thủ thuật" category
-    When Enter "text" in "Tìm kiếm" with "${Code1}"
-    When Click on magnifier icon in search box
-    Then "${Code1}" should be visible in table line
-    Then "_@Tiêu đề@_" should not be visible in table line
-    When Enter "text" in "Tìm kiếm" with ""
-    When Click on magnifier icon in search box
-    Then "_@Tiêu đề@_" should be visible in table line
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
-
 CO_13_02 Check the update of data list after cancel the search action (in "Độ khó" category)
     [Tags]                                                                                        Search
     ${Code1}=                                                                                     Create a test data of "Độ khó" category
@@ -633,7 +619,7 @@ CO_16_02 Create a new data of "Độ khó" category with all blank fields
     Then Required message "Xin vui lòng nhập tiêu đề" displayed under "Tiêu đề" field
     Then Required message "Xin vui lòng nhập mã" displayed under "Mã" field
 
-CO_16_01 Create a new data of "Bằng cấp chuyên môn" category with all blank fields
+CO_16_03 Create a new data of "Bằng cấp chuyên môn" category with all blank fields
     [Tags]                                                                                        Create                                       BlankField
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
@@ -642,7 +628,7 @@ CO_16_01 Create a new data of "Bằng cấp chuyên môn" category with all blan
     Then Required message "Xin vui lòng nhập tiêu đề" displayed under "Tiêu đề" field
     Then Required message "Xin vui lòng nhập mã" displayed under "Mã" field
 
-CO_16_01 Create a new data of "Số răng" category with all blank fields
+CO_16_04 Create a new data of "Số răng" category with all blank fields
     [Tags]                                                                                        Create                                       BlankField
     Go to "Danh mục" page
     Select on the "Số răng" item line
@@ -754,7 +740,7 @@ CO_19_01 Create a new data of "Nhóm thủ thuật" category when leaving "Mã" 
     When Click "Lưu lại" button
     Then Required message "Xin vui lòng nhập mã" displayed under "Mã" field
 
-CO_19_01 Create a new data of "Độ khó" category when leaving "Mã" field blank
+CO_19_02 Create a new data of "Độ khó" category when leaving "Mã" field blank
     [Tags]                                                                                        Create                                       BlankField
     Go to "Danh mục" page
     Select on the "Độ khó" item line
@@ -765,7 +751,7 @@ CO_19_01 Create a new data of "Độ khó" category when leaving "Mã" field bla
     When Click "Lưu lại" button
     Then Required message "Xin vui lòng nhập mã" displayed under "Mã" field
 
-CO_19_01 Create a new data of "Bằng cấp chuyên môn" category when leaving "Mã" field blank
+CO_19_03 Create a new data of "Bằng cấp chuyên môn" category when leaving "Mã" field blank
     [Tags]                                                                                        Create                                       BlankField
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
@@ -899,7 +885,7 @@ CO_22_01 Verify that CAN NOT create a new data of "Nhóm thủ thuật" category
     When Click "Lưu lại" button
     Then User look message "Code đã tồn tại" popup
     When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+    When Click on the "Xóa" button in the "${Code1}" table line
 
 CO_22_02 Verify that CAN NOT create a new data of "Độ khó" category when entering an existent data in "Mã"
     [Tags]                                                                                        Create                                       Invalid
@@ -912,7 +898,7 @@ CO_22_02 Verify that CAN NOT create a new data of "Độ khó" category when ent
     When Click "Lưu lại" button
     Then User look message "Code đã tồn tại" popup
     When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+    When Click on the "Xóa" button in the "${Code1}" table line
 
 CO_22_03 Verify that CAN NOT create a new data of "Bằng cấp chuyên môn" category when entering an existent data in "Mã"
     [Tags]                                                                                        Create                                       Invalid
@@ -925,7 +911,7 @@ CO_22_03 Verify that CAN NOT create a new data of "Bằng cấp chuyên môn" ca
     When Click "Lưu lại" button
     Then User look message "Code đã tồn tại" popup
     When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+    When Click on the "Xóa" button in the "${Code1}" table line
 
 CO_22_04 Verify that CAN NOT create a new data of "Số răng" category when entering an existent data in "Mã"
     [Tags]                                                                                        Create                                       Invalid
@@ -938,7 +924,7 @@ CO_22_04 Verify that CAN NOT create a new data of "Số răng" category when ent
     When Click "Lưu lại" button
     Then User look message "Code đã tồn tại" popup
     When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+    When Click on the "Xóa" button in the "${Code1}" table line
 
 ### Verify the go back button in the create a new code type page ###
 CO_23_01 Verify the "Đóng lại" button in create new data of "Nhóm thủ thuật" category
@@ -991,7 +977,7 @@ CO_24_01 Verify the "left-arrow" button in create new data of "Nhóm thủ thu�
     Then Webpage should contain "Thêm mới" button
     Then Webpage should contain the list data from database
 
-CO_23_02 Verify the "left-arrow" button in create new data of "Độ khó" category
+CO_24_02 Verify the "left-arrow" button in create new data of "Độ khó" category
     [Tags]                                                                                        Create                                       Button
     Go to "Danh mục" page
     Select on the "Độ khó" item line
@@ -1001,7 +987,7 @@ CO_23_02 Verify the "left-arrow" button in create new data of "Độ khó" categ
     Then Webpage should contain "Thêm mới" button
     Then Webpage should contain the list data from database
 
-CO_23_03 Verify the "left-arrow" button in create new data of "Bằng cấp chuyên môn" category
+CO_24_03 Verify the "left-arrow" button in create new data of "Bằng cấp chuyên môn" category
     [Tags]                                                                                        Create                                       Button
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
@@ -1011,7 +997,7 @@ CO_23_03 Verify the "left-arrow" button in create new data of "Bằng cấp chuy
     Then Webpage should contain "Thêm mới" button
     Then Webpage should contain the list data from database
 
-CO_23_04 Verify the "left-arrow" button in create new data of "Số răng" category
+CO_24_04 Verify the "left-arrow" button in create new data of "Số răng" category
     [Tags]                                                                                        Create                                       Button
     Go to "Danh mục" page
     Select on the "Số răng" item line
@@ -1069,7 +1055,7 @@ CO_26_01 Verify that CAN change "Thứ tự" of the created data of "Nhóm thủ
     When Enter "number" in "Thứ tự" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Thứ tự" should be equal "_@Thứ tự@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1081,7 +1067,7 @@ CO_26_02 Verify that CAN change "Thứ tự" of the created data of "Độ khó"
     When Enter "number" in "Thứ tự" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Thứ tự" should be equal "_@Thứ tự@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1093,7 +1079,7 @@ CO_26_03 Verify that CAN change "Thứ tự" of the created data of "Bằng cấ
     When Enter "number" in "Thứ tự" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Thứ tự" should be equal "_@Thứ tự@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1105,7 +1091,7 @@ CO_26_04 Verify that CAN change "Thứ tự" of the created data of "Số răng"
     When Enter "number" in "Thứ tự" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Thứ tự" should be equal "_@Thứ tự@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1117,7 +1103,7 @@ CO_27_01 Verify that CAN change "Mô tả" of the created data of "Nhóm thủ t
     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mô tả" should be equal "_@Mô tả@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1129,7 +1115,7 @@ CO_27_02 Verify that CAN change "Mô tả" of the created data of "Độ khó" c
     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mô tả" should be equal "_@Mô tả@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1141,7 +1127,7 @@ CO_27_03 Verify that CAN change "Mô tả" of the created data of "Bằng cấp 
     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mô tả" should be equal "_@Mô tả@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1153,7 +1139,7 @@ CO_27_04 Verify that CAN change "Mô tả" of the created data of "Số răng" c
     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mô tả" should be equal "_@Mô tả@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1165,7 +1151,7 @@ CO_28_01 Verify that CAN change "Mã" of created data of "Nhóm thủ thuật" f
     When Enter "text" in "Mã" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mã" should be equal "_@Mã@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1177,7 +1163,7 @@ CO_28_02 Verify that CAN change "Mã" of created data of "Độ khó" field
     When Enter "text" in "Mã" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mã" should be equal "_@Mã@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1189,7 +1175,7 @@ CO_28_03 Verify that CAN change "Mã" of created data of "Bằng cấp chuyên m
     When Enter "text" in "Mã" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mã" should be equal "_@Mã@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -1201,7 +1187,7 @@ CO_28_04 Verify that CAN change "Mã" of created data of "Số răng" field
     When Enter "text" in "Mã" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đều@_" table line
+    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Mã" should be equal "_@Mã@_"
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line

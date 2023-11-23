@@ -656,7 +656,8 @@ Create a category with "${name}" name
   ${name}=                  Check Text                              ${name}
   ${condition}=             Run Keyword And Return Status           Confirm locating exactly in "Post" page
   IF    '${condition}' == 'True'
-    ${cnt}=                 Get Element Count                       //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+    ${element}=             Set Variable                            //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+    ${cnt}=                 Get Element Count                       ${element}
     IF     ${cnt} < 1
       Click "Tạo mới" button
       Enter "test name" in "Tiêu đề" with "${name}"
@@ -668,7 +669,8 @@ Create a category with "${name}" name
     END
   ELSE
     Go to "Post" page
-    ${cnt}=                   Get Element Count                     //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+    ${element}=             Set Variable                            //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+    ${cnt}=                 Get Element Count                       ${element}
     IF     ${cnt} < 1
       Click "Tạo mới" button
       Enter "test name" in "Tiêu đề" with "${name}"

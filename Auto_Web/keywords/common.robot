@@ -493,9 +493,9 @@ Click "${text}" button with cancel action
   Click Cancel Action
   Scroll By                 ${None}
 
-Select file in "${name}" with "${text}"
+Select file in "${name}" with "${image_name}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
-  Upload File By Selector   ${element}                        Auto_Web/upload/${text}
+  Upload File By Selector   ${element}                        Auto_Web/upload/${image_name}
   Wait Until Network Is Idle
 
 Click radio "${name}" in line "${text}"
@@ -851,12 +851,12 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
   END
   ${amountPage}=                Check the amount of page list
   ${text_current}=              Get Text                        //g-pagination//*[contains(@class, 'ant-select-selection-item')]
-  ${current}=                   Get Regexp Matches              ${text_current}                          (.+) / page                    1
+  ${current}=                   Get Regexp Matches              ${text_current}                           (.+) / page                    1
   ${current_number}=            Set Variable                    ${current[0]}
   ${current_number}             Convert To Integer              ${current_number}
   Click                         xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
   ${text_select}=               Get Text                        //nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]      
-  ${select_string}=             Get Regexp Matches              ${text_select}                           (.+) / page                    1
+  ${select_string}=             Get Regexp Matches              ${text_select}                            (.+) / page                    1
   ${select_number}=             Set Variable                    ${select_string[0]}
   ${select_number}=             Convert To Integer              ${select_number}    
   IF                            ${amountPage} >= 2

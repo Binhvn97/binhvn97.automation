@@ -347,7 +347,7 @@ DH_27 Verify the search function when enter the existed name
 DH_28 Verify the search function when enter the name was not existed
     [Tags]                                                                                        Search                                     Smoketest
     Create a test data
-    When Enter "test name" in placeholder "Nhập để tìm kiếm" with "_RANDOM_"
+    When Enter "text" in placeholder "Nhập để tìm kiếm" with "_RANDOM_"
     Then "_@Tên điều hướng@_" should not be visible in the tree line
     When Enter "test name" in placeholder "Nhập để tìm kiếm" with ""
     When Click tree select "DASHBOARD" to show data

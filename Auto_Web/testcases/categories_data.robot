@@ -123,7 +123,7 @@ CA_DA_12_01 Check the left arrow icon ("Trở lại" button)
     Then Webpage should contain the list data from database
     Then Webpage should contain "Tạo mới" button
 
-CA_DA_12_01 Check the left arrow icon ("Trở lại" button)
+CA_DA_12_02 Check the (left arrow icon) "Trở lại" button
     [Tags]                                                                                        Create                                       Button
     Go to page create category "Quản lý dữ liệu" with "/data"
     When Click "Trở lại" button
