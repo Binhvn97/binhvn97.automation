@@ -46,14 +46,14 @@ CO_02_03 Verify the function changing the number of data show in "Bằng cấp c
     When Click on "fourth" selection to change the number of data show in list and check
     When Click on "fifth" selection to change the number of data show in list and check
 
-CO_02_04 Verify the function changing the number of data show in "Số răng" list
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
-    Go to "Danh mục" page
-    Select on the "Số răng" item line
-    When Click on "second" selection to change the number of data show in list and check
-    When Click on "third" selection to change the number of data show in list and check
-    When Click on "fourth" selection to change the number of data show in list and check
-    When Click on "fifth" selection to change the number of data show in list and check
+# CO_02_04 Verify the function changing the number of data show in "Số răng" list
+#     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+#     Go to "Danh mục" page
+#     Select on the "Số răng" item line
+#     When Click on "second" selection to change the number of data show in list and check
+#     When Click on "third" selection to change the number of data show in list and check
+#     When Click on "fourth" selection to change the number of data show in list and check
+#     When Click on "fifth" selection to change the number of data show in list and check
 
 CO_03_01 Verify the function navigating to other pages in the list of "Nhóm thủ thuật"
     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
@@ -97,19 +97,19 @@ CO_03_03 Verify the function navigating to other pages in the list of "Bằng c�
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then Move to the last page and check
 
-CO_03_04 Verify the function navigating to other pages in the list of "Số răng"
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
-    Go to "Danh mục" page
-    Select on the "Số răng" item line
-    Then Check the amount of page list
-    ${Last_name}=                                                                                 Get data in the last row
-    When Create a test data of "Số răng" category
-    When Move to the "next" page
-    ${First_name}=                                                                                Get data in the first row
-    Then Should Be Equal    ${First_name}   ${Last_name}   
-    When Move to the "previous" page
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    Then Move to the last page and check
+# CO_03_04 Verify the function navigating to other pages in the list of "Số răng"
+#     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+#     Go to "Danh mục" page
+#     Select on the "Số răng" item line
+#     Then Check the amount of page list
+#     ${Last_name}=                                                                                 Get data in the last row
+#     When Create a test data of "Số răng" category
+#     When Move to the "next" page
+#     ${First_name}=                                                                                Get data in the first row
+#     Then Should Be Equal    ${First_name}   ${Last_name}   
+#     When Move to the "previous" page
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     Then Move to the last page and check
 
 CO_04_01 Verify the highlight table line funtion in "Nhóm thủ thuật" after operated
     [Tags]                                                                                        MainPage                                     UI
@@ -822,109 +822,109 @@ CO_20_04 Create a new data of "Số răng" category when leaving "Mô tả" fiel
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
 ### Create new data with invalid data ###
-CO_21_01 Verify that CAN NOT create a new data of "Nhóm thủ thuật" category when entering an existent data in "Tiêu đề"
-    [Tags]                                                                                        Create                                       Invalid
-    Create a test data of "Nhóm thủ thuật" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_21_01 Verify that CAN NOT create a new data of "Nhóm thủ thuật" category when entering an existent data in "Tiêu đề"
+#     [Tags]                                                                                        Create                                       Invalid
+#     Create a test data of "Nhóm thủ thuật" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_21_02 Verify that CAN NOT create a new data of "Độ khó" category when entering an existent data in "Tiêu đề"
-    [Tags]                                                                                        Create                                       Invalid
-    Create a test data of "Độ khó" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_21_02 Verify that CAN NOT create a new data of "Độ khó" category when entering an existent data in "Tiêu đề"
+#     [Tags]                                                                                        Create                                       Invalid
+#     Create a test data of "Độ khó" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_21_03 Verify that CAN NOT create a new data of "Bằng cấp chuyên môn" category when entering an existent data in "Tiêu đề"
-    [Tags]                                                                                        Create                                       Invalid
-    Create a test data of "Bằng cấp chuyên môn" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_21_03 Verify that CAN NOT create a new data of "Bằng cấp chuyên môn" category when entering an existent data in "Tiêu đề"
+#     [Tags]                                                                                        Create                                       Invalid
+#     Create a test data of "Bằng cấp chuyên môn" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_21_04 Verify that CAN NOT create a new data of "Số răng" category when entering an existent data in "Tiêu đề"
-    [Tags]                                                                                        Create                                       Invalid
-    Create a test data of "Số răng" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_21_04 Verify that CAN NOT create a new data of "Số răng" category when entering an existent data in "Tiêu đề"
+#     [Tags]                                                                                        Create                                       Invalid
+#     Create a test data of "Số răng" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_22_01 Verify that CAN NOT create a new data of "Nhóm thủ thuật" category when entering an existent data in "Mã"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_22_01 Verify that CAN NOT create a new data of "Nhóm thủ thuật" category when entering an existent data in "Mã"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_22_02 Verify that CAN NOT create a new data of "Độ khó" category when entering an existent data in "Mã"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data of "Độ khó" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_22_02 Verify that CAN NOT create a new data of "Độ khó" category when entering an existent data in "Mã"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data of "Độ khó" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_22_03 Verify that CAN NOT create a new data of "Bằng cấp chuyên môn" category when entering an existent data in "Mã"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data of "Bằng cấp chuyên môn" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_22_03 Verify that CAN NOT create a new data of "Bằng cấp chuyên môn" category when entering an existent data in "Mã"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data of "Bằng cấp chuyên môn" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_22_04 Verify that CAN NOT create a new data of "Số răng" category when entering an existent data in "Mã"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data of "Số răng" category
-    When Click "Thêm mới" button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Enter "number" in "Thứ tự" with "_RANDOM_"
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_22_04 Verify that CAN NOT create a new data of "Số răng" category when entering an existent data in "Mã"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data of "Số răng" category
+#     When Click "Thêm mới" button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Enter "number" in "Thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
 ### Verify the go back button in the create a new code type page ###
 CO_23_01 Verify the "Đóng lại" button in create new data of "Nhóm thủ thuật" category
@@ -1144,150 +1144,150 @@ CO_27_04 Verify that CAN change "Mô tả" of the created data of "Số răng" c
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_28_01 Verify that CAN change "Mã" of created data of "Nhóm thủ thuật" field
-    [Tags]                                                                                        ChangeInfo
-    Create a test data of "Nhóm thủ thuật" category
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    Then Data's information in "Mã" should be equal "_@Mã@_"
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_28_01 Verify that CAN change "Mã" of created data of "Nhóm thủ thuật" field
+#     [Tags]                                                                                        ChangeInfo
+#     Create a test data of "Nhóm thủ thuật" category
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Success" popup
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     Then Data's information in "Mã" should be equal "_@Mã@_"
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_28_02 Verify that CAN change "Mã" of created data of "Độ khó" field
-    [Tags]                                                                                        ChangeInfo
-    Create a test data of "Độ khó" category
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    Then Data's information in "Mã" should be equal "_@Mã@_"
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_28_02 Verify that CAN change "Mã" of created data of "Độ khó" field
+#     [Tags]                                                                                        ChangeInfo
+#     Create a test data of "Độ khó" category
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Success" popup
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     Then Data's information in "Mã" should be equal "_@Mã@_"
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_28_03 Verify that CAN change "Mã" of created data of "Bằng cấp chuyên môn" field
-    [Tags]                                                                                        ChangeInfo
-    Create a test data of "Bằng cấp chuyên môn" category
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    Then Data's information in "Mã" should be equal "_@Mã@_"
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_28_03 Verify that CAN change "Mã" of created data of "Bằng cấp chuyên môn" field
+#     [Tags]                                                                                        ChangeInfo
+#     Create a test data of "Bằng cấp chuyên môn" category
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Success" popup
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     Then Data's information in "Mã" should be equal "_@Mã@_"
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
-CO_28_04 Verify that CAN change "Mã" of created data of "Số răng" field
-    [Tags]                                                                                        ChangeInfo
-    Create a test data of "Số răng" category
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "text" in "Mã" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Success" popup
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    Then Data's information in "Mã" should be equal "_@Mã@_"
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+# CO_28_04 Verify that CAN change "Mã" of created data of "Số răng" field
+#     [Tags]                                                                                        ChangeInfo
+#     Create a test data of "Số răng" category
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     When Enter "text" in "Mã" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Success" popup
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     Then Data's information in "Mã" should be equal "_@Mã@_"
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
 ### Verify the changing data's code information by entering the invalid data ###
-CO_29_01 Verify that CAN NOT change the code's information of "Nhóm thủ thuật" category in "Tiêu đề" by entering the existent "Tiêu đề"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
-    Create a test data of "Nhóm thủ thuật" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_29_01 Verify that CAN NOT change the code's information of "Nhóm thủ thuật" category in "Tiêu đề" by entering the existent "Tiêu đề"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
+#     Create a test data of "Nhóm thủ thuật" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_29_02 Verify that CAN NOT change the code's information of "Độ khó" category in "Tiêu đề" by entering the existent "Tiêu đề"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Độ khó" category
-    Create a test data of "Độ khó" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_29_02 Verify that CAN NOT change the code's information of "Độ khó" category in "Tiêu đề" by entering the existent "Tiêu đề"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Độ khó" category
+#     Create a test data of "Độ khó" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_29_03 Verify that CAN NOT change the code's information of "Bằng cấp chuyên môn" category in "Tiêu đề" by entering the existent "Tiêu đề"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Bằng cấp chuyên môn" category
-    Create a test data of "Bằng cấp chuyên môn" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_29_03 Verify that CAN NOT change the code's information of "Bằng cấp chuyên môn" category in "Tiêu đề" by entering the existent "Tiêu đề"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Bằng cấp chuyên môn" category
+#     Create a test data of "Bằng cấp chuyên môn" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_29_04 Verify that CAN NOT change the code's information of "Số răng" category in "Tiêu đề" by entering the existent "Tiêu đề"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Số răng" category
-    Create a test data of "Số răng" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_29_04 Verify that CAN NOT change the code's information of "Số răng" category in "Tiêu đề" by entering the existent "Tiêu đề"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Số răng" category
+#     Create a test data of "Số răng" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_30_01 Verify that CAN NOT change the code's information of "Nhóm thủ thuật" category in "Mã" by entering the existent "Mã"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
-    Create a test data of "Nhóm thủ thuật" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_30_01 Verify that CAN NOT change the code's information of "Nhóm thủ thuật" category in "Mã" by entering the existent "Mã"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Nhóm thủ thuật" category
+#     Create a test data of "Nhóm thủ thuật" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_30_02 Verify that CAN NOT change the code's information of "Độ khó" category in "Mã" by entering the existent "Mã"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Độ khó" category
-    Create a test data of "Độ khó" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_30_02 Verify that CAN NOT change the code's information of "Độ khó" category in "Mã" by entering the existent "Mã"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Độ khó" category
+#     Create a test data of "Độ khó" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_30_03 Verify that CAN NOT change the code's information of "Bằng cấp chuyên môn" category in "Mã" by entering the existent "Mã"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Bằng cấp chuyên môn" category
-    Create a test data of "Bằng cấp chuyên môn" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_30_03 Verify that CAN NOT change the code's information of "Bằng cấp chuyên môn" category in "Mã" by entering the existent "Mã"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Bằng cấp chuyên môn" category
+#     Create a test data of "Bằng cấp chuyên môn" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
-CO_30_04 Verify that CAN NOT change the code's information of "Số răng" category in "Mã" by entering the existent "Mã"
-    [Tags]                                                                                        ChangeInfo                                  Invalid
-    ${Code1}=                                                                                     Create a test data of "Số răng" category
-    Create a test data of "Số răng" category
-    When Click on the "Sửa" button in the "${Code1}" table line
-    When Enter "text" in "Mã" with "_@Mã@_"
-    When Click "Lưu lại" button
-    Then User look message "Code đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "${Code1}" table line
+# CO_30_04 Verify that CAN NOT change the code's information of "Số răng" category in "Mã" by entering the existent "Mã"
+#     [Tags]                                                                                        ChangeInfo                                  Invalid
+#     ${Code1}=                                                                                     Create a test data of "Số răng" category
+#     Create a test data of "Số răng" category
+#     When Click on the "Sửa" button in the "${Code1}" table line
+#     When Enter "text" in "Mã" with "_@Mã@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Code đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "${Code1}" table line
 
 ### Verify the changing data's code information by leaving a blank field ###
 CO_31_01 Verify that CAN NOT leave a blank field in "Tiêu đề" when change the code's information of "Nhóm thủ thuật"

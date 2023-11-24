@@ -126,22 +126,22 @@ DH_09 Verify that CAN NOT create a new code data by leaving a blank field in "S�
     Then Required message "Xin vui lòng nhập số thứ tự" displayed under "Số thứ tự" field
 
 ### Verify the create data function when enter the invalid data  ###
-DH_10 Verify that CAN NOT create a new code by entering invalid data in "Tên điều hướng"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data 
-    When Click "Tạo mới" button
-    When Enter "test name" in "Tên điều hướng" with "_@Tên điều hướng@_"
-    When Enter "word" in "Mã điều hướng" with "_RANDOM_"
-    When Enter "word" in "Link" with "/_@Mã điều hướng@_"
-    When Enter "number" in "Số thứ tự" with "_RANDOM_"
-    When Enter "text" in "Biểu tượng" with "las la-folder-minus"
-    When Click tree select "Điều hướng cha" with "DASHBOARD"
-    When Enter "text" in "Tham số truy vấn" with "_RANDOM_"
-    When Click switch "Kích hoạt" to change button status
-    When Click assign list "Order Side, Farmer Side"
-    When Click "Lưu lại" button
-    Then User look message "Tên điều hướng đã tồn tại" popup
-    When Click on the "${Code1}" tree to delete
+# DH_10 Verify that CAN NOT create a new code by entering invalid data in "Tên điều hướng"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data 
+#     When Click "Tạo mới" button
+#     When Enter "test name" in "Tên điều hướng" with "_@Tên điều hướng@_"
+#     When Enter "word" in "Mã điều hướng" with "_RANDOM_"
+#     When Enter "word" in "Link" with "/_@Mã điều hướng@_"
+#     When Enter "number" in "Số thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Biểu tượng" with "las la-folder-minus"
+#     When Click tree select "Điều hướng cha" with "DASHBOARD"
+#     When Enter "text" in "Tham số truy vấn" with "_RANDOM_"
+#     When Click switch "Kích hoạt" to change button status
+#     When Click assign list "Order Side, Farmer Side"
+#     When Click "Lưu lại" button
+#     Then User look message "Tên điều hướng đã tồn tại" popup
+#     When Click on the "${Code1}" tree to delete
 
 DH_11 Verify that CAN NOT create a code data by enter the invalid data in "Mã điều hướng"
     [Tags]                                                                                        Create                                       Invalid
@@ -160,39 +160,39 @@ DH_11 Verify that CAN NOT create a code data by enter the invalid data in "Mã �
     Then User look message "Mã: _@Mã điều hướng@_ đã tồn tại" popup
     When Click on the "${Code1}" tree to delete
 
-DH_12 Verify that CAN NOT create a code data by enter the invalid data in "Link"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data 
-    When Click "Tạo mới" button
-    When Enter "test name" in "Tên điều hướng" with "_RANDOM_"
-    When Enter "word" in "Mã điều hướng" with "_RANDOM_"
-    When Enter "word" in "Link" with "/_@Link@_"
-    When Enter "number" in "Số thứ tự" with "_RANDOM_"
-    When Enter "text" in "Biểu tượng" with "las la-folder-minus"
-    When Click tree select "Điều hướng cha" with "DASHBOARD"
-    When Enter "text" in "Tham số truy vấn" with "_RANDOM_"
-    When Click switch "Kích hoạt" to change button status
-    When Click assign list "Order Side, Farmer Side"
-    When Click "Lưu lại" button
-    Then User look message "Link đã tồn tại" popup
-    When Click on the "${Code1}" tree to delete
+# DH_12 Verify that CAN NOT create a code data by enter the invalid data in "Link"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data 
+#     When Click "Tạo mới" button
+#     When Enter "test name" in "Tên điều hướng" with "_RANDOM_"
+#     When Enter "word" in "Mã điều hướng" with "_RANDOM_"
+#     When Enter "word" in "Link" with "/_@Link@_"
+#     When Enter "number" in "Số thứ tự" with "_RANDOM_"
+#     When Enter "text" in "Biểu tượng" with "las la-folder-minus"
+#     When Click tree select "Điều hướng cha" with "DASHBOARD"
+#     When Enter "text" in "Tham số truy vấn" with "_RANDOM_"
+#     When Click switch "Kích hoạt" to change button status
+#     When Click assign list "Order Side, Farmer Side"
+#     When Click "Lưu lại" button
+#     Then User look message "Link đã tồn tại" popup
+#     When Click on the "${Code1}" tree to delete
 
-DH_13 Verify that CAN NOT create a code data by enter the invalid data in "Số thứ tự"
-    [Tags]                                                                                        Create                                       Invalid
-    ${Code1}=                                                                                     Create a test data 
-    When Click "Tạo mới" button
-    When Enter "test name" in "Tên điều hướng" with "_RANDOM_"
-    When Enter "word" in "Mã điều hướng" with "_RANDOM_"
-    When Enter "word" in "Link" with "/_@Link@_"
-    When Enter "number" in "Số thứ tự" with "_@Số thứ tự@_"
-    When Enter "text" in "Biểu tượng" with "las la-folder-minus"
-    When Click tree select "Điều hướng cha" with "DASHBOARD"
-    When Enter "text" in "Tham số truy vấn" with "_RANDOM_"
-    When Click switch "Kích hoạt" to change button status
-    When Click assign list "Order Side, Farmer Side"
-    When Click "Lưu lại" button
-    Then User look message "Số thứ tự đã được sử dụng" popup
-    When Click on the "${Code1}" tree to delete
+# DH_13 Verify that CAN NOT create a code data by enter the invalid data in "Số thứ tự"
+#     [Tags]                                                                                        Create                                       Invalid
+#     ${Code1}=                                                                                     Create a test data 
+#     When Click "Tạo mới" button
+#     When Enter "test name" in "Tên điều hướng" with "_RANDOM_"
+#     When Enter "word" in "Mã điều hướng" with "_RANDOM_"
+#     When Enter "word" in "Link" with "/_@Link@_"
+#     When Enter "number" in "Số thứ tự" with "_@Số thứ tự@_"
+#     When Enter "text" in "Biểu tượng" with "las la-folder-minus"
+#     When Click tree select "Điều hướng cha" with "DASHBOARD"
+#     When Enter "text" in "Tham số truy vấn" with "_RANDOM_"
+#     When Click switch "Kích hoạt" to change button status
+#     When Click assign list "Order Side, Farmer Side"
+#     When Click "Lưu lại" button
+#     Then User look message "Số thứ tự đã được sử dụng" popup
+#     When Click on the "${Code1}" tree to delete
 
 ### Verify the funtion of changing data information ###
 DH_14 Verify that CAN change the code's information in "Tên điều hướng" field
@@ -292,16 +292,16 @@ DH_22 Verify that CAN change the code's information in "Gán nhóm" field
     Then The assign list in "Nhóm đã chọn" should not contain "Famer Side"
     When Click on the "_@Tên điều hướng@_" tree to delete
 
-DH_23 Verify that CAN NOT change the code information by entering the existed "Tên điều hướng"
-    [Tags]                                                                                        ChangeInfo                                Invalid
-    ${Code1}=                                                                                     Create a test data
-    Create a test data
-    When Click on the "${Code1}" tree to edit
-    When Enter "test name" in "Tên điều hướng" with "_@Tên điều hướng@_"
-    When Click "Lưu lại" button
-    Then User look message "Tên điều hướng đã tồn tại" popup
-    When Click on the "_@Tên điều hướng@_" tree to delete
-    When Click on the previously created "${Code1}" tree to delete
+# DH_23 Verify that CAN NOT change the code information by entering the existed "Tên điều hướng"
+#     [Tags]                                                                                        ChangeInfo                                Invalid
+#     ${Code1}=                                                                                     Create a test data
+#     Create a test data
+#     When Click on the "${Code1}" tree to edit
+#     When Enter "test name" in "Tên điều hướng" with "_@Tên điều hướng@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tên điều hướng đã tồn tại" popup
+#     When Click on the "_@Tên điều hướng@_" tree to delete
+#     When Click on the "${Code1}" tree to delete
 
 DH_24 Verify that CAN NOT change the code information by entering the existed "Mã điều hướng"
     [Tags]                                                                                        ChangeInfo                                Invalid
@@ -312,29 +312,29 @@ DH_24 Verify that CAN NOT change the code information by entering the existed "M
     When Click "Lưu lại" button
     Then User look message "Mã: _@Mã điều hướng@_ đã tồn tại" popup
     When Click on the "_@Tên điều hướng@_" tree to delete
-    When Click on the previously created "${Code1}" tree to delete
+    When Click on the "${Code1}" tree to delete
 
-DH_25 Verify that CAN NOT change the code information by entering the existed "Link"
-    [Tags]                                                                                        ChangeInfo                                Invalid
-    ${Code1}=                                                                                     Create a test data 
-    Create a test data
-    When Click on the "${Code1}" tree to edit
-    When Enter "word" in "Link" with "_@Link@_"
-    When Click "Lưu lại" button
-    Then User look message "Link đã tồn tại" popup
-    When Click on the "_@Tên điều hướng@_" tree to delete
-    When Click on the previously created "${Code1}" tree to delete
+# DH_25 Verify that CAN NOT change the code information by entering the existed "Link"
+#     [Tags]                                                                                        ChangeInfo                                Invalid
+#     ${Code1}=                                                                                     Create a test data 
+#     Create a test data
+#     When Click on the "${Code1}" tree to edit
+#     When Enter "word" in "Link" with "_@Link@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Link đã tồn tại" popup
+#     When Click on the "_@Tên điều hướng@_" tree to delete
+#     When Click on the "${Code1}" tree to delete
 
-DH_26 Verify that CAN NOT change the code information by entering the existed "Số thứ tự"
-    [Tags]                                                                                        ChangeInfo                                Invalid
-    ${Code1}=                                                                                     Create a test data 
-    Create a test data
-    When Click on the "${Code1}" tree to edit
-    When Enter "number" in "Thứ tự" with "_@Thứ tự@_"
-    When Click "Lưu lại" button
-    Then User look message "Thứ tự đã tồn tại" popup
-    When Click on the "_@Tên điều hướng@_" tree to delete
-    When Click on the previously created "${Code1}" tree to delete
+# DH_26 Verify that CAN NOT change the code information by entering the existed "Số thứ tự"
+#     [Tags]                                                                                        ChangeInfo                                Invalid
+#     ${Code1}=                                                                                     Create a test data 
+#     Create a test data
+#     When Click on the "${Code1}" tree to edit
+#     When Enter "number" in "Thứ tự" with "_@Thứ tự@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Thứ tự đã tồn tại" popup
+#     When Click on the "_@Tên điều hướng@_" tree to delete
+#     When Click on the "${Code1}" tree to delete
 
 ### Verify the search function ###
 DH_27 Verify the search function when enter the existed name

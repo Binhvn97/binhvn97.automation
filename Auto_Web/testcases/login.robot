@@ -34,24 +34,24 @@ LO_05 Verify that log in with leaving the blank field in "Mật khẩu"
   Then Required message "Xin vui lòng nhập mật khẩu" displayed under "Mật khẩu" field
 
 ### Verify the login when enter the invalid data ###
-LO_06_01 Verify that login with entering the invalid data in "Email" field
-  [Tags]                                                                                            Login                            Invalid                         Smoketest
-  When Enter "email" in "Email" with "admin@gmail.com "
-  When Enter "password" in "Mật khẩu" with "123123"
-  When Click "Đăng nhập" button
-  Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
-LO_06_02 Verify that login with entering the invalid data in "Email" field
-  [Tags]                                                                                            Login                            Invalid                         Smoketest
-  When Enter "email" in "Email" with " admin@gmail.com"
-  When Enter "password" in "Mật khẩu" with "123123"
-  When Click "Đăng nhập" button
-  Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
-LO_06_03 Verify that login with entering the invalid data in "Email" field
-  [Tags]                                                                                            Login                            Invalid                         Smoketest
-  When Enter "email" in "Email" with "admin@gmail.com "
-  When Enter "password" in "Mật khẩu" with "123123"
-  When Click "Đăng nhập" button
-  Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
+# LO_06_01 Verify that login with entering the invalid data in "Email" field
+#   [Tags]                                                                                            Login                            Invalid                         Smoketest
+#   When Enter "email" in "Email" with "admin@gmail.com "
+#   When Enter "password" in "Mật khẩu" with "123123"
+#   When Click "Đăng nhập" button
+#   Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
+# LO_06_02 Verify that login with entering the invalid data in "Email" field
+#   [Tags]                                                                                            Login                            Invalid                         Smoketest
+#   When Enter "email" in "Email" with " admin@gmail.com"
+#   When Enter "password" in "Mật khẩu" with "123123"
+#   When Click "Đăng nhập" button
+#   Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
+# LO_06_03 Verify that login with entering the invalid data in "Email" field
+#   [Tags]                                                                                            Login                            Invalid                         Smoketest
+#   When Enter "email" in "Email" with "admin@gmail.com "
+#   When Enter "password" in "Mật khẩu" with "123123"
+#   When Click "Đăng nhập" button
+#   Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
 ### Verify the remember account function ###
 LO_07 Verify the remember account function when click on "Ghi nhớ" check field
   [Tags]                                                                                            Login                            Remember

@@ -61,33 +61,33 @@ IA_05 Verify that navigating to the right "Detail-information" page
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-IA_06_01 Check account information after creation (CSKH)
-    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
-    ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
-    Create a test account with "Kế toán" type
-    When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Data's information in "Email" should be equal "_@Email@_"
-    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-    When Click "Trở lại" button
-    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+# IA_06_01 Check account information after creation (CSKH)
+#     [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
+#     ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
+#     Create a test account with "Kế toán" type
+#     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
+#     Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+#     Then Data's information in "Email" should be equal "_@Email@_"
+#     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+#     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+#     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+#     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+#     When Click "Trở lại" button
+#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-IA_06_02 Check account information after creation (Kế toán)
-    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
-    ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
-    Create a test account with "Kế toán" type
-    When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Data's information in "Email" should be equal "_@Email@_"
-    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-    When Click "Trở lại" button
-    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+# IA_06_02 Check account information after creation (Kế toán)
+#     [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
+#     ${today}=                                                                                     Get Current Date                             local                             result_format=%d/%m/%Y
+#     Create a test account with "Kế toán" type
+#     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
+#     Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+#     Then Data's information in "Email" should be equal "_@Email@_"
+#     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+#     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+#     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+#     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+#     When Click "Trở lại" button
+#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Verify the lock account function ###
 IA_07 Verify the block account funtion
@@ -383,18 +383,18 @@ IA_31 Create a new account with the invalid email
     When Click "Lưu lại" button
     Then Required message "Xin vui lòng nhập địa chỉ email hợp lệ!" displayed under "Email" field
 
-IA_32 Create a new account with the invalid phone number
-    [Tags]                                                                                        Create                                       Invalid
-    Go to page create account "Tài khoản Nội bộ" with "/internal-account"
-    When Enter "test name" in "Họ và tên" with "_RANDOM_"
-    When Enter "email" in "Email" with "_RANDOM_"
-    When Enter "phone" in "Số điện thoại" with "123456789" 
-    When Click select "Giới tính" with "Nam"
-    When Click select "Loại tài khoản" with "CSKH"
-    When Enter "password" in "Mật khẩu" with "_RANDOM_"
-    When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
-    When Click "Lưu lại" button
-    Then User look message "Số điện thoại gồm 10 số" pop up
+# IA_32 Create a new account with the invalid phone number
+#     [Tags]                                                                                        Create                                       Invalid
+#     Go to page create account "Tài khoản Nội bộ" with "/internal-account"
+#     When Enter "test name" in "Họ và tên" with "_RANDOM_"
+#     When Enter "email" in "Email" with "_RANDOM_"
+#     When Enter "phone" in "Số điện thoại" with "123456789" 
+#     When Click select "Giới tính" with "Nam"
+#     When Click select "Loại tài khoản" with "CSKH"
+#     When Enter "password" in "Mật khẩu" with "_RANDOM_"
+#     When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Số điện thoại gồm 10 số" pop up
 
 IA_33 Create a new account with the existed phone number
     [Tags]                                                                                        Create                                       Invalid

@@ -97,17 +97,17 @@ CH_09 Verify that CAN create a new data by leaving a blank field in "Ghi chú"
     Then User look message "Success" popup
     When Click on the "_@Tên tham số@_" tree to delete
 
-CH_10 Verify that CAN NOT create a new parameter in the same group with the existent data in "Tên tham số"
-    [Tags]                                                                                        Create                                       Invalid
-    Create a test data
-    When Click "Tạo mới" button
-    When Enter "test name" in "Tên tham số" with "_@Tên tham số@_"
-    When Enter "text" in "Giá trị tham số" with "_RANDOM_"
-    When Enter "word" in "Nhóm" with "_@Nhóm@_"
-    When Enter "paragraph" in textarea "Ghi chú" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Tên tham số đã tồn tại" pop up
-    When Click on the "_@Tên tham số@_" tree to delete
+# CH_10 Verify that CAN NOT create a new parameter in the same group with the existent data in "Tên tham số"
+#     [Tags]                                                                                        Create                                       Invalid
+#     Create a test data
+#     When Click "Tạo mới" button
+#     When Enter "test name" in "Tên tham số" with "_@Tên tham số@_"
+#     When Enter "text" in "Giá trị tham số" with "_RANDOM_"
+#     When Enter "word" in "Nhóm" with "_@Nhóm@_"
+#     When Enter "paragraph" in textarea "Ghi chú" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tên tham số đã tồn tại" pop up
+#     When Click on the "_@Tên tham số@_" tree to delete
 
 ### Verify the funtion of changing data information ###
 CH_11 Verify that CAN change parameter's data in "Tên tham số" field

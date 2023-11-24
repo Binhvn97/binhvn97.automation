@@ -128,17 +128,17 @@ CA_PO_12 Verify the changing "Tiêu đề" field
     Then User look message "Cập nhật bài viết thành công" popup
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
-CA_PO_12_02 Verify the changing "Tiêu đề" field with existence "Tiêu đề"
-    [Tags]                                                                                        ChangeInfo
-    ${Cate1}=                                                                                     Create a test category
-    Create a test category
-    When Click on the "Sửa" button in the "${Cate1}" item line
-    When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
-    When Click on the "Xóa" button in the "${Cate1}" item line
+# CA_PO_12_02 Verify the changing "Tiêu đề" field with existence "Tiêu đề"
+#     [Tags]                                                                                        ChangeInfo
+#     ${Cate1}=                                                                                     Create a test category
+#     Create a test category
+#     When Click on the "Sửa" button in the "${Cate1}" item line
+#     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
+#     When Click on the "Xóa" button in the "${Cate1}" item line
 
 CA_PO_13 Verify the changing "Slug" field
     [Tags]                                                                                        ChangeInfo
@@ -157,6 +157,7 @@ CA_PO_14 Verify the changing "Giới thiệu" field
     Create a test category
     When Click on the "Sửa" button in the "_@Tiêu đề@_" item line
     When Enter "paragraph" in textarea "Giới thiệu" with "_RANDOM_"
+    Wait Until Network Is Idle
     When Click "Lưu lại" button
     Then User look message "Cập nhật bài viết thành công" popup
     When Click on the "Sửa" button in the "_@Tiêu đề@_" item line

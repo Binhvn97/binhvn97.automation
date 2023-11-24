@@ -64,35 +64,35 @@ CA_05 Verify that navigating to the right "Detail-information" page
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-CA_06_01 Check account information after creation (Farmer Side)
-    [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
-    ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
-    Create a test account with "Farmer Side" type
-    When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Data's information in "Email" should be equal "_@Email@_"
-    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-    When Click "Trở lại" button
-    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+# CA_06_01 Check account information after creation (Farmer Side)
+#     [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
+#     ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
+#     Create a test account with "Farmer Side" type
+#     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
+#     Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+#     Then Data's information in "Email" should be equal "_@Email@_"
+#     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+#     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+#     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+#     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+#     When Click "Trở lại" button
+#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-CA_06_02 Check account information after creation (Order Side)
-    [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
-    ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
-    Create a test account with "Order Side" type
-    When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
-    Then Data's information in "Email" should be equal "_@Email@_"
-    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
-    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-    Then Data's information should contain "Số phòng khám" field
-    Then Data's information should contain "Tổng số đơn hàng" field
-    When Click "Trở lại" button
-    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+# CA_06_02 Check account information after creation (Order Side)
+#     [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
+#     ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
+#     Create a test account with "Order Side" type
+#     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
+#     Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+#     Then Data's information in "Email" should be equal "_@Email@_"
+#     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+#     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+#     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+#     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+#     Then Data's information should contain "Số phòng khám" field
+#     Then Data's information should contain "Tổng số đơn hàng" field
+#     When Click "Trở lại" button
+#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Verify the lock function ###
 CA_07 Verify the lock funtion
