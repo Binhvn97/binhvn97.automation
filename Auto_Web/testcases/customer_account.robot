@@ -184,9 +184,9 @@ CA_14 Verify the "Trạng thái" filter function when select "Đã xác thực"
 CA_15 Verify the "Trạng thái" filter function when select "Chưa xác thực"
     [Tags]                                                                                        Filter
     Create a test account with "Farmer Side" type
-    When Click select "Trạng thái" with "Đã xác thực"
-    Then "_@Họ và tên@_" should not be visible in table line
     When Click filter "Trạng thái" with "Chưa xác thực"
+    Then "_@Họ và tên@_" should not be visible in table line
+    When Click filter "Trạng thái" with "Đã xác thực"
     Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 

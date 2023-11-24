@@ -220,8 +220,8 @@ CA_PO_19 Verify the delete data function
     When Click radio "Định dạng bài viết" in line "Longform"
     When Enter "color" in "Background Color" with "_RANDOM_"
     When Enter "color" in "Title Fore Color" with "_RANDOM_"
-    When Click switch "Show Title" to be activated
-    When Click switch "Ghim" to be activated
+    When Click switch "Show Title" to change button status
+    When Click switch "Ghim" to change button status
     When Enter "text" in "Custom Class" with "text-blue-600"
     When Enter "text" in textarea "Custom CSS" with "{color:1px;}"
     When Click "English" tab button
