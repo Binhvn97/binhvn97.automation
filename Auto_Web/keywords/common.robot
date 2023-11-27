@@ -105,7 +105,7 @@ Enter "${type}" in "${name}" with "${text}"
 
 Enter "${type}" in "${name}" of "${tab}" tab with "${text}"
   ${text}=                  Get Random Text                   ${type}                       ${text}
-  ${element}=               Get Element                       //*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${tab}")]//ancestor::*[contains(@class,'ant-tabs-default')]//label[contains(text(),"${name}")]/../..//*[contains(@class, "ant-input")]
+  ${element}=               Get Element                       //*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${tab}")]//ancestor::*[contains(@class,'ant-tabs-default')]//label[text()="${name}"]/../..//*[contains(@class, "ant-input")]
   Click                     ${element}
   Clear Text                ${element}
   Fill Text                 ${element}                        ${text}                       True
@@ -115,6 +115,10 @@ Enter "${type}" in "${name}" of "${tab}" tab with "${text}"
     ${condition}=           Get Text                          ${element}     
   END
   Scroll To Element         ${element}
+  ${cnt}=                   Get Length                        ${text}
+  IF  ${cnt} > 0
+    Set Global Variable     \${STATE["${name}_${tab}"]}       ${text}
+  END
   Wait Until Network Is Idle
 
 Enter "${type}" in textarea "${name}" with "${text}"
@@ -441,7 +445,7 @@ Click select "${name}" with "${text}"
 
 Click radio select "${name}" with "${text}"
   ${text}=                  Get Random Text                   Text                          ${text}
-  ${element}=               Get Element Form Item By Name     ${name}                       //span[contains(text(),"${text}")]/../span[contains(@class,'ant-radio-button')]
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
   Click                     ${element}
   Wait Until Network Is Idle
   ${cnt}=                   Get Length                        ${text}
@@ -578,18 +582,75 @@ Required message "${text}" displayed under "${name}" field
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-form-item-explain-error")]
   Element Text Should Be    ${element}                        ${text}
 
+# Data's information in "${name}" should be equal "${value}"
+#   Wait Until Element Spin
+#   ${value}=                 Check Text                         ${value}
+#   ${cnt}=                   Get Element Count                  //label[text()="${name}"]
+#   IF    ${cnt} > 0
+#     ${element}=             Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]
+#     ${cntS}=                Get Element Count                  ${element}
+#     IF    ${cntS} > 0
+#       Get Text              ${element}                         equal                        ${value}
+#     ELSE
+#       ${element}=           Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-select-selection-item')]
+#       ${cnt2}=              Get Element Count                  ${element}
+#       IF    ${cnt2} > 0
+#         Get Text            ${element}                         equal                        ${value}
+#       ELSE
+#         ${element}=         Set Variable                       //label[text()="${name}"]/../..//*[contains(text(),'${value}')]/../*[contains(@class,'ant-radio-button-checked')]
+#         ${cnt3}=            Get Element Count                  ${element}
+#         Should Be True      ${cnt3} > 0
+#       END
+#     END
+#   ELSE
+#     ${element}=             Set Variable                       //th[contains(text(),"${name}")]//following-sibling::th[1]
+#     Get Text                ${element}                         equal                        ${value}
+#   END
+
 Data's information in "${name}" should be equal "${value}"
   Wait Until Element Spin
   ${value}=                 Check Text                         ${value}
   ${cnt}=                   Get Element Count                  //label[text()="${name}"]
   IF    ${cnt} > 0
-    ${element}=             Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]
+    ${element}=             Get Element Form Item By Name     ${name}                       //*[contains(@class,'ant-input')]
     ${cntS}=                Get Element Count                  ${element}
     IF    ${cntS} > 0
       Get Text              ${element}                         equal                        ${value}
     ELSE
-      ${element}=           Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-select-selection-item')] 
+      ${element}=           Get Element Form Item By Name     ${name}                       //*[contains(@class,'ant-select-selection-item')]
+      ${cnt2}=              Get Element Count                  ${element}
+      IF    ${cnt2} > 0
+        Get Text            ${element}                         equal                        ${value}
+      ELSE
+        ${element}=         Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper") and contains(@class,'ant-radio-button-wrapper-checked')]/span[contains(text(), "${value}")]
+        ${cnt3}=            Get Element Count                 ${element}
+        Should Be True      ${cnt3} > 0
+      END
+    END
+  ELSE
+    ${element}=             Set Variable                       //th[contains(text(),"${name}")]//following-sibling::th[1]
+    Get Text                ${element}                         equal                        ${value}
+  END
+Data's information in "${name}" of "${tab}" tab should be equal "${value}"
+  Wait Until Element Spin
+  ${value}=                 Check Text                         ${value}
+  ${root}=                  Set Variable                       //*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${tab}")]//ancestor::*[contains(@class,'ant-tabs-default')]//label[text()='${name}']
+  ${cnt}=                   Get Element Count                  ${root}
+  IF    ${cnt} > 0
+    ${element}=             Set Variable                       ${root}/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]
+    ${cntS}=                Get Element Count                  ${element}
+    IF    ${cntS} > 0
       Get Text              ${element}                         equal                        ${value}
+    ELSE
+      ${element}=           Set Variable                       ${root}/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-select-selection-item')]
+      ${cnt2}=              Get Element Count                  ${element}
+      IF    ${cnt2} > 0
+        Get Text            ${element}                         equal                        ${value}
+      ELSE
+        ${element}=         Set Variable                       ${root}/../..//*[contains(text(),'${value}')]/../*[contains(@class,'ant-radio-button-checked')]
+        ${cnt3}=            Get Element Count                  ${element}
+        Should Be True      ${cnt3} > 0
+      END
     END
   ELSE
     ${element}=             Set Variable                       //th[contains(text(),"${name}")]//following-sibling::th[1]

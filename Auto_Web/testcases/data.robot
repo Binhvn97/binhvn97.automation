@@ -163,7 +163,7 @@ DA_12 Verify "Thêm mới dữ liệu" button function
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_13 Create new data with the valid data
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                         Create                                       Smoketest
     Create a category
     When Click "Thêm mới dữ liệu" button
     When Click select "Chuyên mục" with "_@Tên loại@_"
@@ -177,7 +177,7 @@ DA_13 Create new data with the valid data
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_14 Check the update of data list after creating a new data
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                          Create                                       Smoketest
     Create a category
     When Click "Thêm mới dữ liệu" button
     When Click select "Chuyên mục" with "_@Tên loại@_"
@@ -193,21 +193,21 @@ DA_14 Check the update of data list after creating a new data
 
 ### Create new data with blank field ###
 DA_15 Create a new data with all blank fields
-    [Tags]                                                                                        Create                                       BlankField   BUG
+    [Tags]                                                                                          Create                                       BlankField
     Go to page create data "Quản lý dữ liệu" with "/data"
     When Click "Lưu lại" button
     Then Required message "Xin vui lòng chọn chuyên mục" displayed under "Chuyên mục" field
     Then Required message "Xin vui lòng nhập tiêu đề" displayed under "Tiêu đề" field
 
 DA_16 Create a new data when leaving "Chuyên mục" field blank
-    [Tags]                                                                                        Create                                       BlankField
+    [Tags]                                                                                          Create                                       BlankField
     Go to page create data "Quản lý dữ liệu" with "/data"
     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
     When Click "Lưu lại" button
     Then Required message "Xin vui lòng chọn chuyên mục" displayed under "Chuyên mục" field
 
 DA_17 Create a new data when leaving "Tiêu đề" field blank
-    [Tags]                                                                                        Create                                       BlankField
+    [Tags]                                                                                          Create                                       BlankField
     Go to page create data "Quản lý dữ liệu" with "/data"
     When Click select "Chuyên mục" with "Test"
     When Click "Lưu lại" button
@@ -215,7 +215,7 @@ DA_17 Create a new data when leaving "Tiêu đề" field blank
 
 ### Create new data with invalid data ###
 DA_18 Create a new data with the invalid "Tiêu đề"
-    [Tags]                                                                                        Create                                    Invalid    BUG
+    [Tags]                                                                                          Create                                        Invalid
     Create a category 
     Create a test data with "_@Tên loại@_" type     
     When Click "Thêm mới dữ liệu" button
@@ -229,7 +229,7 @@ DA_18 Create a new data with the invalid "Tiêu đề"
 
 ### Verify the go back button in the creating data page  ###
 DA_19 Verify the "Đóng lại" button
-    [Tags]                                                                                        Create                                      Invalid    BUG
+    [Tags]                                                                                          Create                                         Invalid
     Go to page create data "Quản lý dữ liệu" with "/data"
     When Click "Đóng lại" button
     Then Confirm locating exactly in "Quản lý dữ liệu" page
@@ -237,7 +237,7 @@ DA_19 Verify the "Đóng lại" button
     Then Webpage should contain the list data from database
 
 DA_20 Verify the "Left-arrow" button
-    [Tags]                                                                                        Create                                      Invalid    BUG
+    [Tags]                                                                                          Create                                         Invalid
     Go to page create data "Quản lý dữ liệu" with "/data"
     When Click on the left arrow icon
     Then Confirm locating exactly in "Quản lý dữ liệu" page
@@ -246,8 +246,8 @@ DA_20 Verify the "Left-arrow" button
 
 ### Verify the funtion of changing data information ###
 DA_21 Verify the changing "Chuyên mục" field
-    [Tags]                                                                                        ChangeInfo                                           BUG1         
-    ${Cate1}=                                                                                     Create a category
+    [Tags]                                                                                          ChangeInfo        
+    ${Cate1}=                                                                                       Create a category
     Create a category
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -262,7 +262,7 @@ DA_21 Verify the changing "Chuyên mục" field
     When Click on the "Xóa" button in the "${Cate1}" item line
 
 DA_22 Verify the changing "Thứ tự" field
-    [Tags]                                                                                        ChangeInfo    
+    [Tags]                                                                                          ChangeInfo    
     Create a category
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -277,7 +277,7 @@ DA_22 Verify the changing "Thứ tự" field
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_23 Verify the changing "Tiêu đề" field
-    [Tags]                                                                                        ChangeInfo     
+    [Tags]                                                                                          ChangeInfo     
     Create a category
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -289,7 +289,7 @@ DA_23 Verify the changing "Tiêu đề" field
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_24 Verify the changing "Mô tả" field
-    [Tags]                                                                                        ChangeInfo     
+    [Tags]                                                                                          ChangeInfo     
     Create a category
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -304,7 +304,7 @@ DA_24 Verify the changing "Mô tả" field
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_25 Verify the changing "Nội dung" field
-    [Tags]                                                                                        ChangeInfo    
+    [Tags]                                                                                          ChangeInfo    
     Create a category
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -320,7 +320,7 @@ DA_25 Verify the changing "Nội dung" field
 
 ### Verify the button's function in the edit information page ###
 DA_26 Verify the "Đóng lại" button
-    [Tags]                                                                                        ChangeInfo
+    [Tags]                                                                                          ChangeInfo
     Create a category
     Create a test data with "_@Tên loại@_" type        
     When Select on the "_@Tên loại@_" item line
@@ -332,7 +332,7 @@ DA_26 Verify the "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line 
 
 DA_27 Verify the "Left-arrow" button
-    [Tags]                                                                                        ChangeInfo
+    [Tags]                                                                                          ChangeInfo
     Create a category 
     Create a test data with "_@Tên loại@_" type        
     When Select on the "_@Tên loại@_" item line
@@ -345,7 +345,7 @@ DA_27 Verify the "Left-arrow" button
 
 ### Verify the delete data function ###
 DA_28 Verify the delete data function
-    [Tags]                                                                                        Delete                                      Smoketest
+    [Tags]                                                                                          Delete                                      Smoketest
     Create a category
     Create a test data with "_@Tên loại@_" type       
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
@@ -355,7 +355,7 @@ DA_28 Verify the delete data function
     
 
 DA_29 Verify the cancel action button when delete data
-    [Tags]                                                                                        Delete
+    [Tags]                                                                                          Delete
     Create a category 
     Create a test data with "_@Tên loại@_" type  
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line with cancel
