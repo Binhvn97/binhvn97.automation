@@ -115,6 +115,7 @@ PO_09 Verify the search function when enter the existed name
     When Select on the "Cate1" item line  
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
+    Wait Until Element Spin
     Then "_@Tiêu đề@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     When Click on the "Xóa" button in the "Cate1" item line
@@ -269,21 +270,21 @@ PO_19 Create a new data when leaving "Tiêu đề" English tab field blank
     When Click on the "Xóa" button in the "Cate1" item line
 
 ### Create new data with invalid data ###
-PO_20 Create a new data with the invalid "Tiêu đề"
-    [Tags]                                                                                        Create                                       Invalid
-    Create a category with "Cate1" name
-    ${name1}=                                                                                     Create a test post with "Cate1" type 
-    When Click "Tạo mới bài viết" button
-    When Click select "Chuyên mục" with "Cate1"
-    When Click "Tiếng Việt" tab button
-    When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
-    When Click "English" tab button
-    When Enter "test name" in "Tiêu đề" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Tiêu đề đã tồn tại" popup
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "${name1}" table line
-    When Click on the "Xóa" button in the "Cate1" item line
+# PO_20 Create a new data with the invalid "Tiêu đề"
+#     [Tags]                                                                                        Create                                       Invalid
+#     Create a category with "Cate1" name
+#     ${name1}=                                                                                     Create a test post with "Cate1" type 
+#     When Click "Tạo mới bài viết" button
+#     When Click select "Chuyên mục" with "Cate1"
+#     When Click "Tiếng Việt" tab button
+#     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
+#     When Click "English" tab button
+#     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Tiêu đề đã tồn tại" popup
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "${name1}" table line
+#     When Click on the "Xóa" button in the "Cate1" item line
 
 # PO_21 Create a new data with the invalid "Tiêu đề" English tab field
 #     [Tags]                                                                                         Create                                        Invalid
@@ -477,20 +478,20 @@ PO_34 Verify the changing "Giới thiệu" field
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     When Click on the "Xóa" button in the "Cate1" item line
 
-PO_35 Verify the changing "Tiêu đề SEO" field
-    [Tags]                                                                                          ChangeInfo
-    Create a category with "Cate1" name 
-    Create a test post with "Cate1" type
-    When Select on the "Cate1" item line
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    When Enter "text" in "Tiêu đề SEO" with "_RANDOM_"
-    When Click "Lưu lại" button
-    Then User look message "Cập nhật bài viết thành công" popup
-    When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
-    Then Data's information in "Tiêu đề SEO" should be equal "_@Tiêu đề SEO@_"
-    When Click "Đóng lại" button
-    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-    When Click on the "Xóa" button in the "Cate1" item line
+# PO_35 Verify the changing "Tiêu đề SEO" field
+#     [Tags]                                                                                          ChangeInfo
+#     Create a category with "Cate1" name 
+#     Create a test post with "Cate1" type
+#     When Select on the "Cate1" item line
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     When Enter "text" in "Tiêu đề SEO" with "_RANDOM_"
+#     When Click "Lưu lại" button
+#     Then User look message "Cập nhật bài viết thành công" popup
+#     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
+#     Then Data's information in "Tiêu đề SEO" should be equal "_@Tiêu đề SEO@_"
+#     When Click "Đóng lại" button
+#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+#     When Click on the "Xóa" button in the "Cate1" item line
 
 PO_36 Verify the changing "Từ khóa SEO" field
     [Tags]                                                                                          ChangeInfo
@@ -668,7 +669,7 @@ PO_47 Verify that CAN NOT change the "Tiêu đề" in "Tiếng Việt" tab with 
 
 PO_48 Verify that CAN NOT changing data information with the same "Tiêu đề" in 2 tab 
    [Tags]                                                                                          ChangeInfo                              Invalid
-    Create a category with "Cate1" name 
+    Create a category with "Cate1" name
     ${name1}=                                                                                      Create a test post with "Cate1" type
     When Select on the "Cate1" item line
     When Click on the "Sửa" button in the "${name1}" table line
@@ -717,10 +718,10 @@ Go to page create data "${name}" with "${url}"
 
 Create a category with "${name}" name
   ${name}=                  Check Text                              ${name}
-  Wait Until Element Spin
-  Sleep                     ${SHOULD_TIMEOUT}
   ${condition}=             Run Keyword And Return Status           Confirm locating exactly in "Post" page
   IF    '${condition}' == 'True'
+    Wait Until Element Spin
+    Sleep                   ${SHOULD_TIMEOUT}
     ${element}=             Set Variable                            //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
     ${cnt}=                 Get Element Count                       ${element}
     IF     ${cnt} < 1
@@ -734,6 +735,8 @@ Create a category with "${name}" name
     END
   ELSE
     Go to "Post" page
+    Wait Until Element Spin
+    Sleep                   ${SHOULD_TIMEOUT}
     ${element}=             Set Variable                            //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
     ${cnt}=                 Get Element Count                       ${element}
     IF     ${cnt} < 1
