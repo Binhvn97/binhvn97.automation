@@ -86,6 +86,7 @@ Get Random Text
   [Return]    ${text}
 
 Enter "${type}" in "${name}" with "${text}"
+  Wait Until Element Spin
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-input")]
   Click                     ${element}
@@ -101,9 +102,9 @@ Enter "${type}" in "${name}" with "${text}"
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
   END
-  Wait Until Network Is Idle
 
 Enter "${type}" in "${name}" of "${tab}" tab with "${text}"
+  Wait Until Element Spin
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element                       //*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${tab}")]//ancestor::*[contains(@class,'ant-tabs-default')]//label[text()="${name}"]/../..//*[contains(@class, "ant-input")]
   Click                     ${element}
@@ -119,9 +120,9 @@ Enter "${type}" in "${name}" of "${tab}" tab with "${text}"
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}_${tab}"]}       ${text}
   END
-  Wait Until Network Is Idle
 
 Enter "${type}" in textarea "${name}" with "${text}"
+  Wait Until Element Spin
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //textarea
   Clear Text                ${element}
@@ -136,9 +137,9 @@ Enter "${type}" in textarea "${name}" with "${text}"
   IF  ${cnt} > 0
   Set Global Variable       \${STATE["${name}"]}              ${text}
   END  
-  Wait Until Network Is Idle
 
 Enter date in "${name}" with "${text}"
+  Wait Until Element Spin
   ${text}=                  Get Random Text                   date                          ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-picker-input")]/input
   Click                     ${element}
@@ -155,9 +156,9 @@ Enter date in "${name}" with "${text}"
   IF  ${cnt} > 0
       Set Global Variable   ${STATE["${name}"]}               ${text}
   END
-  Wait Until Network Is Idle
 
 Enter "${type}" in placeholder "${placeholder}" with "${text}"
+  Wait Until Element Spin
   ${text}=                   Get Random Text                   ${type}                       ${text}
   ${element}=                Get Element                       //input[contains(@placeholder, "${placeholder}")]
   Clear Text                 ${element}
@@ -168,6 +169,7 @@ Enter "${type}" in placeholder "${placeholder}" with "${text}"
   END
 
 Enter "${type}" in login placeholder "${placeholder}" with "${text}"
+  Wait Until Element Spin
   ${text}=                   Get Random Text                   ${type}                       ${text}
   ${element}=                Get Element                       //input[contains(@id,'login') and @placeholder = '${placeholder}']
   Clear Text                 ${element}
@@ -178,6 +180,7 @@ Enter "${type}" in login placeholder "${placeholder}" with "${text}"
   END
 
 Enter date in placeholder "${name}" with "${date}"
+  Wait Until Element Spin
   ${element}=                 Get Element                      //input[contains(@placeholder, "${name}")]
   Clear Text                  ${element}
   ${date}=                    Convert To String                ${date}    
@@ -187,9 +190,9 @@ Enter date in placeholder "${name}" with "${date}"
   IF  ${cnt} > 0
     Set Global Variable       \${STATE["${date}"]}             ${date}
   END
-  Wait Until Element Spin  
 
 Enter "${type}" in editor "${name}" with "${text}"
+  Wait Until Element Spin
   ${text}=                  Get Random Text                   ${type}                       ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ce-paragraph")]
   Clear Text                                                  ${element}
@@ -267,7 +270,6 @@ Click on the "${text}" button in the "${name}" table line
     Click                    ${element} 
   END
   Click Confirm To Action
-  Wait Until Network Is Idle
 
 Click on the "${text}" button in the "${name}" table line with cancel
   Sleep                     ${SHOULD_TIMEOUT}
@@ -276,7 +278,6 @@ Click on the "${text}" button in the "${name}" table line with cancel
   ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
   Click                     ${element}
   Click Cancel Action
-  Wait Until Network Is Idle
 
 ###  -----  Item  -----  ###
 Get Element Item By Name
@@ -289,7 +290,6 @@ Click on the "${text}" button in the "${name}" item line
   ${element}=               Get Element Item By Name          ${name}                       //button[@title = "${text}"]
   Click                     ${element}
   Click Confirm To Action
-  Wait Until Network Is Idle
 
 Click on the "${text}" button in the "${name}" item line with cancel
   Sleep                     ${SHOULD_TIMEOUT}
@@ -298,26 +298,20 @@ Click on the "${text}" button in the "${name}" item line with cancel
   ${element}=               Get Element Item By Name           ${name}                    //button[@title = "${text}"]
   Click                     ${element}
   Click Cancel Action
-  Wait Until Network Is Idle
 
 Select on the "${text}" item line
   Wait Until Element Spin
   ${text}=                  Check Text                        ${text}
   ${element}=               Get Element Item By Name          ${text}
   Click                     ${element}
-  Wait Until Network Is Idle
 
 "${name}" should be visible in item line
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${cnt}=                   Get Element Count                  //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
-  Should Be True            ${cnt} > 0
+  Wait Until Element Is Visible                                //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
 
 "${name}" should not be visible in item line
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${cnt}=                   Get Element Count                  //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
-  Should Be True            ${cnt} < 1
+  Wait Until Page Does Not Contain Element                     //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
 
 "${name}" item line should be highlighted
   Wait Until Element Spin
@@ -338,7 +332,6 @@ Click on the "${name}" tree to delete
   Mouse Move Relative To    ${element}                        0
   Click                     ${element}//*[contains(@class, "la-trash")]
   Click Confirm To Action
-  Wait Until Network Is Idle
 
 Click on the "${name}" tree to delete with cancel
   Wait Until Element Spin
@@ -354,19 +347,14 @@ Click on the "${name}" tree to edit
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
   Click                     ${element}
-  Wait Until Network Is Idle
 
 "${name}" should be visible in the tree line
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${cnt}=                   Get Element Count                  //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
-  Should Be True            ${cnt} > 0
+  Wait Until Element Is Visible                                //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
 
 "${name}" should not be visible in the tree line
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${cnt}=                   Get Element Count                  //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
-  Should Be True            ${cnt} < 1
+  Wait Until Page Does Not Contain Element                     //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
 
 Click tree select "${name}" with "${text}"
   ${text}=                  Get Random Text                   Text                          ${text}
@@ -383,7 +371,6 @@ Click tree select "${name}" to show data
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element                       //nz-tree-node-title[@title="${name}"]/..//i[contains(@class,'la-angle-down')]
   Click                     ${element}
-  Wait Until Network Is Idle
   Wait Until Element Spin
 
 ###  -----  Element  -----  ###
@@ -411,12 +398,10 @@ Click "${text}" button
   Click Confirm To Action
   Scroll By                 ${None}
   END
-  Wait Until Network Is Idle
 
 Click "${text}" tab button
   Click                     xpath=//*[contains(@class, "ant-tabs-tab-btn") and contains(text(), "${text}")]
   Wait Until Element Spin
-  Wait Until Network Is Idle
 
 Click "${text}" menu
   Click                     xpath=//li[contains(@class, "menu") and descendant::span[contains(text(), "${text}")]]
@@ -447,7 +432,6 @@ Click radio select "${name}" with "${text}"
   ${text}=                  Get Random Text                   Text                          ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
   Click                     ${element}
-  Wait Until Network Is Idle
   ${cnt}=                   Get Length                        ${text}
   IF  ${cnt} > 0
     Set Global Variable     \${STATE["${name}"]}              ${text}
@@ -462,7 +446,6 @@ Click on magnifier icon in search box
   Sleep                      ${SHOULD_TIMEOUT}
   Click                      xpath=//*[contains(@class, "las la-search")]
   Wait Until Element Spin
-  Wait Until Network Is Idle
 
 Click on eye icon in "${name}" field 
   Wait Until Element Spin
@@ -500,7 +483,6 @@ Click "${text}" button with cancel action
 Select file in "${name}" with "${image_name}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
   Upload File By Selector   ${element}                        Auto_Web/upload/${image_name}
-  Wait Until Network Is Idle
 
 Click radio "${name}" in line "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
@@ -517,7 +499,6 @@ Click assign list "${list}"
   END
   Click                     xpath=//*[contains(@class, "ant-transfer-operation")]/button[2]
   Wait Until Element Spin
-  Wait Until Network Is Idle
 
 Click unassign list "${list}"
   ${words}=                 Split String                      ${list}                       ,${SPACE}
@@ -526,7 +507,6 @@ Click unassign list "${list}"
   END
   Click                     xpath=//*[contains(@class, "ant-transfer-operation")]/button[1]
   Wait Until Element Spin
-  Wait Until Network Is Idle
 
 Click filter "${name}" with "${text}"
   ${text}=                  Get Random Text                    Text                       ${text}
@@ -539,7 +519,6 @@ Click filter "${name}" with "${text}"
     Set Global Variable     \${STATE["${name}"]}               ${text}
   END
   Wait Until Element Spin
-  Wait Until Network Is Idle
 
 Click on cross icon in select "${name}" 
   ${element}=               Get Element Form Item By Name      ${name}                    //following-sibling::nz-select[contains(@class, "ant-select-show-arrow")]
@@ -557,7 +536,7 @@ Wait Until Element Spin
 
 Wait Until Element Is Visible
   [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
-  Wait For Elements State   ${locator}  visible               ${timeout}                    ${message}
+  Wait For Elements State   ${locator}  attached              ${timeout}                    ${message}
 
 Wait Until Page Does Not Contain Element
   [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
@@ -582,49 +561,23 @@ Required message "${text}" displayed under "${name}" field
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-form-item-explain-error")]
   Element Text Should Be    ${element}                        ${text}
 
-# Data's information in "${name}" should be equal "${value}"
-#   Wait Until Element Spin
-#   ${value}=                 Check Text                         ${value}
-#   ${cnt}=                   Get Element Count                  //label[text()="${name}"]
-#   IF    ${cnt} > 0
-#     ${element}=             Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-input')]
-#     ${cntS}=                Get Element Count                  ${element}
-#     IF    ${cntS} > 0
-#       Get Text              ${element}                         equal                        ${value}
-#     ELSE
-#       ${element}=           Set Variable                       //label[text()="${name}"]/../../../*[contains(@class,'ant-form-item ant-row')]//descendant::*[contains(@class,'ant-select-selection-item')]
-#       ${cnt2}=              Get Element Count                  ${element}
-#       IF    ${cnt2} > 0
-#         Get Text            ${element}                         equal                        ${value}
-#       ELSE
-#         ${element}=         Set Variable                       //label[text()="${name}"]/../..//*[contains(text(),'${value}')]/../*[contains(@class,'ant-radio-button-checked')]
-#         ${cnt3}=            Get Element Count                  ${element}
-#         Should Be True      ${cnt3} > 0
-#       END
-#     END
-#   ELSE
-#     ${element}=             Set Variable                       //th[contains(text(),"${name}")]//following-sibling::th[1]
-#     Get Text                ${element}                         equal                        ${value}
-#   END
-
 Data's information in "${name}" should be equal "${value}"
   Wait Until Element Spin
   ${value}=                 Check Text                         ${value}
   ${cnt}=                   Get Element Count                  //label[text()="${name}"]
   IF    ${cnt} > 0
-    ${element}=             Get Element Form Item By Name     ${name}                       //*[contains(@class,'ant-input')]
+    ${element}=             Get Element Form Item By Name      ${name}                       //*[contains(@class,'ant-input')]
     ${cntS}=                Get Element Count                  ${element}
     IF    ${cntS} > 0
       Get Text              ${element}                         equal                        ${value}
     ELSE
-      ${element}=           Get Element Form Item By Name     ${name}                       //*[contains(@class,'ant-select-selection-item')]
+      ${element}=           Get Element Form Item By Name      ${name}                       //*[contains(@class,'ant-select-selection-item')]
       ${cnt2}=              Get Element Count                  ${element}
       IF    ${cnt2} > 0
         Get Text            ${element}                         equal                        ${value}
       ELSE
-        ${element}=         Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper") and contains(@class,'ant-radio-button-wrapper-checked')]/span[contains(text(), "${value}")]
-        ${cnt3}=            Get Element Count                 ${element}
-        Should Be True      ${cnt3} > 0
+        ${element}=         Get Element Form Item By Name      ${name}                       //*[contains(@class, "ant-radio-button-wrapper") and contains(@class,'ant-radio-button-wrapper-checked')]/span[contains(text(), "${value}")]
+        Wait Until Element Is Visible                          ${element}
       END
     END
   ELSE
@@ -658,14 +611,13 @@ Data's information in "${name}" of "${tab}" tab should be equal "${value}"
   END
 
 Data's information should contain "${name}" field 
-  ${name_field}=            Check Text                         ${name}
+  ${name}=                  Check Text                         ${name}
   ${cnt}=                   Get Element Count                  //label[contains(text(),"${name}")]
   IF    ${cnt} > 0
     Should Be True          ${cnt} >= 1
   ELSE
     ${element}=             Set Variable                      //th[contains(text(),"${name}")]
-    ${cntS}=                Get Element Count                 ${element}
-    Should Be True          ${cntS} > 0
+    Wait Until Element Is Visible                             ${element}
   END
 
 The hidden password in "${name}" field should be visibled as "${text}"
@@ -677,21 +629,21 @@ The hidden password in "${name}" field should be visibled as "${text}"
 The assign list in "${name}" should contain "${text}"
   ${text}=                  Check Text                         ${text}
   ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::*[contains(@class,"ant-transfer-list")]//*[contains(@class,'ant-transfer-list-content-item')]//span[contains(text(),"${text}")]
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} > 0
+  Wait Until Element Is Visible                                ${element}
 
 The assign list in "${name}" should not contain "${text}"
   ${text}=                  Check Text                         ${text}
   ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::*[contains(@class,"ant-transfer-list")]//*[contains(@class,'ant-transfer-list-content-item')]//span[contains(text(),"${text}")]
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} < 1
+  Wait Until Page Does Not Contain Element                     ${element}
 
 The status of "${name}" switch button should be activated
   ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
+  Wait Until Element Is Visible                               ${element}
   Get Property              ${element}                        className                     contains                             ant-switch-checked
 
 The status of "${name}" switch button should not be activated
   ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
+  Wait Until Element Is Visible                               ${element}
   Get Property              ${element}                        className                     not contains                         ant-switch-checked
 
 # Check UI or Existence #
@@ -709,16 +661,6 @@ Webpage should contain the "${name}" filter function
   ${element}=               Get Element                       //*[contains(@class,'flex-col')]//label[contains(text(),"${name}")]
   ${count}=                 Get Element Count                 ${element}
   Should Be True            ${count} >= 1
-
-# Heading should contain "${text}" inner Text
-#   ${text}=                  Check Text                        ${text}
-#   ${X}=                     Set Variable                      1
-#   WHILE    ${X} <= 6
-#     ${element}=             Set Variable                      //*[contains(@class,'mx-auto')]//h${X}
-#     ${condition}=           Run Keyword And Return Status     Get Text                  ${element}                        equal                      ${text}
-#     IF    '${condition}' == 'True'                            BREAK
-#     ${X}=                   Evaluate                          ${X} + 1
-#   END
 
 Heading should contain "${text}" inner Text
   ${text}=                  Check Text                        ${text}
