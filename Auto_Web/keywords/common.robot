@@ -246,11 +246,9 @@ Table line should show empty
   Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
 
 "${name}" table line should contain the "${button}" button
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::tr//button[@title="${button}"]
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} > 0
+  Wait Until Element Is Visible                                ${element}
 
 Click on the "${text}" button in the "${name}" table line
   Sleep                      ${SHOULD_TIMEOUT}
@@ -276,6 +274,7 @@ Click on the "${text}" button in the "${name}" table line with cancel
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
+  Wait Until Element Is Visible                                ${element}
   Click                     ${element}
   Click Cancel Action
 
