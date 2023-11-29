@@ -208,8 +208,9 @@ DA_16 Create a new data when leaving "Chuyên mục" field blank
 
 DA_17 Create a new data when leaving "Tiêu đề" field blank
     [Tags]                                                                                          Create                                       BlankField
-    Go to page create data "Quản lý dữ liệu" with "/data"
-    When Click select "Chuyên mục" with "Test"
+    Create a category
+    When Click "Thêm mới dữ liệu" button
+    When Click select "Chuyên mục" with "_@Tên loại@_"
     When Click "Lưu lại" button
     Then Required message "Xin vui lòng nhập tiêu đề" displayed under "Tiêu đề" field
 
