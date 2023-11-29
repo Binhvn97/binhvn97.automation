@@ -213,42 +213,40 @@ Get Element Table Item By Name
   ${name}=                  Check Text                         ${name}
   ${cntS}=                  Get Element Count                  //tbody/tr[contains(@class,'ant-table-row')]
   WHILE    ${cntS} < 1      limit=10
-    ${cntS}=                  Get Element Count                //tbody/tr[contains(@class,'ant-table-row')]
+    ${cntS}=                Get Element Count                  //tbody/tr[contains(@class,'ant-table-row')]
   END
   ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]                   
   ${cnt}=                   Get Element Count                  ${element}
   Should Be True            ${cnt} > 0
 
 "${name}" should not be visible in table line
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]   
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} < 1
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]
+  Wait Until Page Does Not Contain Element                     ${element}
 
 Table line should show empty 
-  Wait Until Element Spin
+  Wait Until Element Is Existent                               //p[contains(@class, 'ant-empty-description')]
   Get Property              //p[contains(@class, 'ant-empty-description')]                innerText                      equal                     No Data 
 
 "${name}" table line should be highlighted
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
+  Wait Until Element Is Existent                               //button[contains(text(),"${name}")]//ancestor::tr
   Get Property              //button[contains(text(),"${name}")]//ancestor::tr            className                      contains                  bg-blue-100    
 
 "${name}" should be visible in the first table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  Get Text                  //tbody/tr[2]/td[2]/*              equal                         ${name}
+  Get Text                  //tbody/tr[2]/td[2]/*              equal                      ${name}
 
 "${name}" should be visible in the first table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  Get Text                  //tbody/tr[2]/td[2]/*              inequal                       ${name}
+  Get Text                  //tbody/tr[2]/td[2]/*              inequal                    ${name}
 
 "${name}" table line should contain the "${button}" button
   ${name}=                  Check Text                         ${name}
   ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::tr//button[@title="${button}"]
-  Wait Until Element Is Visible                                ${element}
+  Wait Until Element Is Existent                               ${element}
 
 Click on the "${text}" button in the "${name}" table line
   Sleep                      ${SHOULD_TIMEOUT}
@@ -273,8 +271,8 @@ Click on the "${text}" button in the "${name}" table line with cancel
   Sleep                     ${SHOULD_TIMEOUT}
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${element}=               Get Element Table Item By Name     ${name}                    //button[@title = "${text}"]
-  Wait Until Element Is Visible                                ${element}
+  ${element}=               Get Element Table Item By Name     ${name}                     //button[@title = "${text}"]
+  Wait Until Element Is Existent                               ${element}
   Click                     ${element}
   Click Cancel Action
 
@@ -284,38 +282,37 @@ Get Element Item By Name
   [Return]                  xpath=//*[contains(@class, "item-text") and contains(text(), "${name}")]/ancestor::*[contains(@class, "item")]${xpath}
 
 Click on the "${text}" button in the "${name}" item line
-  Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
-  ${element}=               Get Element Item By Name          ${name}                       //button[@title = "${text}"]
+  ${element}=               Get Element Item By Name          ${name}                      //button[@title = "${text}"]
+  Wait Until Element Is Existent                              ${element}
   Click                     ${element}
   Click Confirm To Action
 
 Click on the "${text}" button in the "${name}" item line with cancel
-  Sleep                     ${SHOULD_TIMEOUT}
-  Wait Until Element Spin
-  ${name}=                  Check Text                         ${name}
-  ${element}=               Get Element Item By Name           ${name}                    //button[@title = "${text}"]
+  ${name}=                  Check Text                        ${name}
+  ${element}=               Get Element Item By Name          ${name}                      //button[@title = "${text}"]
+  Wait Until Element Is Existent                              ${element}
   Click                     ${element}
   Click Cancel Action
 
 Select on the "${text}" item line
-  Wait Until Element Spin
   ${text}=                  Check Text                        ${text}
   ${element}=               Get Element Item By Name          ${text}
+  Wait Until Element Is Existent                              ${element}
   Click                     ${element}
 
 "${name}" should be visible in item line
   ${name}=                  Check Text                         ${name}
-  Wait Until Element Is Visible                                //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
+  Wait Until Element Is Existent                               //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
 
 "${name}" should not be visible in item line
   ${name}=                  Check Text                         ${name}
   Wait Until Page Does Not Contain Element                     //*[contains(@class,'ant-spin-container')]//span[contains(text(),'${name}')]
 
 "${name}" item line should be highlighted
-  Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
   ${element}                Get Element Item By Name           ${name}
+  Wait Until Element Is Existent                               ${element}
   Get Property              ${element}                         className                  contains                       bg-blue-100
 
 ###  -----  Tree  -----  ###
@@ -324,32 +321,32 @@ Get Element Tree By Name
   [Return]                  xpath=//*[contains(@class, "ant-tree-node-content-wrapper") and @title = "${name}"]/*[contains(@class, "group")]${xpath}
 
 Click on the "${name}" tree to delete
-  Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
+  Wait Until Element Is Existent                              ${element}
   Scroll To Element         ${element}
   Mouse Move Relative To    ${element}                        0
   Click                     ${element}//*[contains(@class, "la-trash")]
   Click Confirm To Action
 
 Click on the "${name}" tree to delete with cancel
-  Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
+  Wait Until Element Is Existent                              ${element}
   Scroll To Element         ${element}
   Mouse Move Relative To    ${element}                        0
   Click                     ${element}//*[contains(@class, "la-trash")]
   Click Cancel Action
 
 Click on the "${name}" tree to edit
-  Wait Until Element Spin
   ${name}=                  Check Text                        ${name}
   ${element}=               Get Element Tree By Name          ${name}
+  Wait Until Element Is Existent                              ${element}
   Click                     ${element}
 
 "${name}" should be visible in the tree line
   ${name}=                  Check Text                         ${name}
-  Wait Until Element Is Visible                                //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
+  Wait Until Element Is Existent                               //nz-tree-node-title[@title="${name}" and contains(@class,"ant-tree-node-content-wrapper")]
 
 "${name}" should not be visible in the tree line
   ${name}=                  Check Text                         ${name}
@@ -377,6 +374,14 @@ Element Should Be Visible
   [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${SHOULD_TIMEOUT}
   Wait For Elements State   ${locator}  visible               ${timeout}                    ${message}
 
+Element Should Not Be Visible
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${SHOULD_TIMEOUT}
+  Wait For Elements State   ${locator}  hidden                ${timeout}                    ${message}
+
+Element Should Be Exist
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${SHOULD_TIMEOUT}
+  Wait For Elements State   ${locator}  attached              ${timeout}                    ${message}
+
 Element Text Should Be
   [Arguments]               ${locator}  ${expected}           ${message}=${EMPTY}           ${ignore_case}=${EMPTY}
   Get Text                  ${locator}  equal                 ${expected}                   ${message}
@@ -403,10 +408,11 @@ Click "${text}" tab button
   Wait Until Element Spin
 
 Click "${text}" menu
+  Wait Until Element Is Existent                              //li[contains(@class, "menu") and descendant::span[contains(text(), "${text}")]]
   Click                     xpath=//li[contains(@class, "menu") and descendant::span[contains(text(), "${text}")]]
 
 Click "${text}" sub menu to "${url}"
-  Wait Until Element Spin
+  Wait Until Element Is Existent                              //a[contains(@class, "sub-menu") and descendant::span[contains(text(), "${text}")]]
   Click                     xpath=//a[contains(@class, "sub-menu") and descendant::span[contains(text(), "${text}")]]
   ${curent_url}=            Get Url
   Should Contain            ${curent_url}                     ${URL_DEFAULT}${url}
@@ -418,6 +424,7 @@ Click on "${name}" check box
 Click select "${name}" with "${text}"
   ${text}=                  Get Random Text                   Text                          ${text}
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-select-show-arrow")]
+  Wait Until Element Is Existent                              ${element}
   Click                     ${element}
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-select-selection-search-input")]
   Fill Text                                                   ${element}                    ${text}
@@ -447,15 +454,14 @@ Click on magnifier icon in search box
   Wait Until Element Spin
 
 Click on eye icon in "${name}" field 
-  Wait Until Element Spin
-  ${element}=                Get Element                       //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input//ancestor::div[contains(@class, 'relative ng-star-inserted')]
-  Click                      ${element}/i[contains(@class, "la-eye-slash")]  
-  Sleep                      ${SHOULD_TIMEOUT}
+  ${element}=                Get Element                      //*[contains(@class, "ant-form-item-label")]/label[text()="${name}"]/../../*[contains(@class, "ant-form-item")]//input//ancestor::div[contains(@class, 'relative ng-star-inserted')]
+  Wait Until Element Is Existent                              ${element}
+  Click                      ${element}/i[contains(@class, "la-eye-slash")]
 
 Click on the left arrow icon 
-  ${element}=                Get Element                       //i[contains(@class,'la-arrow-left')]
+  ${element}=                Get Element                      //i[contains(@class,'la-arrow-left')]
+  Wait Until Element Is Existent                              ${element}
   Click                      ${element}
-  Wait Until Element Spin
 
 Click Confirm To Action
   ${element}                Set Variable                      xpath=//*[contains(@class, "ant-popover")]//*[contains(@class, "ant-btn-primary")]
@@ -533,13 +539,21 @@ Wait Until Element Spin
     Wait Until Page Does Not Contain Element                  ${element}
   END
 
-Wait Until Element Is Visible
+Wait Until Element Is Existent
   [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
   Wait For Elements State   ${locator}  attached              ${timeout}                    ${message}
+
+Wait Until Element Is Visible
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
+  Wait For Elements State   ${locator}  visible              ${timeout}                     ${message}
 
 Wait Until Page Does Not Contain Element
   [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
   Wait For Elements State   ${locator}  detached              ${timeout}                    ${message}
+
+Wait Until Page Contain Element
+  [Arguments]               ${locator}  ${message}=${EMPTY}   ${timeout}=${BROWSER_TIMEOUT}
+  Wait For Elements State   ${locator}  attached              ${timeout}                    ${message}
 
 ###  -----  Check feature  -----  ###
 User look message "${message}" popup
@@ -576,7 +590,7 @@ Data's information in "${name}" should be equal "${value}"
         Get Text            ${element}                         equal                        ${value}
       ELSE
         ${element}=         Get Element Form Item By Name      ${name}                       //*[contains(@class, "ant-radio-button-wrapper") and contains(@class,'ant-radio-button-wrapper-checked')]/span[contains(text(), "${value}")]
-        Wait Until Element Is Visible                          ${element}
+        Wait Until Element Is Existent                         ${element}
       END
     END
   ELSE
@@ -616,7 +630,7 @@ Data's information should contain "${name}" field
     Should Be True          ${cnt} >= 1
   ELSE
     ${element}=             Set Variable                      //th[contains(text(),"${name}")]
-    Wait Until Element Is Visible                             ${element}
+    Wait Until Element Is Existent                            ${element}
   END
 
 The hidden password in "${name}" field should be visibled as "${text}"
@@ -628,7 +642,7 @@ The hidden password in "${name}" field should be visibled as "${text}"
 The assign list in "${name}" should contain "${text}"
   ${text}=                  Check Text                         ${text}
   ${element}=               Set Variable                       //*[contains(text(),"${name}")]//ancestor::*[contains(@class,"ant-transfer-list")]//*[contains(@class,'ant-transfer-list-content-item')]//span[contains(text(),"${text}")]
-  Wait Until Element Is Visible                                ${element}
+  Wait Until Element Is Existent                               ${element}
 
 The assign list in "${name}" should not contain "${text}"
   ${text}=                  Check Text                         ${text}
@@ -637,12 +651,12 @@ The assign list in "${name}" should not contain "${text}"
 
 The status of "${name}" switch button should be activated
   ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
-  Wait Until Element Is Visible                               ${element}
+  Wait Until Element Is Existent                              ${element}
   Get Property              ${element}                        className                     contains                             ant-switch-checked
 
 The status of "${name}" switch button should not be activated
   ${element}=               Get Element Form Item By Name     ${name}                       //button[contains(@class, "ant-switch")]
-  Wait Until Element Is Visible                               ${element}
+  Wait Until Element Is Existent                              ${element}
   Get Property              ${element}                        className                     not contains                         ant-switch-checked
 
 # Check UI or Existence #
