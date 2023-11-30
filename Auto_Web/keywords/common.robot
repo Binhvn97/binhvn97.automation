@@ -188,7 +188,7 @@ Enter date in placeholder "${name}" with "${date}"
   Keyboard Key                Press                            Enter
   ${cnt}=                     Get Length                       ${date}
   IF  ${cnt} > 0
-    Set Global Variable       \${STATE["${date}"]}             ${date}
+    Set Global Variable       \${STATE["${name}"]}             ${name}
   END
 
 Enter "${type}" in editor "${name}" with "${text}"
@@ -211,13 +211,8 @@ Get Element Table Item By Name
 "${name}" should be visible in table line
   Wait Until Element Spin
   ${name}=                  Check Text                         ${name}
-  ${cntS}=                  Get Element Count                  //tbody/tr[contains(@class,'ant-table-row')]
-  WHILE    ${cntS} < 1      limit=10
-    ${cntS}=                Get Element Count                  //tbody/tr[contains(@class,'ant-table-row')]
-  END
-  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]                   
-  ${cnt}=                   Get Element Count                  ${element}
-  Should Be True            ${cnt} > 0
+  ${element}=               Set Variable                       //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${name}")]                
+  Wait Until Element Is Existent                               ${element}
 
 "${name}" should not be visible in table line
   ${name}=                  Check Text                         ${name}
@@ -930,7 +925,7 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
     END
   END
 
-### --- Get the account name --- ###
+### --- Get the data information --- ###
 Get data in the last row
   ${pageN}=                   Count the number data in list
   ${number}=                  Evaluate                         ${pageN}+1
@@ -950,6 +945,13 @@ Get data in the first row
     ${Fname}=                 Set Variable                     ${Fname}
   END
   [Return]                    ${Fname}
+
+Get data in the selecting category
+  ${element}=                Set Variable                      //*[contains(@class,'item') and contains(@class,'bg-blue-100')]/span
+  ${text}=                   Get Text                          ${element}
+  ${text}=                   Get Regexp Matches                ${text}                 ${SPACE}(.+)                    1
+  ${text_after}=             Convert to String                 ${text[0]}
+  [Return]                   ${text_after}
 
 #Real Estate
 Get the number of real Estate

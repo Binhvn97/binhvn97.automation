@@ -20,28 +20,27 @@ PO_01 Verify that navigating to the right "Post" page
    Then Webpage should contain the search function
    Then Webpage should contain "Tạo mới bài viết" button
 
-# PO_02 Verify the function changing the number of data show in each list
-#     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
-#     Go to "Post" page
-#     When Click on "second" selection to change the number of data show in list and check
-#     When Click on "third" selection to change the number of data show in list and check
-#     When Click on "fourth" selection to change the number of data show in list and check
-#     When Click on "fifth" selection to change the number of data show in list and check
+PO_02 Verify the function changing the number of data show in each list
+    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    Go to "Post" page
+    When Click on "second" selection to change the number of data show in list and check
+    When Click on "third" selection to change the number of data show in list and check
+    When Click on "fourth" selection to change the number of data show in list and check
+    When Click on "fifth" selection to change the number of data show in list and check
 
-# PO_03 Verify the function navigating to other lists of data page
-#     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
-#     Go to "Post" page
-#     Then Check the amount of page list
-#          ${Last_name}=                                                                            Get data in the last row
-#     Create a category with "Cate1" name
-#     Create a test post with "Cate1" type  
-#     When Move to the "next" page
-#          ${First_name}=                                                                           Get data in the first row
-#          Should Be Equal                                                                          ${First_name}                                ${Last_name}
-#     When Move to the "previous" page
-#     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
-#     When Click on the "Xóa" button in the "Cate1" item line    
-#     Then Move to the last page and check
+PO_03 Verify the function navigating to other lists of data page
+    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    Go to "Post" page
+    ${Cate}=                                                                                      Get data in the selecting category
+    Then Check the amount of page list
+         ${Last_name}=                                                                            Get data in the last row
+    When Create a test post with "${Cate}" type  
+    When Move to the "next" page
+         ${First_name}=                                                                           Get data in the first row
+         Should Be Equal                                                                          ${First_name}                                ${Last_name}
+    When Move to the "previous" page
+    When Click on the "Xóa" button in the "_@Tiêu đề@_" table line  
+    Then Move to the last page and check
 
 PO_04 Verify the highlight table line function after operated
     [Tags]                                                                                        MainPage                                     UI
@@ -59,7 +58,7 @@ PO_05 Verify that navigating to the right "Edit post" page
     [Tags]                                                                                        DetailedInfo                                 Smoketest
     Create a category with "Cate1" name
     Create a test post with "Cate1" type
-    When Select on the "Cate1" item line
+    Select on the "Cate1" item line
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Heading should contain "Cập nhật bài viết" inner Text
     Then Webpage should contain "Chuyên mục" select field
@@ -72,7 +71,7 @@ PO_06 Check data information after creation
     [Tags]                                                                                        DetailedInfo
     Create a category with "Cate1" name
     Create a test post with "Cate1" type
-    When Select on the "Cate1" item line
+    Select on the "Cate1" item line
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Data's information should contain "Loại editor" field
     Then Data's information in "Chuyên mục" should be equal "_@Chuyên mục@_"
@@ -115,7 +114,6 @@ PO_09 Verify the search function when enter the existed name
     When Select on the "Cate1" item line  
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
-    Wait Until Element Spin
     Then "_@Tiêu đề@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     When Click on the "Xóa" button in the "Cate1" item line
@@ -137,7 +135,8 @@ PO_11 Check the update of data list after cancel the search action
     [Tags]                                                                                        Search
     Create a category with "Cate1" name
     ${name1}=                                                                                     Create a test post with "Cate1" type 
-    Create a test post with "Cate1" type             
+    Create a test post with "Cate1" type
+    When Select on the "Cate1" item line          
     When Enter "text" in "Tìm kiếm" with "${name1}"
     When Click on magnifier icon in search box
     Then "${name1}" should be visible in table line

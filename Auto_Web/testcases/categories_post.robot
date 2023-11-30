@@ -246,6 +246,7 @@ CA_PO_19 Verify the delete data function
     When Click "Lưu lại" button
     When Click on the "Xóa" button in the "${Cate1}" item line
     Then User look message "Không thể xóa danh mục đang có bài viết" popup
+    When Select on the "${Cate1}" item line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     When Click on the "Xóa" button in the "${Cate1}" item line
 

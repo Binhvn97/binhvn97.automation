@@ -15,11 +15,12 @@ CA_DA_01 Verify that navigating to the right "Categories Data" page
     When Click "QUẢN LÝ DANH MỤC" menu
     When Click "Quản lý dữ liệu" sub menu to "/data"
     Then Confirm locating exactly in "Quản lý dữ liệu" page
+    Then Heading of separated group should contain "Chuyên mục" inner Text
     Then Webpage should contain the list data from database
     Then Webpage should contain "Tạo mới" button
 
 CA_DA_02 Verify that navigating to the right "Categories Data" page
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Quản lý dữ liệu" page
     When Click "QUẢN LÝ DANH MỤC" menu
     When Click "Quản lý dữ liệu" sub menu to "/data"
@@ -133,6 +134,18 @@ CA_DA_12_02 Check the (left arrow icon) "Trở lại" button
 
 ### Verify the funtion of changing data information ###
 CA_DA_13 Verify the changing "Tên loại" field
+    [Tags]                                                                                        ChangeInfo                                   Smoketest
+    Create a test category
+    When Click on the "Sửa" button in the "_@Tên loại@_" item line
+    Then Heading should contain "Thêm mới chuyên mục" inner Text
+    Then Webpage should contain "Tên loại" input field
+    Then Webpage should contain "Mã" input field
+    Then Webpage should contain "Lưu lại" button
+    Then Webpage should contain "Đóng lại" button
+    When Click "Đóng lại" button
+    When Click on the "Xóa" button in the "_@Tên loại@_" item line
+
+CA_DA_14 Verify the changing "Tên loại" field
     [Tags]                                                                                        ChangeInfo
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
@@ -142,7 +155,8 @@ CA_DA_13 Verify the changing "Tên loại" field
     Then "_@Tên loại@_" should be visible in item line
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
-CA_DA_14 Verify the changing "Mã" field
+
+CA_DA_15 Verify the changing "Mã" field
     [Tags]                                                                                        ChangeInfo
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
@@ -154,7 +168,7 @@ CA_DA_14 Verify the changing "Mã" field
     When Click "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
-CA_DA_15 Verify the changing with the existed "Tên loại"
+CA_DA_16 Verify the changing with the existed "Tên loại"
     [Tags]                                                                                        ChangeInfo
     ${Cate1}=                                                                                     Create a test category
     Create a test category
@@ -166,7 +180,7 @@ CA_DA_15 Verify the changing with the existed "Tên loại"
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
     When Click on the "Xóa" button in the "${Cate1}" item line
 
-CA_DA_16 Verify the changing with the existed "Mã"
+CA_DA_17 Verify the changing with the existed "Mã"
     [Tags]                                                                                        ChangeInfo
     ${Cate1}=                                                                                     Create a test category
     Create a test category
@@ -178,7 +192,7 @@ CA_DA_16 Verify the changing with the existed "Mã"
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
     When Click on the "Xóa" button in the "${Cate1}" item line
 
-CA_DA_17 Check the "Đóng lại" button in edit infomation page
+CA_DA_18 Check the "Đóng lại" button in edit infomation page
     [Tags]                                                                                        ChangeInfo                                       Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
@@ -188,7 +202,7 @@ CA_DA_17 Check the "Đóng lại" button in edit infomation page
     Then Webpage should contain "Tạo mới" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
-CA_DA_18_01 Check the left arrow icon ("Trở lại" button) in edit infomation page
+CA_DA_19_01 Check the left arrow icon ("Trở lại" button) in edit infomation page
     [Tags]                                                                                        ChangeInfo                                       Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
@@ -198,7 +212,7 @@ CA_DA_18_01 Check the left arrow icon ("Trở lại" button) in edit infomation 
     Then Webpage should contain "Tạo mới" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
-CA_DA_18_02 Check the (left arrow icon) "Trở lại" button in edit infomation page
+CA_DA_19_02 Check the (left arrow icon) "Trở lại" button in edit infomation page
     [Tags]                                                                                        ChangeInfo                                       Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
@@ -209,14 +223,14 @@ CA_DA_18_02 Check the (left arrow icon) "Trở lại" button in edit infomation 
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 ### Verify the delete data function ###
-CA_DA_19 Verify the delete data function
-    [Tags]                                                                                        Delete                                       Smoketest
+CA_DA_20 Verify the delete data function
+    [Tags]                                                                                        Delete                                           Smoketest
     Create a test category
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
     Then User look message "Success" popup
     Then "_@Tên loại@_" should not be visible in item line
 
-CA_DA_20 Verify the cancel action button when delete data
+CA_DA_21 Verify the cancel action button when delete data
     [Tags]                                                                                        Delete
     Create a test category
     When Click on the "Xóa" button in the "_@Tên loại@_" item line with cancel
@@ -224,7 +238,7 @@ CA_DA_20 Verify the cancel action button when delete data
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
     Then User look message "Success" popup
 
-CA_DA_21 Check to delete category that still having data inside
+CA_DA_22 Check to delete category that still having data inside
     [Tags]                                                                                        Delete
     Create a test category
     When Click "Thêm mới dữ liệu" button
@@ -236,6 +250,7 @@ CA_DA_21 Check to delete category that still having data inside
     When Click "Lưu lại" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
     Then User look message "Danh mục có dữ liệu không thể xóa" popup
+    When Select on the "_@Tên loại@_" item line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 

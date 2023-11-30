@@ -30,22 +30,22 @@ DA_02 Verify the function changing the number of data show in each list
 DA_03 Verify the function navigating to other lists of data page
     [Tags]                                                                                        MainPage                                    UI                                          Smoketest
     Go to "Quản lý dữ liệu" page
-    Create a category
+    ${Cate}=                                                                                      Get data in the selecting category
     Then Check the amount of page list
     ${Last_name}=                                                                                 Get data in the last row 
-    Create a test data with "_@Tên loại@_" type
+    Create a test data with "${Cate}" type
     When Move to the "next" page
     ${First_name}=                                                                                Get data in the first row
-    Should Be Equal                                                                               ${Last_name}                                ${First_name}
+    Then Should Be Equal                                                                          ${Last_name}                                ${First_name}
     When Move to the "previous" page
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then Move to the last page and check
-    When Click on the "Xóa" button in the "_@Tên loại@_" item line 
 
 DA_04 Verify the highlight table line function after operated
     [Tags]                                                                                        MainPage                                    UI
     Create a category  
     Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line
     When Click on the "Sửa" button in the "_@Tiêu đề@_" table line
     When Click "Đóng lại" button
     Then "_@Tiêu đề@_" table line should be highlighted
@@ -56,7 +56,8 @@ DA_04 Verify the highlight table line function after operated
 DA_05 Verify that navigating to the right "Edit data" page
     [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     Create a category 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type 
+    When Select on the "_@Tên loại@_" item line   
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Heading should contain "Chỉnh sửa dữ liệu" inner Text
     Then Webpage should contain "Chuyên mục" select field
@@ -68,7 +69,8 @@ DA_05 Verify that navigating to the right "Edit data" page
 DA_06 Check data information after creation
     [Tags]                                                                                        DetailedInfo                                UI                                           Smoketest
     Create a category 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Data's information in "Chuyên mục" should be equal "_@Tên loại@_"
     Then Data's information in "Thứ tự" should be equal "_@Thứ tự@_"
@@ -83,7 +85,8 @@ DA_06 Check data information after creation
 DA_07 Verify the "Đóng lại" button
     [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     Create a category 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line  
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     When Click "Trở lại" button
     Then Confirm locating exactly in "Quản lý dữ liệu" page
@@ -95,7 +98,8 @@ DA_07 Verify the "Đóng lại" button
 DA_08 Verify the "Left-arrow" button
     [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
     Create a category 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line 
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     When Click on the left arrow icon
     Then Confirm locating exactly in "Quản lý dữ liệu" page
@@ -108,7 +112,8 @@ DA_08 Verify the "Left-arrow" button
 DA_09 Verify the search function when enter the existed name
     [Tags]                                                                                        Search                                      Smoketest
     Create a category 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
     Then "_@Tiêu đề@_" should be visible in table line
@@ -118,7 +123,8 @@ DA_09 Verify the search function when enter the existed name
 DA_10 Verify the search function when enter the name was not existed
     [Tags]                                                                                        Search
     Create a category 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line
     When Enter "text" in "Tìm kiếm" with "_RANDOM_"
     When Click on magnifier icon in search box
     Then Table line should show empty
@@ -132,7 +138,8 @@ DA_11 Check the update of data list after cancel the search action
     [Tags]                                                                                        Search
     Create a category 
     ${Data1}=                                                                                     Create a test data with "_@Tên loại@_" type 
-    Create a test data with "_@Tên loại@_" type    
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line  
     When Enter "text" in "Tìm kiếm" with "${Data1}"
     When Click on magnifier icon in search box
     Then "${Data1}" should be visible in table line
@@ -149,6 +156,7 @@ DA_12 Verify "Thêm mới dữ liệu" button function
     [Tags]                                                                                        Create                                         Smoketest
     Go to "Quản lý dữ liệu" page
     Create a category
+    Select on the "_@Tên loại@_" item line
     When Click "Thêm mới dữ liệu" button
     Then Heading should contain "Thêm mới dữ liệu" inner Text
     Then Confirm adding "/data" page
@@ -165,6 +173,7 @@ DA_12 Verify "Thêm mới dữ liệu" button function
 DA_13 Create new data with the valid data
     [Tags]                                                                                         Create                                       Smoketest
     Create a category
+    Select on the "_@Tên loại@_" item line
     When Click "Thêm mới dữ liệu" button
     When Click select "Chuyên mục" with "_@Tên loại@_"
     When Enter "number" in "Thứ tự" with "_RANDOM_"
@@ -179,6 +188,7 @@ DA_13 Create new data with the valid data
 DA_14 Check the update of data list after creating a new data
     [Tags]                                                                                          Create                                       Smoketest
     Create a category
+    Select on the "_@Tên loại@_" item line
     When Click "Thêm mới dữ liệu" button
     When Click select "Chuyên mục" with "_@Tên loại@_"
     When Enter "number" in "Thứ tự" with "_RANDOM_"
@@ -209,6 +219,7 @@ DA_16 Create a new data when leaving "Chuyên mục" field blank
 DA_17 Create a new data when leaving "Tiêu đề" field blank
     [Tags]                                                                                          Create                                       BlankField
     Create a category
+    Select on the "_@Tên loại@_" item line
     When Click "Thêm mới dữ liệu" button
     When Click select "Chuyên mục" with "_@Tên loại@_"
     When Click "Lưu lại" button
@@ -217,8 +228,9 @@ DA_17 Create a new data when leaving "Tiêu đề" field blank
 ### Create new data with invalid data ###
 DA_18 Create a new data with the invalid "Tiêu đề"
     [Tags]                                                                                          Create                                        Invalid
-    Create a category 
-    Create a test data with "_@Tên loại@_" type     
+    Create a category
+    Select on the "_@Tên loại@_" item line
+    Create a test data with "_@Tên loại@_" type
     When Click "Thêm mới dữ liệu" button
     When Click select "Chuyên mục" with "_@Tên loại@_"
     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
@@ -348,7 +360,8 @@ DA_27 Verify the "Left-arrow" button
 DA_28 Verify the delete data function
     [Tags]                                                                                          Delete                                      Smoketest
     Create a category
-    Create a test data with "_@Tên loại@_" type       
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line     
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then User look message "Xóa thành công" popup
     Then "_@Tiêu đề@_" should not be visible in table line
@@ -358,12 +371,13 @@ DA_28 Verify the delete data function
 DA_29 Verify the cancel action button when delete data
     [Tags]                                                                                          Delete
     Create a category 
-    Create a test data with "_@Tên loại@_" type  
+    Create a test data with "_@Tên loại@_" type
+    When Select on the "_@Tên loại@_" item line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line with cancel
     Then "_@Tiêu đề@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then User look message "Xóa thành công" popup
-    When Click on the "Xóa" button in the "_@Tên loại@_" item line  
+    When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 *** Keywords ***
 Go to "Quản lý dữ liệu" page
