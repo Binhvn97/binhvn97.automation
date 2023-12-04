@@ -675,11 +675,8 @@ Webpage should contain the "${name}" filter function
 
 Heading should contain "${text}" inner Text
   ${text}=                  Check Text                        ${text}
-  FOR    ${X}    IN RANGE    1    6    1
-    ${element}=             Set Variable                      //*[contains(@class,'mx-auto')]//h${X}
-    ${condition}=           Run Keyword And Return Status     Get Text                  ${element}                        equal                      ${text}
-    IF    '${condition}' == 'True'                            BREAK    
-  END
+  ${element}=               Set Variable                      //*[contains(@class,'mx-auto')]//*[contains(@class, 'text-2xl') and contains(text(),'${text}')]
+  Wait Until Element Is Existent                              ${element}
 
 Heading of separated group should contain "${text}" inner Text
   ${text}=                  Check Text                        ${text}
