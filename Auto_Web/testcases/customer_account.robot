@@ -595,15 +595,6 @@ CA_50 Verify the cancel action button when delete account
     Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-CA_00 Delete test account
-   Go to "Internal Account" page
-   ${condition}=            Get data in the first row
-   WHILE    '${condition}' != 'Hue'        limit=30
-      Click on the "Xóa" button in the "${condition}" table line
-      Wait Until Element Spin
-      ${condition}=            Get data in the first row
-   END
-
 *** Keywords ***
 
 Go to "${page}" page
