@@ -137,7 +137,7 @@ CA_DA_13 Verify the changing "Tên loại" field
     [Tags]                                                                                        ChangeInfo                                   Smoketest
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
-    Then Heading should contain "Thêm mới chuyên mục" inner Text
+    Then Heading should contain "Chỉnh sửa chuyên mục" inner Text
     Then Webpage should contain "Tên loại" input field
     Then Webpage should contain "Mã" input field
     Then Webpage should contain "Lưu lại" button

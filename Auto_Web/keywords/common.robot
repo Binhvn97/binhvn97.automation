@@ -680,9 +680,14 @@ Heading should contain "${text}" inner Text
 
 Heading of separated group should contain "${text}" inner Text
   ${text}=                  Check Text                        ${text}
-  ${element}=               Set Variable                      //*[contains(@class,'mx-auto grid')]//span[contains(text(),"${text}")]
+  ${element}=               Set Variable                      //*[contains(@class,'mx-auto')]//*[contains(@class, 'text-xl') and contains(text(),"${text}")]
   ${cnt}=                   Get Element Count                 ${element}
-  Should Be True            ${cnt} > 0
+  IF    ${cnt} > 0
+    Wait Until Element Is Existent                            ${element}
+  ELSE
+    ${element}=             Set Variable                      //*[contains(@class,'mx-auto')]//*[contains(@class, 'text-lg') and contains(text(),'${text}')]
+    Wait Until Element Is Existent                            ${element}
+  END
 
 Webpage should contain the list data from database
   ${element}=               Get Element                        //div[contains(@class,'datatable-wrapper')]    
