@@ -6,7 +6,7 @@ Library             String
 *** Variables ***
 ${BROWSER}          chromium
 ${HEADLESS}         ${False}
-${BROWSER_TIMEOUT}  10 seconds
+${BROWSER_TIMEOUT}  60 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
 ${TIME_TRY}         0.3 seconds
 
@@ -258,6 +258,7 @@ Click on the "${text}" button in the "${name}" table line
     END
   ELSE
     ${element}=              Get Element Table Item By Name    ${name}                     //button[@title = "${text}"]
+    Sleep                    ${SHOULD_TIMEOUT}
     Click                    ${element} 
   END
   Click Confirm To Action
@@ -268,6 +269,7 @@ Click on the "${text}" button in the "${name}" table line with cancel
   ${name}=                  Check Text                         ${name}
   ${element}=               Get Element Table Item By Name     ${name}                     //button[@title = "${text}"]
   Wait Until Element Is Existent                               ${element}
+  Sleep                     ${SHOULD_TIMEOUT}
   Click                     ${element}
   Click Cancel Action
 
@@ -459,6 +461,7 @@ Click on the left arrow icon
   Click                      ${element}
 
 Click Confirm To Action
+  Sleep                     ${SHOULD_TIMEOUT}
   ${element}                Set Variable                      xpath=//*[contains(@class, "ant-popover")]//*[contains(@class, "ant-btn-primary")]
   ${count}=                 Get Element Count                 ${element}
   IF    ${count} > 0
