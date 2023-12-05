@@ -19,7 +19,7 @@ CA_PO_01 Verify that navigating to the right "Categories Post" page
     Then Webpage should contain "Tạo mới" button
 
 CA_PO_02 Verify that highlight category line after clicking on it
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Post" page
     When Click "Tạo mới" button
     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
@@ -31,7 +31,7 @@ CA_PO_02 Verify that highlight category line after clicking on it
 
 ### Verify the creating data function ###
 CA_PO_03 Verify "Tạo mới" button function
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Post" page
     When Click "Tạo mới" button
     Then Confirm adding "/post/categories" page
@@ -43,7 +43,7 @@ CA_PO_03 Verify "Tạo mới" button function
     Then Webpage should contain "Đóng lại" button
 
 CA_PO_04 Create new data with the valid post
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to page create data "Post" with "/post"
     When Enter "test name" in "Tiêu đề" with "_RANDOM_"
     When Enter "paragraph" in textarea "Giới thiệu" with "_RANDOM_"
@@ -84,7 +84,7 @@ CA_DA_08 Create a new data when leaving "Tiêu đề" field blank
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
 CA_PO_09 Create a new data with the invalid "Tiêu đề"
-    [Tags]                                                                                        Create                                    Invalid
+    [Tags]                                                                                        Create                                      Invalid
     Create a test category
     When Click "Tạo mới" button
     When Enter "test name" in "Tiêu đề" with "_@Tiêu đề@_"
@@ -95,7 +95,7 @@ CA_PO_09 Create a new data with the invalid "Tiêu đề"
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
 CA_PO_10 Check the "Đóng lại" button
-    [Tags]                                                                                        Create                                    Button
+    [Tags]                                                                                        Create                                      Button
     Go to page create data "Post" with "/post"
     When Click "Đóng lại" button
     Then Confirm locating exactly in "Post" page
@@ -103,7 +103,7 @@ CA_PO_10 Check the "Đóng lại" button
     Then Webpage should contain "Tạo mới" button
 
 CA_PO_11_01 Check the left arrow icon ("Trở lại" button)
-    [Tags]                                                                                        Create                                    Button
+    [Tags]                                                                                        Create                                      Button
     Go to page create data "Post" with "/post"
     When Click on the left arrow icon
     Then Confirm locating exactly in "Post" page
@@ -111,7 +111,7 @@ CA_PO_11_01 Check the left arrow icon ("Trở lại" button)
     Then Webpage should contain "Tạo mới" button
 
 CA_PO_11_01 Check the (left arrow icon) "Trở lại" button
-    [Tags]                                                                                        Create                                    Button
+    [Tags]                                                                                        Create                                      Button
     Go to page create data "Post" with "/post"
     When Click "Trở lại" button
     Then Confirm locating exactly in "Post" page
@@ -166,7 +166,7 @@ CA_PO_14 Verify the changing "Giới thiệu" field
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
 CA_PO_15 Check the "Đóng lại" button
-    [Tags]                                                                                        ChangeInfo                                  Button
+    [Tags]                                                                                        ChangeInfo                                    Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tiêu đề@_" item line
     When Click "Đóng lại" button
@@ -176,7 +176,7 @@ CA_PO_15 Check the "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
 CA_PO_16_01 Check the left arrow icon ("Trở lại" button)
-    [Tags]                                                                                        ChangeInfo                                  Button
+    [Tags]                                                                                        ChangeInfo                                    Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tiêu đề@_" item line
     When Click on the left arrow icon
@@ -186,7 +186,7 @@ CA_PO_16_01 Check the left arrow icon ("Trở lại" button)
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
 CA_PO_16_02 Check the (left arrow icon) "Trở lại" button
-    [Tags]                                                                                        ChangeInfo                                  Button
+    [Tags]                                                                                        ChangeInfo                                    Button
     Create a test category
     When Click on the "Sửa" button in the "_@Tiêu đề@_" item line
     When Click "Trở lại" button
@@ -197,7 +197,7 @@ CA_PO_16_02 Check the (left arrow icon) "Trở lại" button
 
 ### Verify the delete data function ###
 CA_PO_17 Verify the delete data function
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test category
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
     Then User look message "Đã xóa thành công" popup
@@ -211,7 +211,7 @@ CA_PO_18 Verify the cancel action button when delete data
     When Click on the "Xóa" button in the "_@Tiêu đề@_" item line
 
 CA_PO_19 Verify the delete data function
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     ${Cate1}=                                                                                     Create a test category
     When Click "Tạo mới bài viết" button
     When Click radio "Loại editor" in line "Block"

@@ -34,7 +34,7 @@ CA_DA_02 Verify that navigating to the right "Categories Data" page
 
 ### Verify the creating data function ###
 CA_DA_03 Verify "Tạo mới" button function
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Quản lý dữ liệu" page
     When Click "Tạo mới" button
     Then Confirm adding "/data/type" page
@@ -46,7 +46,7 @@ CA_DA_03 Verify "Tạo mới" button function
     Then Webpage should contain left arrow icon
 
 CA_DA_04 Create new data with the valid data
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to page create category "Quản lý dữ liệu" with "/data"
     When Enter "test name" in "Tên loại" with "_RANDOM_"
     When Enter "number" in "Mã" with "_RANDOM_"
@@ -134,7 +134,7 @@ CA_DA_12_02 Check the (left arrow icon) "Trở lại" button
 
 ### Verify the funtion of changing data information ###
 CA_DA_13 Verify the changing "Tên loại" field
-    [Tags]                                                                                        ChangeInfo                                   Smoketest
+    [Tags]                                                                                        ChangeInfo
     Create a test category
     When Click on the "Sửa" button in the "_@Tên loại@_" item line
     Then Heading should contain "Chỉnh sửa chuyên mục" inner Text
@@ -224,7 +224,7 @@ CA_DA_19_02 Check the (left arrow icon) "Trở lại" button in edit infomation 
 
 ### Verify the delete data function ###
 CA_DA_20 Verify the delete data function
-    [Tags]                                                                                        Delete                                           Smoketest
+    [Tags]                                                                                        Delete
     Create a test category
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
     Then User look message "Success" popup

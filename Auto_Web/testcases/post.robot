@@ -21,7 +21,7 @@ PO_01 Verify that navigating to the right "Post" page
    Then Webpage should contain "Tạo mới bài viết" button
 
 PO_02 Verify the function changing the number of data show in each list
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Post" page
     When Click on "second" selection to change the number of data show in list and check
     When Click on "third" selection to change the number of data show in list and check
@@ -29,7 +29,7 @@ PO_02 Verify the function changing the number of data show in each list
     When Click on "fifth" selection to change the number of data show in list and check
 
 PO_03 Verify the function navigating to other lists of data page
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Post" page
     ${Cate}=                                                                                      Get data in the selecting category
     Then Check the amount of page list
@@ -55,7 +55,7 @@ PO_04 Verify the highlight table line function after operated
        
 ### Verify the correct design in detail information's Post page ###
 PO_05 Verify that navigating to the right "Edit post" page
-    [Tags]                                                                                        DetailedInfo                                 Smoketest
+    [Tags]                                                                                        DetailedInfo
     Create a category with "Cate1" name
     Create a test post with "Cate1" type
     Select on the "Cate1" item line
@@ -81,7 +81,7 @@ PO_06 Check data information after creation
     When Click on the "Xóa" button in the "Cate1" item line
 
 PO_07 Verify the "Đóng lại" button 
-    [Tags]                                                                                        DetailedInfo                                 Button                                          Smoketest
+    [Tags]                                                                                        DetailedInfo                                 Button
     Create a category with "Cate1" name
     Create a test post with "Cate1" type
     When Select on the "Cate1" item line
@@ -94,7 +94,7 @@ PO_07 Verify the "Đóng lại" button
     When Click on the "Xóa" button in the "Cate1" item line
 
 PO_08 Verify the "Left-arrow" button 
-    [Tags]                                                                                        DetailedInfo                                 Button                                          Smoketest
+    [Tags]                                                                                        DetailedInfo                                 Button
     Create a category with "Cate1" name
     Create a test post with "Cate1" type
     When Select on the "Cate1" item line
@@ -108,7 +108,7 @@ PO_08 Verify the "Left-arrow" button
 
 ### Verify the search function ###
 PO_09 Verify the search function when enter the existed name
-    [Tags]                                                                                        Search                                      Smoketest
+    [Tags]                                                                                        Search
     Create a category with "Cate1" name
     Create a test post with "Cate1" type
     When Select on the "Cate1" item line  
@@ -150,7 +150,7 @@ PO_11 Check the update of data list after cancel the search action
 
 ### Verify the creating data function ###
 PO_12 Verify "Tạo mới bài viết" button function
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Post" page
     When Click "Tạo mới bài viết" button
     Then Confirm adding "/post" page
@@ -161,7 +161,7 @@ PO_12 Verify "Tạo mới bài viết" button function
     Then Webpage should contain "Đóng lại" button
 
 PO_13 Create new data with the valid data
-    [Tags]                                                                                        Create                                      Smoketest
+    [Tags]                                                                                        Create
     Create a category with "Cate1" name
     When Click "Tạo mới bài viết" button  
     When Click radio "Loại editor" in line "Block"
@@ -684,7 +684,7 @@ PO_48 Verify that CAN NOT changing data information with the same "Tiêu đề" 
 
 ### Verify the delete data function ###
 PO_49 Verify the delete data function
-    [Tags]                                                                                          Delete                                 Smoketest
+    [Tags]                                                                                          Delete
     Create a category with "Cate1" name 
     Create a test post with "Cate1" type
     When Select on the "Cate1" item line

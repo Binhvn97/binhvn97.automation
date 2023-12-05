@@ -21,7 +21,7 @@ CH_01 Verify that navigating to the right "Parameter" page
 
 ### Verify the creating data function ###
 CH_02 Verify "Tạo mới" button function
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Cấu hình hệ thống" page
     When Click "Tạo mới" button
     Then Heading of separated group should contain "Thông tin" inner Text
@@ -33,7 +33,7 @@ CH_02 Verify "Tạo mới" button function
     Then Webpage should contain "Hệ thống" switch button
 
 CH_03 Create new data with the valid parameter
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to page create data "Cấu hình hệ thống" with "/parameter"
     When Enter "test name" in "Tên tham số" with "_RANDOM_"
     When Enter "text" in "Giá trị tham số" with "_RANDOM_"
@@ -155,14 +155,14 @@ CH_14 Verify that CAN change parameter's data in "Ghi chú" field
 
 ### Verify the search data function ###
 CH_15 Verify the search function when enter the existed name
-    [Tags]                                                                                        Search                                     Smoketest
+    [Tags]                                                                                        Search
     Create a test data
     When Enter "test name" in placeholder "Nhập để tìm kiếm" with "_@Tên tham số@_"
     Then "_@Tên tham số@_" should be visible in the tree line
     When Click on the "_@Tên tham số@_" tree to delete
 
 CH_16 Verify the search function when enter the name was not existed
-    [Tags]                                                                                        Search                                     Smoketest
+    [Tags]                                                                                        Search
     Create a test data
     When Enter "test name" in placeholder "Nhập để tìm kiếm" with "_RANDOM_"
     When Click on magnifier icon in search box
@@ -172,7 +172,7 @@ CH_16 Verify the search function when enter the name was not existed
 
 ### Verify the delete data function ###
 CH_17 Verify the delete data function
-    [Tags]                                                                                        Delete                                     Smoketest
+    [Tags]                                                                                        Delete
     Create a test data
     When Click on the "_@Tên tham số@_" tree to delete
     Then User look message "Success" popup

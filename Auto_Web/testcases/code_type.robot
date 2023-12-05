@@ -20,7 +20,7 @@ CO_01 Verify that navigating to the right "Code-Type" page
    Then Webpage should contain "Thêm mới" button
 
 CO_02_01 Verify the function changing the number of data show in "Nhóm thủ thuật" list 
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Select on the "Nhóm thủ thuật" item line
     When Click on "second" selection to change the number of data show in list and check
@@ -29,7 +29,7 @@ CO_02_01 Verify the function changing the number of data show in "Nhóm thủ th
     When Click on "fifth" selection to change the number of data show in list and check
 
 CO_02_02 Verify the function changing the number of data show in "Độ khó" list  
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Select on the "Độ khó" item line
     When Click on "second" selection to change the number of data show in list and check
@@ -38,7 +38,7 @@ CO_02_02 Verify the function changing the number of data show in "Độ khó" li
     When Click on "fifth" selection to change the number of data show in list and check
 
 CO_02_03 Verify the function changing the number of data show in "Bằng cấp chuyên môn" list
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
     When Click on "second" selection to change the number of data show in list and check
@@ -47,7 +47,7 @@ CO_02_03 Verify the function changing the number of data show in "Bằng cấp c
     When Click on "fifth" selection to change the number of data show in list and check
 
 # CO_02_04 Verify the function changing the number of data show in "Số răng" list
-#     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+#     [Tags]                                                                                        MainPage                                     UI
 #     Go to "Danh mục" page
 #     Select on the "Số răng" item line
 #     When Click on "second" selection to change the number of data show in list and check
@@ -56,7 +56,7 @@ CO_02_03 Verify the function changing the number of data show in "Bằng cấp c
 #     When Click on "fifth" selection to change the number of data show in list and check
 
 CO_03_01 Verify the function navigating to other pages in the list of "Nhóm thủ thuật"
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Select on the "Nhóm thủ thuật" item line
     Then Check the amount of page list
@@ -70,7 +70,7 @@ CO_03_01 Verify the function navigating to other pages in the list of "Nhóm th�
     Then Move to the last page and check
 
 CO_03_02 Verify the function navigating to other pages in the list of "Độ khó"
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Select on the "Độ khó" item line
     Then Check the amount of page list
@@ -84,7 +84,7 @@ CO_03_02 Verify the function navigating to other pages in the list of "Độ kh�
     Then Move to the last page and check
 
 CO_03_03 Verify the function navigating to other pages in the list of "Bằng cấp chuyên môn"
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
     Then Check the amount of page list
@@ -98,7 +98,7 @@ CO_03_03 Verify the function navigating to other pages in the list of "Bằng c�
     Then Move to the last page and check
 
 # CO_03_04 Verify the function navigating to other pages in the list of "Số răng"
-#     [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+#     [Tags]                                                                                        MainPage                                     UI
 #     Go to "Danh mục" page
 #     Select on the "Số răng" item line
 #     Then Check the amount of page list
@@ -185,7 +185,7 @@ CO_07_01 Verify that navigating to the right "edit code-type" page of "Nhóm th�
 
 CO_07_02 Verify that navigating to the right "edit code-type" page of "Độ khó" category
     [Tags]                                                                                        DetailedInfo
-    Create a test data of "Nhóm thủ thuật" category
+    Create a test data of "Độ khó" category
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Heading should contain "Chỉnh sửa Độ khó" inner Text
     Then Webpage should contain "Tiêu đề" input field
@@ -200,7 +200,7 @@ CO_07_02 Verify that navigating to the right "edit code-type" page of "Độ kh�
 
 CO_07_03 Verify that navigating to the right "edit code-type" page of "Bằng cấp chuyên môn" category
     [Tags]                                                                                        DetailedInfo
-    Create a test data of "Nhóm thủ thuật" category
+    Create a test data of "Bằng cấp chuyên môn" category
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Heading should contain "Chỉnh sửa Bằng cấp chuyên môn" inner Text
     Then Webpage should contain "Tiêu đề" input field
@@ -215,7 +215,7 @@ CO_07_03 Verify that navigating to the right "edit code-type" page of "Bằng c�
 
 CO_07_04 Verify that navigating to the right "edit code-type" page of "Số răng" category
     [Tags]                                                                                        DetailedInfo
-    Create a test data of "Nhóm thủ thuật" category
+    Create a test data of "Số răng" category
     When Click on the "Chi tiết" button in the "_@Tiêu đề@_" table line
     Then Heading should contain "Chỉnh sửa Số răng" inner Text
     Then Webpage should contain "Tiêu đề" input field
@@ -354,7 +354,7 @@ CO_10_04 Verify the "Đóng lại" button in detail data information of "Số r�
 
 ### Verify the search function ###
 CO_11_01 Verify the search function when enter the existed name in "Nhóm thủ thuật" category
-    [Tags]                                                                                        Search                                       Smoketest
+    [Tags]                                                                                        Search
     Create a test data of "Nhóm thủ thuật" category
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
@@ -362,7 +362,7 @@ CO_11_01 Verify the search function when enter the existed name in "Nhóm thủ 
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
 CO_11_02 Verify the search function when enter the existed name in "Độ khó" category
-    [Tags]                                                                                        Search                                       Smoketest
+    [Tags]                                                                                        Search
     Create a test data of "Nhóm thủ thuật" category
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
@@ -370,14 +370,14 @@ CO_11_02 Verify the search function when enter the existed name in "Độ khó" 
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
 CO_11_03 Verify the search function when enter the existed name in "Bằng cấp chuyên môn" category
-    [Tags]                                                                                        Search                                       Smoketest
+    [Tags]                                                                                        Search
     Create a test data of "Nhóm thủ thuật" category
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
     Then "_@Tiêu đề@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 CO_11_04 Verify the search function when enter the existed name in "Số răng" category
-    [Tags]                                                                                        Search                                       Smoketest
+    [Tags]                                                                                        Search
     Create a test data of "Nhóm thủ thuật" category
     When Enter "test name" in "Tìm kiếm" with "_@Tiêu đề@_"
     When Click on magnifier icon in search box
@@ -486,7 +486,7 @@ CO_13_04 Check the update of data list after cancel the search action (in "Số 
 
 ### Verify the creating data function ###
 CO_14_01 Verify "Thêm mới" button function in "Nhóm thủ thuật" category
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Danh mục" page
     Select on the "Nhóm thủ thuật" item line
     When Click "Thêm mới" button
@@ -501,7 +501,7 @@ CO_14_01 Verify "Thêm mới" button function in "Nhóm thủ thuật" category
     Then Webpage should contain left arrow icon
 
 CO_14_02 Verify "Thêm mới" button function in "Độ khó" category
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create                                      Smoketest
     Go to "Danh mục" page
     Select on the "Độ khó" item line
     When Click "Thêm mới" button
@@ -516,7 +516,7 @@ CO_14_02 Verify "Thêm mới" button function in "Độ khó" category
     Then Webpage should contain left arrow icon
 
 CO_14_03 Verify "Thêm mới" button function in "Bằng cấp chuyên môn" category
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Danh mục" page
     Select on the "Bằng cấp chuyên môn" item line
     When Click "Thêm mới" button
@@ -531,7 +531,7 @@ CO_14_03 Verify "Thêm mới" button function in "Bằng cấp chuyên môn" cat
     Then Webpage should contain left arrow icon
 
 CO_14_04 Verify "Thêm mới" button function in "Số răng" category
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Danh mục" page
     Select on the "Số răng" item line
     When Click "Thêm mới" button
@@ -1332,28 +1332,28 @@ CO_31_04 Verify that CAN NOT leave a blank field in "Tiêu đề" when change th
 
 ### Verify the delete data function ###
 CO_32_01 Verify the delete data function in "Nhóm thủ thuật" category
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test data of "Nhóm thủ thuật" category
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then User look message "Đã xóa thành công" popup
     Then "_@Tiêu đề@_" should not be visible in table line
 
 CO_32_02 Verify the delete data function in "Độ khó" category
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test data of "Độ khó" category
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then User look message "Đã xóa thành công" popup
     Then "_@Tiêu đề@_" should not be visible in table line
 
 CO_32_03 Verify the delete data function in "Bằng cấp chuyên môn" category
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test data of "Bằng cấp chuyên môn" category
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then User look message "Đã xóa thành công" popup
     Then "_@Tiêu đề@_" should not be visible in table line
 
 CO_32_04 Verify the delete data function in "Số răng" category
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test data of "Số răng" category
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
     Then User look message "Đã xóa thành công" popup

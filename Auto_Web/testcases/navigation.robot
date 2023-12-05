@@ -21,7 +21,7 @@ DH_01 Verify that navigating to the right "Navigation" page
 
 ### Verify the creating data function ###
 DH_02 Verify "Tạo mới" button function
-    [Tags]                                                                                        Create                                      Smoketest
+    [Tags]                                                                                        Create
     Go to "Điều hướng" page
     When Click "Tạo mới" button
     Then Heading of separated group should contain "Thông tin" inner Text
@@ -37,7 +37,7 @@ DH_02 Verify "Tạo mới" button function
     Then Webpage should contain "Lưu lại" button
 
 DH_03 Verify that CAN create new data with the valid navigation
-    [Tags]                                                                                        Create                                      Smoketest
+    [Tags]                                                                                        Create
     Go to page create data "Phân quyền điều hướng" with "/navigation"
     When Enter "test name" in "Tên điều hướng" with "_RANDOM_"
     When Enter "word" in "Mã điều hướng" with "_RANDOM_"
@@ -338,14 +338,14 @@ DH_24 Verify that CAN NOT change the code information by entering the existed "M
 
 ### Verify the search function ###
 DH_27 Verify the search function when enter the existed name
-    [Tags]                                                                                        Search                                     Smoketest
+    [Tags]                                                                                        Search
     Create a test data
     When Enter "test name" in placeholder "Nhập để tìm kiếm" with "_@Tên điều hướng@_"
     Then "_@Tên điều hướng@_" should be visible in the tree line
     When Click on the "_@Tên điều hướng@_" tree to delete
 
 DH_28 Verify the search function when enter the name was not existed
-    [Tags]                                                                                        Search                                     Smoketest
+    [Tags]                                                                                        Search
     Create a test data
     When Enter "text" in placeholder "Nhập để tìm kiếm" with "_RANDOM_"
     Then "_@Tên điều hướng@_" should not be visible in the tree line
@@ -356,7 +356,7 @@ DH_28 Verify the search function when enter the name was not existed
 
 ### Verify the delete data function ###
 DH_29 Verify the delete data function
-    [Tags]                                                                                        Delete                                     Smoketest
+    [Tags]                                                                                        Delete
     Create a test data
     When Click on the "_@Tên điều hướng@_" tree to delete
     Then User look message "Success" popup

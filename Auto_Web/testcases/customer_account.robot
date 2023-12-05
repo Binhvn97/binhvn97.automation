@@ -25,7 +25,7 @@ CA_01 Verify that navigating to the right "Customer-Account" page
     Then Webpage should contain the "Kích hoạt" filter function
 
 CA_02 Verify the function changing the number of accounts show in each list
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Customer Account" page
     When Click on "second" selection to change the number of data show in list and check
     When Click on "third" selection to change the number of data show in list and check
@@ -35,7 +35,7 @@ CA_02 Verify the function changing the number of accounts show in each list
     When Click on "second" selection to change the number of data show in list and check
 
 CA_03 Verify the function of navigating the list of account page
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Customer Account" page
     Then Check the amount of page list
          ${Last_name}=                                                                            Get data in the last row
@@ -57,7 +57,7 @@ CA_04 Verify the highlight table line function after operated
 
 ### Verify the correct design in detail information's account page ###
 CA_05 Verify that navigating to the right "Detail-information" page
-    [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI
     Create a test account with "Farmer Side" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     Then Heading should contain "Xem chi tiết thông tin tài khoản" inner Text
@@ -96,7 +96,7 @@ CA_05 Verify that navigating to the right "Detail-information" page
 
 ### Verify the lock function ###
 CA_07 Verify the lock funtion
-    [Tags]                                                                                        Lock                                        Smoketest
+    [Tags]                                                                                        Lock
     Create a test account with "Order Side" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     When Click "Khóa" button
@@ -107,7 +107,7 @@ CA_07 Verify the lock funtion
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_08 Verify the unlock function
-    [Tags]                                                                                        Lock                                        Smoketest
+    [Tags]                                                                                        Lock
     Create a test account with "Farmer Side" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     When Click "Khóa" button
@@ -121,7 +121,7 @@ CA_08 Verify the unlock function
 
 ### Verify the search function ###
 CA_09 Verify the search function when enter the existed name 
-    [Tags]                                                                                        Search                                      Smoketest                   
+    [Tags]                                                                                        Search
     Create a test account with "Farmer Side" type     
     When Enter "test name" in "Tìm kiếm" with "_@Họ và tên@_"
     When Click on magnifier icon in search box
@@ -129,7 +129,7 @@ CA_09 Verify the search function when enter the existed name
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line 
 
 CA_10 Verify the search function when enter the name was not existed
-    [Tags]                                                                                        Search                 
+    [Tags]                                                                                        Search
     Create a test account with "Order Side" type
     When Enter "text" in "Tìm kiếm" with "opp"
     When Click on magnifier icon in search box
@@ -249,7 +249,7 @@ CA_18 Verify the deselect filter function when click on cross button
     
 ### Verify the creating account function ###
 CA_21 Verify "Tạo mới" button function
-    [Tags]                                                                                        Create                                      Smoketest
+    [Tags]                                                                                        Create
     Go to "Customer Account" page
     When Click "Tạo mới" button
     Then Heading should contain "Tạo mới tài khoản khách hàng" inner Text
@@ -265,7 +265,7 @@ CA_21 Verify "Tạo mới" button function
     Then Webpage should contain "Đóng lại" button
 
 CA_22 Create new customer account with the valid data
-    [Tags]                                                                                        Create                                      Smoketest
+    [Tags]                                                                                        Create
     Go to page create account "Tài khoản Người dùng" with "/customer-account"
     When Enter "test name" in "Họ và tên" with "_RANDOM_"
     When Enter "email" in "Email" with "_RANDOM_"
@@ -279,7 +279,7 @@ CA_22 Create new customer account with the valid data
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_23 Verify showing "Mật khẩu" and "Xác nhận mật khẩu" on "Tạo mới" page
-    [Tags]                                                                                        Create                                      Smoketest 
+    [Tags]                                                                                        Create
     Go to page create account "Tài khoản Người dùng" with "/customer-account"
     When Enter "password" in "Mật khẩu" with "_RANDOM_"
     When Enter "password" in "Xác nhận mật khẩu" with "_@Mật khẩu@_"
@@ -479,7 +479,7 @@ CA_38 Verify the changing password function
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 CA_39 Verify the changing password function by entering the "Xác nhận mật khẩu" different with the "Mật khẩu"
-    [Tags]                                                                                        ChangePassword                               Smoketest
+    [Tags]                                                                                        ChangePassword
     Create a test account with "Order Side" type
     When Click on the "Đổi mật khẩu" button in the "_@Họ và tên@_" table line
     When Enter "password" in "Mật khẩu" with "_RANDOM_"
@@ -582,7 +582,7 @@ CA_48 Verify the changing with the existed "Số điện thoại"
 
 ### Verify the delete account function ###
 CA_49 Verify the delete account function
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test account with "Order Side" type
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     Then User look message "Xóa thành công" popup

@@ -20,7 +20,7 @@ DA_01 Verify that navigating to the right "Data" page
     Then Webpage should contain "Thêm mới dữ liệu" button
 
 DA_02 Verify the function changing the number of data show in each list
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Quản lý dữ liệu" page 
     When Click on "second" selection to change the number of data show in list and check
     When Click on "third" selection to change the number of data show in list and check
@@ -28,7 +28,7 @@ DA_02 Verify the function changing the number of data show in each list
     When Click on "fifth" selection to change the number of data show in list and check
 
 DA_03 Verify the function navigating to other lists of data page
-    [Tags]                                                                                        MainPage                                    UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                    UI
     Go to "Quản lý dữ liệu" page
     ${Cate}=                                                                                      Get data in the selecting category
     Then Check the amount of page list
@@ -54,7 +54,7 @@ DA_04 Verify the highlight table line function after operated
 
 ### Verify the correct design in detail information's Data page ###
 DA_05 Verify that navigating to the right "Edit data" page
-    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI
     Create a category 
     Create a test data with "_@Tên loại@_" type 
     When Select on the "_@Tên loại@_" item line   
@@ -67,7 +67,7 @@ DA_05 Verify that navigating to the right "Edit data" page
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_06 Check data information after creation
-    [Tags]                                                                                        DetailedInfo                                UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                UI
     Create a category 
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -83,7 +83,7 @@ DA_06 Check data information after creation
 
 ### Verify the go back button in the detail information's data page ###
 DA_07 Verify the "Đóng lại" button
-    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI
     Create a category 
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line  
@@ -96,7 +96,7 @@ DA_07 Verify the "Đóng lại" button
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_08 Verify the "Left-arrow" button
-    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI
     Create a category 
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line 
@@ -110,7 +110,7 @@ DA_08 Verify the "Left-arrow" button
 
 ### Verify the search function ###
 DA_09 Verify the search function when enter the existed name
-    [Tags]                                                                                        Search                                      Smoketest
+    [Tags]                                                                                        Search
     Create a category 
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line
@@ -153,7 +153,7 @@ DA_11 Check the update of data list after cancel the search action
 
 ### Verify the creating data function ###
 DA_12 Verify "Thêm mới dữ liệu" button function
-    [Tags]                                                                                        Create                                         Smoketest
+    [Tags]                                                                                        Create
     Go to "Quản lý dữ liệu" page
     Create a category
     Select on the "_@Tên loại@_" item line
@@ -171,7 +171,7 @@ DA_12 Verify "Thêm mới dữ liệu" button function
     When Click on the "Xóa" button in the "_@Tên loại@_" item line
 
 DA_13 Create new data with the valid data
-    [Tags]                                                                                         Create                                       Smoketest
+    [Tags]                                                                                         Create
     Create a category
     Select on the "_@Tên loại@_" item line
     When Click "Thêm mới dữ liệu" button
@@ -358,7 +358,7 @@ DA_27 Verify the "Left-arrow" button
 
 ### Verify the delete data function ###
 DA_28 Verify the delete data function
-    [Tags]                                                                                          Delete                                      Smoketest
+    [Tags]                                                                                          Delete
     Create a category
     Create a test data with "_@Tên loại@_" type
     When Select on the "_@Tên loại@_" item line     

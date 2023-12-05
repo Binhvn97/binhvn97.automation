@@ -22,32 +22,32 @@ LO_03 Verify that login successfully when enter the valid data (admin account)
 
 ### Verify that login with leaving a blank field ###
 LO_04 Verify that log in with leaving the blank field in "Email"
-  [Tags]                                                                                            Login                            BlankField                       Smoketest
+  [Tags]                                                                                            Login                            BlankField
   When Enter "password" in "Mật khẩu" with "123123"
   When Click "Đăng nhập" button
   Then Required message "Xin vui lòng nhập email" displayed under "Email" field
 
 LO_05 Verify that log in with leaving the blank field in "Mật khẩu"
-  [Tags]                                                                                            Login                            BlankField                       Smoketest
+  [Tags]                                                                                            Login                            BlankField
   When Enter "email" in "Email" with "admin@gmail.com"
   When Click "Đăng nhập" button
   Then Required message "Xin vui lòng nhập mật khẩu" displayed under "Mật khẩu" field
 
 ### Verify the login when enter the invalid data ###
 # LO_06_01 Verify that login with entering the invalid data in "Email" field
-#   [Tags]                                                                                            Login                            Invalid                         Smoketest
+#   [Tags]                                                                                            Login                            Invalid
 #   When Enter "email" in "Email" with "admin@gmail.com "
 #   When Enter "password" in "Mật khẩu" with "123123"
 #   When Click "Đăng nhập" button
 #   Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
 # LO_06_02 Verify that login with entering the invalid data in "Email" field
-#   [Tags]                                                                                            Login                            Invalid                         Smoketest
+#   [Tags]                                                                                            Login                            Invalid
 #   When Enter "email" in "Email" with " admin@gmail.com"
 #   When Enter "password" in "Mật khẩu" with "123123"
 #   When Click "Đăng nhập" button
 #   Then User look message "Tài khoản _@Email@_ không tồn tại trong hệ thống. Vui lòng đăng ký mới." popup
 # LO_06_03 Verify that login with entering the invalid data in "Email" field
-#   [Tags]                                                                                            Login                            Invalid                         Smoketest
+#   [Tags]                                                                                            Login                            Invalid
 #   When Enter "email" in "Email" with "admin@gmail.com "
 #   When Enter "password" in "Mật khẩu" with "123123"
 #   When Click "Đăng nhập" button

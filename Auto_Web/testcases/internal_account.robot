@@ -24,7 +24,7 @@ IA_01 Verify that navigating to the right "Internal-Account" page
     Then Webpage should contain the "Kích hoạt" filter function
 
 IA_02 Verify the function changing the number of accounts show in each list
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest
+    [Tags]                                                                                        MainPage                                     UI
     Go to "Internal Account" page
     When Click on "second" selection to change the number of data show in list and check
     When Click on "third" selection to change the number of data show in list and check
@@ -32,7 +32,7 @@ IA_02 Verify the function changing the number of accounts show in each list
     When Click on "fifth" selection to change the number of data show in list and check
     
 IA_03 Verify the function navigating to other lists of account page
-    [Tags]                                                                                        MainPage                                     UI                                          Smoketest                                                
+    [Tags]                                                                                        MainPage                                     UI                                             
     Go to "Internal Account" page
     Then Check the amount of page list
          ${Last_name}=                                                                            Get data in the last row
@@ -54,7 +54,7 @@ IA_04 Verify the highlight table line function after operated
 
 ### Verify the correct design in detail information's account page ###
 IA_05 Verify that navigating to the right "Detail-information" page
-    [Tags]                                                                                        DetailedInfo                                 UI                                           Smoketest
+    [Tags]                                                                                        DetailedInfo                                 UI
     Create a test account with "CSKH" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     Then Heading should contain "Xem chi tiết thông tin tài khoản" inner Text
@@ -91,7 +91,7 @@ IA_05 Verify that navigating to the right "Detail-information" page
 
 ### Verify the lock account function ###
 IA_07 Verify the block account funtion
-    [Tags]                                                                                        Lock                                         Smoketest                              
+    [Tags]                                                                                        Lock
     Create a test account with "Kế toán" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     When Click "Khóa" button
@@ -102,7 +102,7 @@ IA_07 Verify the block account funtion
     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_08 Verify the unblock account function
-    [Tags]                                                                                        Lock                                         Smoketest
+    [Tags]                                                                                        Lock
     Create a test account with "Kế toán" type
     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
     When Click "Khóa" button
@@ -116,7 +116,7 @@ IA_08 Verify the unblock account function
 
 ### Verify the search function ###
 IA_09 Verify the search function when enter the existed name 
-    [Tags]                                                                                        Search                                       Smoketest
+    [Tags]                                                                                        Search
     Create a test account with "Kế toán" type   
     When Enter "test name" in "Tìm kiếm" with "_@Họ và tên@_"
     When Click on magnifier icon in search box
@@ -225,7 +225,7 @@ IA_16 Verify the deselect filter function when click on cross button
     
 ### Verify the creating account function ###
 IA_19 Verify "Tạo mới" button function
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to "Internal Account" page
     When Click "Tạo mới" button
     Then Heading should contain "Tạo mới tài khoản nội bộ" inner Text
@@ -241,7 +241,7 @@ IA_19 Verify "Tạo mới" button function
     Then Webpage should contain "Đóng lại" button
 
 IA_20 Create new account with the valid data
-    [Tags]                                                                                        Create                                       Smoketest
+    [Tags]                                                                                        Create
     Go to page create account "Tài khoản Nội bộ" with "/internal-account"
     When Enter "test name" in "Họ và tên" with "_RANDOM_"
     When Enter "email" in "Email" with "_RANDOM_"
@@ -454,7 +454,7 @@ IA_36 Verify the changing password function
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 IA_37 Verify the changing password function by entering the "Xác nhận mật khẩu" different with the "Mật khẩu"
-    [Tags]                                                                                        ChangePassword                               Smoketest             
+    [Tags]                                                                                        ChangePassword
     Create a test account with "CSKH" type
     When Click on the "Đổi mật khẩu" button in the "_@Họ và tên@_" table line
     When Enter "password" in "Mật khẩu" with "_RANDOM_"
@@ -557,7 +557,7 @@ IA_46 Verify the changing with the existed "Số điện thoại"
 
 ### Verify the delete account function ###
 IA_47 Verify the delete account function
-    [Tags]                                                                                        Delete                                       Smoketest
+    [Tags]                                                                                        Delete
     Create a test account with "CSKH" type
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     Then User look message "Xóa thành công" popup
