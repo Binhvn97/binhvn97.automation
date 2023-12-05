@@ -15,7 +15,7 @@ DH_01 Verify that navigating to the right "Navigation" page
     When Click "SUPERADMIN" menu
     When Click "Phân quyền điều hướng" sub menu to "/navigation"
     Then Confirm locating exactly in "Phân quyền điều hướng" page
-    Then Heading should contain "ĐIỀU HƯỚNG" inner Text
+    Then Heading of separated group should contain "ĐIỀU HƯỚNG" inner Text
     Then Webpage should contain the search function
     Then Webpage should contain "Tạo mới" button
 

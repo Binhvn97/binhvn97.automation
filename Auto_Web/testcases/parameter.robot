@@ -15,7 +15,7 @@ CH_01 Verify that navigating to the right "Parameter" page
     When Click "SUPERADMIN" menu
     When Click "Cấu hình hệ thống" sub menu to "/parameter"
     Then Confirm locating exactly in "Cấu hình hệ thống" page
-    Then Heading should contain "ĐIỀU HƯỚNG" inner Text
+    Then Heading of separated group should contain "ĐIỀU HƯỚNG" inner Text
     Then Webpage should contain the search function
     Then Webpage should contain "Tạo mới" button
 
