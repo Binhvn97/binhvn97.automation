@@ -500,6 +500,7 @@ Click "${text}" button with cancel action
 Select file in "${name}" with "${image_name}"
   ${element}=               Get Element Form Item By Name     ${name}                       //input[@type = "file"]
   Upload File By Selector   ${element}                        Auto_Web/upload/${image_name}
+  Wait Until Image Is Uploaded
 
 Click radio "${name}" in line "${text}"
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-radio-button-wrapper")]/span[contains(text(), "${text}")]
@@ -548,6 +549,13 @@ Wait Until Element Spin
   ${element}                Set Variable                      xpath=//*[contains(@class, "ant-spin-spinning")]
   ${count}=                 Get Element Count                 ${element}
   IF    ${count} > 0
+    Wait Until Page Does Not Contain Element                  ${element}
+  END
+
+Wait Until Image Is Uploaded
+  ${element}                Set Variable                      //*[contains(@class,'animate-spin')]
+  ${cnt}=                   Get Element Count                 ${element}
+  IF    ${cnt} > 0
     Wait Until Page Does Not Contain Element                  ${element}
   END
 
