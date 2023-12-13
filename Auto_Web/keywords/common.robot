@@ -8,7 +8,7 @@ ${BROWSER}          chromium
 ${HEADLESS}         ${False}
 ${BROWSER_TIMEOUT}  60 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
-${TIME_TRY}         0.3 seconds
+${TIME_TRY}         0.5 seconds
 
 ${URL_DEFAULT}      http://dev1.geneat.vn:7802/#/vn
 ${STATE}            Evaluate    json.loads('''{}''')  json
@@ -194,9 +194,23 @@ Enter date in placeholder "${name}" with "${date}"
 Enter "${type}" in editor "${name}" with "${text}"
   Wait Until Element Spin
   ${text}=                  Get Random Text                   ${type}                       ${text}
-  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ce-paragraph")]
-  Clear Text                                                  ${element}
-  Fill Text                                                   ${element}                    ${text}
+  ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class,'ce-paragraph')]
+  Click                     ${element}
+  Clear Text                ${element}
+  Fill Text                 ${element}                        ${text}                       True
+  ${elementS}=              Get Element Form Item By Name     ${name}                       //*[contains(@class,'ce-paragraph') and contains(text(),'${text}')]
+  Wait Until Element Is Existent                              ${elementS}
+  Sleep                     ${TIME_TRY}
+  ${condition}=             Get Text                          ${element}
+  WHILE    '${condition}' != '${text}'    limit=10
+    Fill Text               ${element}                        ${text}
+    ${condition}=           Get Text                          ${element}     
+  END
+  Scroll To Element         ${element}
+  ${cnt}=                   Get Length                        ${text}
+  IF  ${cnt} > 0
+    Set Global Variable     \${STATE["${name}"]}              ${text}
+  END
 
 Clear data in "${name}" field
   ${element}=               Get Element Form Item By Name     ${name}                       //*[contains(@class, "ant-input")]
