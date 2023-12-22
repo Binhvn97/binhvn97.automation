@@ -64,35 +64,35 @@ CA_05 Verify that navigating to the right "Detail-information" page
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-# CA_06_01 Check account information after creation (Farmer Side)
-#     [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
-#     ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
-#     Create a test account with "Farmer Side" type
-#     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-#     Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
-#     Then Data's information in "Email" should be equal "_@Email@_"
-#     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
-#     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-#     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-#     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-#     When Click "Trở lại" button
-#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+CA_06_01 Check account information after creation (Farmer Side)
+    [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
+    ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
+    Create a test account with "Farmer Side" type
+    When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
+    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+    Then Data's information in "Email" should be equal "_@Email@_"
+    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+    # Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+    When Click "Trở lại" button
+    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-# CA_06_02 Check account information after creation (Order Side)
-#     [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
-#     ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
-#     Create a test account with "Order Side" type
-#     When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
-#     Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
-#     Then Data's information in "Email" should be equal "_@Email@_"
-#     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
-#     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
-#     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-#     Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-#     Then Data's information should contain "Số phòng khám" field
-#     Then Data's information should contain "Tổng số đơn hàng" field
-#     When Click "Trở lại" button
-#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+CA_06_02 Check account information after creation (Order Side)
+    [Tags]                                                                                        DetailedInfo                                 UI                                          Smoketest
+    ${today}=                                                                                     Get Current Date                             local                                       result_format=%d/%m/%Y
+    Create a test account with "Order Side" type
+    When Click on the "Chi tiết" button in the "_@Họ và tên@_" table line
+    Then Data's information in "Họ và tên" should be equal "_@Họ và tên@_"
+    Then Data's information in "Email" should be equal "_@Email@_"
+    Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
+    Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
+    Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
+    # Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+    Then Data's information should contain "Số phòng khám" field
+    Then Data's information should contain "Tổng số đơn hàng" field
+    When Click "Trở lại" button
+    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
 ### Verify the lock function ###
 CA_07 Verify the lock funtion
@@ -222,32 +222,32 @@ CA_18 Verify the deselect filter function when click on cross button
     Then "_@Họ và tên@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-# CA_19 Verify the date selection filter function
-#     [Tags]                                                                                        Filter
-#     ${today}=                                                                                     Get Current Date                             local                   result_format=%Y-%m-%d
-#     ${yesterday}=                                                                                 Get Current Date                             local                   - 1 day                        result_format=%Y-%m-%d
-#     Create a test account with "Farmer Side" type
-#     When Enter date in placeholder "Bắt đầu" with "${yesterday}"
-#     When Enter date in placeholder "Kết thúc" with "${yesterday}"
-#     Then "_@Họ và tên@_" should not be visible in table line
-#     When Enter date in placeholder "Bắt đầu" with "${today}"
-#     When Enter date in placeholder "Kết thúc" with "${today}"
-#     Then "_@Họ và tên@_" should be visible in table line
-#     Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
+CA_19 Verify the date selection filter function
+    [Tags]                                                                                        Filter
+    ${today}=                                                                                     Get Current Date                             local                   result_format=%Y-%m-%d
+    ${yesterday}=                                                                                 Get Current Date                             local                   - 1 day                        result_format=%Y-%m-%d
+    Create a test account with "Farmer Side" type
+    When Enter date in placeholder "Bắt đầu" with "${yesterday}"
+    When Enter date in placeholder "Kết thúc" with "${yesterday}"
+    Then "_@Họ và tên@_" should not be visible in table line
+    When Enter date in placeholder "Bắt đầu" with "${today}"
+    When Enter date in placeholder "Kết thúc" with "${today}"
+    Then "_@Họ và tên@_" should be visible in table line
+    Then Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
-# CA_20 Verify the filter function by applying all filter at the same time
-#     [Tags]                                                                                        Filter
-#     ${today}=                                                                                     Get Current Date                             local                   result_format=%Y-%m-%d
-#     Create a test account with "Farmer Side" type
-#     When Click filter "Loại tài khoản" with "Farmer Side"
-#     When Enter date in placeholder "Bắt đầu" with "${today}"
-#     When Enter date in placeholder "Kết thúc" with "${today}"
-#     When Click filter "Trạng thái" with "Đã xác thực"
-#     When Click filter "Kích hoạt" with "Mở Khóa"
-#     Then "_@Họ và tên@_" should be visible in table line
-#     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
+CA_20 Verify the filter function by applying all filter at the same time
+    [Tags]                                                                                        Filter
+    ${today}=                                                                                     Get Current Date                             local                   result_format=%Y-%m-%d
+    Create a test account with "Farmer Side" type
+    When Click filter "Loại tài khoản" with "Farmer Side"
+    When Enter date in placeholder "Bắt đầu" with "${today}"
+    When Enter date in placeholder "Kết thúc" with "${today}"
+    When Click filter "Trạng thái" with "Đã xác thực"
+    When Click filter "Kích hoạt" with "Mở Khóa"
+    Then "_@Họ và tên@_" should be visible in table line
+    When Click on the "Xóa" button in the "_@Họ và tên@_" table line
     
-### Verify the creating account function ###
+## Verify the creating account function ###
 CA_21 Verify "Tạo mới" button function
     [Tags]                                                                                        Create
     Go to "Customer Account" page
