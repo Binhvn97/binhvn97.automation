@@ -15,8 +15,8 @@ CA_01 Verify that navigating to the right "Customer-Account" page
     Login to admin
     When Click "QUẢN LÝ TÀI KHOẢN" menu
     When Click "Tài khoản Người dùng" sub menu to "/customer-account"
-    Then Confirm locating exactly in "Tài khoản khách hàng" page
-    Then Heading should contain "Danh sách tài khoản khách hàng" inner Text
+    Then Confirm locating exactly in "Tài khoản người dùng" page
+    Then Heading should contain "Danh sách tài khoản người dùng" inner Text
     Then Webpage should contain the list data from database
     Then Webpage should contain the search function
     Then Webpage should contain the "Ngày tham gia" filter function
@@ -252,7 +252,7 @@ CA_21 Verify "Tạo mới" button function
     [Tags]                                                                                        Create
     Go to "Customer Account" page
     When Click "Tạo mới" button
-    Then Heading should contain "Tạo mới tài khoản khách hàng" inner Text
+    Then Heading should contain "Tạo mới tài khoản người dùng" inner Text
     Then Confirm adding "/customer-account" page
     Then Webpage should contain "Họ và tên" input field
     Then Webpage should contain "Email" input field
@@ -545,7 +545,7 @@ CA_45 Verify the changing "Số điện thoại" field
     [Tags]                                                                                        ChangeInfo
     Create a test account with "Farmer Side" type
     When Click on the "Sửa" button in the "_@Họ và tên@_" table line
-    When Enter "number" in "Số điện thoại" with "_RANDOM_"
+    When Enter "phone" in "Số điện thoại" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Chỉnh sửa tài khoản thành công" popup
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
@@ -616,7 +616,7 @@ Go to page create account "${name}" with "${url}"
     Click "Tạo mới" button
 
 Create a test account with "${type}" type
-    ${condition}=            Run Keyword And Return Status        Confirm locating exactly in "Tài khoản khách hàng" page
+    ${condition}=            Run Keyword And Return Status        Confirm locating exactly in "Tài khoản người dùng" page
     IF    '${condition}' == 'True'
       Click "Tạo mới" button
     ELSE

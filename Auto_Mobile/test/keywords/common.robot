@@ -2,7 +2,6 @@
 Library                 AppiumLibrary
 Library                 FakerLibrary        locale=en_IN
 Library                 String
-Library                 Browser
 Library                 XML
 Library                 DateTime
 
@@ -91,14 +90,17 @@ Get Random Text
     ${new_text}=            FakerLibrary.Paragraph
   ELSE IF  ${cnt} > 0 and '${type}' == 'email'
     ${new_text}=            FakerLibrary.Email
-  ELSE IF  ${cnt} > 0 and '${type}' == 'password'
-    ${new_text}=            FakerLibrary.Password            10                             True                        True                          True                        True
   ELSE IF  ${cnt} > 0 and '${type}' == 'phone'
-    ${new_text}=            FakerLibrary.Random Int           min=200000000                 max=999999999
+    ${new_text}=            FakerLibrary.Random Int           min=20000000                  max=99999999
     ${new_text}=            Convert To String                 ${new_text}
-    ${new_text}=            Catenate                          SEPARATOR=                    0                           ${new_text}
+    ${List}=                Create List                       3    7    8    9
+    ${2nd_number}=          Evaluate                          random.choice($List)          random
+    ${2nd_number}=          Convert To String                 ${2nd_number}               
+    ${new_text}=            Catenate                          SEPARATOR=                    0                           ${2nd_number}                 ${new_text}
   ELSE IF  ${cnt} > 0 and '${type}' == 'color'
     ${new_text}=            FakerLibrary.Safe Hex Color
+  ELSE IF  ${cnt} > 0 and "${type}" == 'password'
+    ${new_text}=            FakerLibrary.Password            10                             True                        True                          True                        True
   ELSE IF  ${cnt} > 0 and '${type}' == 'date'
     ${new_text}=            FakerLibrary.Date  	              pattern=%d-%m-%Y
   ELSE IF  ${cnt} > 0 and '${type}' == 'word'

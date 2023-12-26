@@ -520,7 +520,7 @@ IA_43 Verify the changing "Số điện thoại" field
     [Tags]                                                                                        ChangeInfo
     Create a test account with "Kế toán" type
     When Click on the "Sửa" button in the "_@Họ và tên@_" table line
-    When Enter "number" in "Số điện thoại" with "_RANDOM_"
+    When Enter "phone" in "Số điện thoại" with "_RANDOM_"
     When Click "Lưu lại" button
     Then User look message "Chỉnh sửa tài khoản thành công" popup
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
