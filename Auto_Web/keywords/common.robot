@@ -79,6 +79,14 @@ Get Random Text
     ${new_text}=            FakerLibrary.Date  	              pattern=%d-%m-%Y
   ELSE IF  ${cnt} > 0 and '${type}' == 'word'
     ${new_text}=            FakerLibrary.Sentence             nb_words=2
+  ELSE IF  ${cnt} > 0 and '${type}' == 'title'
+    ${word_1}=              FakerLibrary.Text                 max_nb_chars=15
+    ${word_2}=              FakerLibrary.Text                 max_nb_chars=15
+    ${word_3}=              FakerLibrary.Text                 max_nb_chars=15
+    ${word_4}=              FakerLibrary.Text                 max_nb_chars=15
+    ${word_5}=              FakerLibrary.Text                 max_nb_chars=15
+    ${words}=               Split String                      ${TEST NAME}                  ${SPACE}
+    ${new_text}=            Catenate                          ${words[0]}                   ${word_1}                   ${word_2}                     ${word_3}                   ${word_4}                   ${word_5}
   ELSE IF  ${cnt} > 0
     ${new_text}=            FakerLibrary.Sentence
   END
