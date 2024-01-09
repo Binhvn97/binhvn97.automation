@@ -74,11 +74,17 @@ Get Random Text
   ELSE IF  ${cnt} > 0 and '${type}' == 'color'
     ${new_text}=            FakerLibrary.Safe Hex Color
   ELSE IF  ${cnt} > 0 and "${type}" == 'password'
-    ${new_text}=            FakerLibrary.Password            10                             True                        True                          True                        True
+    ${new_text}=            FakerLibrary.Password             10                            True                        True                          True                        True
   ELSE IF  ${cnt} > 0 and '${type}' == 'date'
     ${new_text}=            FakerLibrary.Date  	              pattern=%d-%m-%Y
   ELSE IF  ${cnt} > 0 and '${type}' == 'word'
     ${new_text}=            FakerLibrary.Sentence             nb_words=2
+  ELSE IF  ${cnt} > 0 and '${type}' == 'address'
+    ${new_text}=            FakerLibrary.Address
+  ELSE IF  ${cnt} > 0 and '${type}' == 'name'
+    ${words}=               Split String                      ${TEST NAME}                  ${SPACE}
+    ${name}=                FakerLibrary.Name
+    ${new_text}=            Catenate                          ${words[0]}                   ${name}
   ELSE IF  ${cnt} > 0 and '${type}' == 'title'
     ${word_1}=              FakerLibrary.Text                 max_nb_chars=15
     ${word_2}=              FakerLibrary.Text                 max_nb_chars=15
@@ -94,7 +100,7 @@ Get Random Text
   IF  ${cnt} > 0
     ${text}=                Replace String                    ${text}                       ${symbol}                   ${new_text}
   END
-  [Return]    ${text}
+  [Return]                  ${text}
 
 Enter "${type}" in "${name}" with "${text}"
   Wait Until Element Spin
