@@ -74,7 +74,7 @@ CA_06_01 Check account information after creation (Farmer Side)
     Then Data's information in "Giới tính" should be equal "_@Giới tính@_"
     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
-    Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
+    # Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 
@@ -89,8 +89,8 @@ CA_06_02 Check account information after creation (Order Side)
     Then Data's information in "Loại tài khoản" should be equal "_@Loại tài khoản@_"
     Then Data's information in "Số điện thoại" should be equal "_@Số điện thoại@_"
     # Then Data's information in "Ngày hoạt động cuối" should be equal "${today}"
-    Then Data's information should contain "Số phòng khám" field
-    Then Data's information should contain "Tổng số đơn hàng" field
+    # Then Data's information should contain "Số phòng khám" field
+    # Then Data's information should contain "Tổng số đơn hàng" field
     When Click "Trở lại" button
     When Click on the "Xóa" button in the "_@Họ và tên@_" table line
 

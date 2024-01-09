@@ -692,7 +692,7 @@ The status of "${name}" switch button should not be activated
 
 # Check UI or Existence #
 Webpage should contain the search function
-  ${element}=               Set Variable                       //*[contains(@class,'flex-col')]//label[contains(text(),"Tìm kiếm")]
+  ${element}=               Set Variable                       //label[contains(text(),'Tìm kiếm')]/../../*//following-sibling::*[contains(@class,'la-search')]
   ${count}=                 Get Element Count                  ${element}
   ${condition}=             Run Keyword And Return Status      Should Be True               ${count} >= 1
   IF      '${condition}' == 'False'
@@ -702,9 +702,15 @@ Webpage should contain the search function
   END
 
 Webpage should contain the "${name}" filter function
-  ${element}=               Get Element                       //*[contains(@class,'flex-col')]//label[contains(text(),"${name}")]
-  ${count}=                 Get Element Count                 ${element}
-  Should Be True            ${count} >= 1
+  ${element}=               Set Variable                       //label[contains(text(),'${name}')]
+  Wait Until Element Is Existent                               ${element}                      
+  ${count}=                 Get Element Count                  ${element}/../../*//following-sibling::nz-select
+  ${condition}=             Run Keyword And Return Status      Should Be True                     ${count} >= 1
+  IF    '${condition}' == 'False'
+    ${elementS}=            Set Variable                       ${element}/../../*//following-sibling::nz-range-picker
+    ${cnt}=                 Get Element Count                  ${elementS}
+    Should Be True          ${cnt} > 0
+  END
 
 Heading should contain "${text}" inner Text
   ${text}=                  Check Text                        ${text}
