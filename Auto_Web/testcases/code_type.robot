@@ -1387,6 +1387,19 @@ CO_33_04 Verify the cancel action button when delete data in "Số răng" catego
     Then "_@Tiêu đề@_" should be visible in table line
     When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
 
+CO_34 Verify the sort function of "Thứ tự" column in "Nhóm thủ thuật" category
+   [Tags]                                                                                         Sort
+   ${test1}=        Create a test data of "Nhóm thủ thuật" category with "1" in order
+   Create a test data of "Nhóm thủ thuật" category with "34" in order
+   When Click on "5" selection to change number of data on list
+   When Click on the sort icon in "Thứ tự" column
+   Then The ordinal of "${test1}" should be smaller than "_@Tiêu đề@_"
+   When Click on the sort icon in "Thứ tự" column
+   Then The ordinal of "_@Tiêu đề@_" should be smaller than "${test1}"
+   When Click on the sort icon in "Thứ tự" column
+   When Click on the "Xóa" button in the "_@Tiêu đề@_" table line
+   When Click on the "Xóa" button in the "${test1}" table line
+
 *** Keywords ***
 Go to "Danh mục" page
     Login to admin
@@ -1419,4 +1432,23 @@ Create a test data of "${category}" category
   Click "Lưu lại" button
   User look message "Success" popup
 
+Create a test data of "${category}" category with "${order}" in order
+  ${condition}=          Run Keyword And Return Status                 Confirm locating exactly in "Danh mục" page
+  IF    '${condition}' == 'True'
+    Select on the "${category}" item line
+    Click "Thêm mới" button
+  ELSE
+    Go to "Danh mục" page
+    Select on the "${category}" item line
+    Click "Thêm mới" button
+  END
+  Enter "test name" in "Tiêu đề" with "_RANDOM_"
+  Enter "number" in "Thứ tự" with "${order}"
+  Enter "text" in "Mã" with "_RANDOM_"
+    ${text}=             Check Text              _@Tiêu đề@_
+    ${name}=             Set Variable            ${text}
+    [Return]             ${name}
+  Enter "paragraph" in textarea "Mô tả" with "_RANDOM_"
+  Click "Lưu lại" button
+  User look message "Success" popup
 

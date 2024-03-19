@@ -304,6 +304,11 @@ Click on the "${text}" button in the "${name}" table line with cancel
   Click                     ${element}
   Click Cancel Action
 
+Click on the sort icon in "${name}" column
+  ${element}=              Set Variable                        //thead/tr/th//*[contains(text(),"${name}")]/../../nz-table-sorters
+  Click                    ${element}
+  Wait Until Element Spin
+
 ###  -----  Item  -----  ###
 Get Element Item By Name
   [Arguments]               ${name}                           ${xpath}=${EMPTY}
@@ -696,6 +701,22 @@ The status of "${name}" switch button should not be activated
   Wait Until Element Is Existent                              ${element}
   Get Property              ${element}                        className                     not contains                         ant-switch-checked
 
+The ordinal of "${value1}" should be smaller than "${value2}"
+  ${value1}=                  Check Text                      ${value1}
+  ${value2}=                  Check Text                      ${value2}
+  ${condition}=               Run Keyword And Return Status   "${value1}" should be visible in table line
+  WHILE    "${condition}" == "False"
+    Move to the "next" page
+    ${condition}=             Run Keyword And Return Status   "${value1}" should be visible in table line
+  END
+  ${element}=                 Set Variable                    //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${value2}")]           
+  ${cnt1}=                    Get Element Count               ${element}
+  IF        ${cnt1} > 0
+    ${index1}=                Get Table Row Index             //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${value1}")]
+    ${index2}=                Get Table Row Index             //tbody//tr[contains(@class,'ant-table-row')]/td/*[contains(text(),"${value2}")]
+    Should Be True            ${index1} < ${index2}  
+  END
+
 # Check UI or Existence #
 Webpage should contain the search function
   ${element}=               Set Variable                       //label[contains(text(),'Tìm kiếm')]/../../*//following-sibling::*[contains(@class,'la-search')]
@@ -974,6 +995,27 @@ Click on "${ordinal}" selection to change the number of data show in list and ch
       END    
     END
   END
+
+Click on "${ordinal}" selection to change number of data on list
+  Wait Until Element Spin
+  ${cnt}=                       Get Length                      ${ordinal}        
+  IF        ${cnt} > 3 and '${ordinal}' == 'first'
+    ${select}=                  Set Variable                    1
+  ELSE IF   ${cnt} > 3 and '${ordinal}' == 'second'
+    ${select}=                  Set Variable                    2  
+  ELSE IF   ${cnt} > 3 and '${ordinal}' == 'third'
+    ${select}=                  Set Variable                    3  
+  ELSE IF   ${cnt} > 3 and '${ordinal}' == 'fourth'
+    ${select}=                  Set Variable                    4
+  ELSE IF   ${cnt} > 3 and '${ordinal}' == 'fifth'
+    ${select}=                  Set Variable                    5
+  ELSE
+    ${select}=                  Convert To Integer              ${ordinal}
+  END
+  Click                         xpath=//g-pagination//*[contains(@class, 'ant-select-selection-item')]
+  Wait Until Element Spin
+  Click                         xpath=//nz-option-item[${select}]/div[contains(@class,'ant-select-item-option-content')]
+  Wait Until Element Spin
 
 ### --- Get the data information --- ###
 Get data in the last row

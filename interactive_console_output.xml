@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 6.1.1 (Python 3.11.4 on win32)" generated="20240319 23:46:20.990" rpa="false" schemaversion="4">
+<suite id="s1" name="Robot Interactive Console" source="c:\Users\thanh\.vscode\extensions\robocorp.robotframework-lsp-1.11.0\src\robotframework_ls\vendored\robotframework_interactive\robot_interactive_console.robot">
+<test id="s1-t1" name="Default Task/Test" line="5">
+<kw name="Interpreter Main Loop" library="MainLoop">
+<kw name="Go to &quot;Danh mục&quot; page">
+<msg timestamp="20240319 23:46:23.521" level="FAIL">No keyword with name 'Go to "Danh mục" page' found.</msg>
+<status status="FAIL" starttime="20240319 23:46:23.521" endtime="20240319 23:46:23.522"/>
+</kw>
+<kw name="Select on the &quot;Nhóm thủ thuật&quot; item line">
+<status status="NOT RUN" starttime="20240319 23:46:23.523" endtime="20240319 23:46:23.523"/>
+</kw>
+<kw name="When Click on &quot;second&quot; selection to change the number of data show in list and check">
+<status status="NOT RUN" starttime="20240319 23:46:23.525" endtime="20240319 23:46:23.525"/>
+</kw>
+<kw name="When Click on &quot;third&quot; selection to change the number of data show in list and check">
+<status status="NOT RUN" starttime="20240319 23:46:23.531" endtime="20240319 23:46:23.531"/>
+</kw>
+<kw name="When Click on &quot;fourth&quot; selection to change the number of data show in list and check">
+<status status="NOT RUN" starttime="20240319 23:46:23.536" endtime="20240319 23:46:23.536"/>
+</kw>
+<kw name="When Click on &quot;fifth&quot; selection to change the number of data show in list and check">
+<status status="NOT RUN" starttime="20240319 23:46:23.540" endtime="20240319 23:46:23.540"/>
+</kw>
+<status status="PASS" starttime="20240319 23:46:21.029" endtime="20240319 23:46:23.627"/>
+</kw>
+<status status="PASS" starttime="20240319 23:46:21.028" endtime="20240319 23:46:23.627"/>
+</test>
+<status status="PASS" starttime="20240319 23:46:20.994" endtime="20240319 23:46:23.629"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="Robot Interactive Console">Robot Interactive Console</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
