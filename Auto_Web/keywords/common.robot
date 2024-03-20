@@ -10,7 +10,7 @@ ${BROWSER_TIMEOUT}  60 seconds
 ${SHOULD_TIMEOUT}   0.1 seconds
 ${TIME_TRY}         0.5 seconds
 
-${URL_DEFAULT}      http://dev1.geneat.vn:7802/#/vn
+${URL_DEFAULT}      http://uberental.geneat.pro
 ${STATE}            Evaluate    json.loads('''{}''')  json
 
 *** Keywords ***
